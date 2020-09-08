@@ -27,7 +27,6 @@
         <whitelist>
             <directory suffix=".php">../../</directory>
             <exclude>
-                <directory>../../Setup/</directory>
                 <directory>../../Test/</directory>
                 <file>../../registration.php</file>
             </exclude>

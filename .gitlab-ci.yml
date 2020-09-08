@@ -34,190 +34,85 @@ runtime-analysis:
     - /^(release|hotfix)-.*$/
     - merge_requests
   variables:
-    PHP_VERSION: "7.3"
-    MAGENTO_TAG_VERSION: "2.3"
+    PHP_VERSION: "7.4"
+    MAGENTO_TAG_VERSION: "2.4"
   script:
     - ci-install
     - ci-validate-schema
     - ci-validate-i18n
 
 # Crucial tests (lowest Mage+PHP + highest Mage+PHP)
-#phpunit-7.0-ce2.2:
-#  stage: test
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#    - merge_requests
-#  variables:
-#    PHP_VERSION: "7.0"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.0-ee2.2:
-#  stage: test
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#    - merge_requests
-#  variables:
-#    PHP_VERSION: "7.0"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ee"
-#
-#phpunit-7.3-ce2.3:
-#  stage: test
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#    - merge_requests
-#  variables:
-#    PHP_VERSION: "7.3"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.3-ee2.3:
-#  stage: test
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#    - merge_requests
-#  variables:
-#    PHP_VERSION: "7.3"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ee"
+phpunit-essential-2.3:
+  stage: test
+  extends: .phpunit
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+    - merge_requests
+  variables:
+    PHP_VERSION: "7.1"
+    MAGENTO_TAG_VERSION: "2.3"
+    MAGENTO_EDITION: "ce"
+
+phpunit-essential-2.4:
+  stage: test
+  extends: .phpunit
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+    - merge_requests
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.4"
+        MAGENTO_TAG_VERSION: "2.4"
+        MAGENTO_EDITION: [ "ee", "ce" ]
 
 # MFTF tests
-#php73-mftf-2.3:
-#  stage: mftf
-#  extends: .runtime
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#    - /^mftf-.+$/
-#  variables:
-#    PHP_VERSION: "7.3"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ee"
-#    MAGE_MODE: "production"
-#  script:
-#    - ci-install
-#    - ci-mftf Dhl_Paket
-#  artifacts:
-#    when: on_failure
-#    paths:
-#      - build/shared/_output
-#      - build/shared/log
+php74-mftf-2.4:
+  stage: mftf
+  extends: .runtime
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+    - /^mftf-.+$/
+  variables:
+    PHP_VERSION: "7.4"
+    MAGENTO_TAG_VERSION: "2.4"
+    MAGENTO_EDITION: "ee"
+    MAGE_MODE: "production"
+  allow_failure: true
+  script:
+    - ci-install
+    - ci-mftf Dhl_Paket
+  artifacts:
+    when: on_failure
+    paths:
+      - build/shared/_output
+      - build/shared/log
 
 # Additional tests (in between versions of Magento or PHP)
-#phpunit-7.1-ce2.2:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.1"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.1-ee2.2:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.1"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ee"
-#
-#phpunit-7.2-ce2.3:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.2"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.2-ee2.3:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.2"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ee"
-#
-#phpunit-7.1-ce2.3:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.1"
-#    MAGENTO_TAG_VERSION: "2.3"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.2-ce2.2:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.2"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ce"
-#
-#phpunit-7.2-ee2.2:
-#  stage: test-additional
-#  extends: .phpunit
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  variables:
-#    PHP_VERSION: "7.2"
-#    MAGENTO_TAG_VERSION: "2.2"
-#    MAGENTO_EDITION: "ee"
+phpunit-additional-2.3:
+  stage: test-additional
+  extends: .phpunit
+  parallel:
+    matrix:
+      - PHP_VERSION: ["7.2", "7.3"]
+        MAGENTO_TAG_VERSION: "2.3"
+        MAGENTO_EDITION: ["ee", "ce"]
 
-# Documentation generation
-#wiki2pdf:
-#  stage: docs
-#  image: registry.netresearch.de/magento-ci/wiki2pdf
-#  only:
-#    - develop
-#    - master
-#    - /^(release|hotfix)-.*$/
-#  script:
-#    - ci-wiki2pdf Documentation-English.md Dhl_Shipping_Solutions_EndUserDocumentation.pdf
-#    - ci-wiki2pdf Documentation-German.md Dhl_Shipping_Solutions_Endkundendokumentation.pdf
-#  artifacts:
-#    when: on_success
-#    paths:
-#      - ./*.pdf
-#
+
+phpunit-additional-2.4:
+  stage: test-additional
+  extends: .phpunit
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.3"
+        MAGENTO_TAG_VERSION: "2.4"
+        MAGENTO_EDITION: ["ee", "ce"]
+
 package-build:
   stage: build
   only:
@@ -243,18 +138,18 @@ package-validate:
   dependencies:
     - package-build
 
-#github:
-#  stage: deploy
-#  when: manual
-#  only:
-#    - master
-#  variables:
-#    GIT_STRATEGY: "clone"
-#    VAULT_PATH: "projects/DHL/Github/module-carrier-paket"
-#  before_script:
-#    - ci-github-before
-#  script:
-#    - ci-github
+github:
+  stage: deploy
+  when: manual
+  only:
+    - master
+  variables:
+    GIT_STRATEGY: "clone"
+    VAULT_PATH: "projects/GLS/Github/module-carrier"
+  before_script:
+    - ci-github-before
+  script:
+    - ci-github
 
 # Templates for jobs running Installation, PHPUnit Integration and MFTF tests
 .runtime:
