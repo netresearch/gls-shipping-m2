@@ -1,0 +1,275 @@
+image: registry.netresearch.de/magento-ci/ci-toolchain:latest
+
+services:
+  - name: registry.netresearch.de/ci-helper/gitlab-worker-dind
+    alias: docker
+
+stages:
+  - analyze
+  - test
+  - mftf
+  - test-additional
+  - docs
+  - build
+  - validate
+  - deploy
+
+static-analysis:
+  stage: analyze
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+    - merge_requests
+  script:
+    - ci-analyze
+    - ci-validate-dependencies
+
+runtime-analysis:
+  stage: analyze
+  extends: .runtime
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+    - merge_requests
+  variables:
+    PHP_VERSION: "7.3"
+    MAGENTO_TAG_VERSION: "2.3"
+  script:
+    - ci-install
+    - ci-validate-schema
+    - ci-validate-i18n
+
+# Crucial tests (lowest Mage+PHP + highest Mage+PHP)
+#phpunit-7.0-ce2.2:
+#  stage: test
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#    - merge_requests
+#  variables:
+#    PHP_VERSION: "7.0"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.0-ee2.2:
+#  stage: test
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#    - merge_requests
+#  variables:
+#    PHP_VERSION: "7.0"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ee"
+#
+#phpunit-7.3-ce2.3:
+#  stage: test
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#    - merge_requests
+#  variables:
+#    PHP_VERSION: "7.3"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.3-ee2.3:
+#  stage: test
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#    - merge_requests
+#  variables:
+#    PHP_VERSION: "7.3"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ee"
+
+# MFTF tests
+#php73-mftf-2.3:
+#  stage: mftf
+#  extends: .runtime
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#    - /^mftf-.+$/
+#  variables:
+#    PHP_VERSION: "7.3"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ee"
+#    MAGE_MODE: "production"
+#  script:
+#    - ci-install
+#    - ci-mftf Dhl_Paket
+#  artifacts:
+#    when: on_failure
+#    paths:
+#      - build/shared/_output
+#      - build/shared/log
+
+# Additional tests (in between versions of Magento or PHP)
+#phpunit-7.1-ce2.2:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.1"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.1-ee2.2:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.1"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ee"
+#
+#phpunit-7.2-ce2.3:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.2"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.2-ee2.3:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.2"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ee"
+#
+#phpunit-7.1-ce2.3:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.1"
+#    MAGENTO_TAG_VERSION: "2.3"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.2-ce2.2:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.2"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ce"
+#
+#phpunit-7.2-ee2.2:
+#  stage: test-additional
+#  extends: .phpunit
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  variables:
+#    PHP_VERSION: "7.2"
+#    MAGENTO_TAG_VERSION: "2.2"
+#    MAGENTO_EDITION: "ee"
+
+# Documentation generation
+#wiki2pdf:
+#  stage: docs
+#  image: registry.netresearch.de/magento-ci/wiki2pdf
+#  only:
+#    - develop
+#    - master
+#    - /^(release|hotfix)-.*$/
+#  script:
+#    - ci-wiki2pdf Documentation-English.md Dhl_Shipping_Solutions_EndUserDocumentation.pdf
+#    - ci-wiki2pdf Documentation-German.md Dhl_Shipping_Solutions_Endkundendokumentation.pdf
+#  artifacts:
+#    when: on_success
+#    paths:
+#      - ./*.pdf
+#
+package-build:
+  stage: build
+  only:
+    - master
+    - /^(release|hotfix)-.*$/
+  script:
+    - zip -r
+      -x "*build/*" "*Test/*" "*doc/src*" "*.gitignore" "*.gitlab-ci.yml" "*.git*"
+      -o $(ci-get-package-name).zip
+      .
+  artifacts:
+    when: on_success
+    paths:
+      - ./*.zip
+
+package-validate:
+  stage: validate
+  only:
+    - master
+    - /^(release|hotfix)-.*$/
+  script:
+    - ci-validate $(ci-get-package-name).zip
+  dependencies:
+    - package-build
+
+#github:
+#  stage: deploy
+#  when: manual
+#  only:
+#    - master
+#  variables:
+#    GIT_STRATEGY: "clone"
+#    VAULT_PATH: "projects/DHL/Github/module-carrier-paket"
+#  before_script:
+#    - ci-github-before
+#  script:
+#    - ci-github
+
+# Templates for jobs running Installation, PHPUnit Integration and MFTF tests
+.runtime:
+  variables:
+    MAGENTO_INSTALL_SAMPLES: "no"
+  before_script:
+    - ci-install-before
+  script:
+    - ci-install
+  after_script:
+    - ci-install-after
+
+# Template for PHPUnit jobs
+.phpunit:
+  extends: .runtime
+  script:
+    - ci-install
+    - ci-phpunit-docker Test/Integration/phpunit.xml
