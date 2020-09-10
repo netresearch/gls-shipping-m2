@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- # virtual types -->
+    <virtualType name="GlsGermany\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual" type="Netresearch\ShippingCore\ViewModel\Adminhtml\System\InfoBox">
+        <arguments>
+            <argument name="version" xsi:type="object">GlsGermany\Shipping\Model\Config\ModuleConfig</argument>
+        </arguments>
+    </virtualType>
+</config>

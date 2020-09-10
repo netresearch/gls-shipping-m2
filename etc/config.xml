@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <glsgermany>
+                <version>1.0.0</version>
+                <model>GlsGermany\Shipping\Model\Carrier\GlsGermany</model>
+                <is_online>1</is_online>
+                <max_package_weight>1000</max_package_weight>
+
+                <!-- Default elements -->
+                <active>0</active>
+                <title>GLS Germany</title>
+                <sort_order>0</sort_order>
+                <showmethod>1</showmethod>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+
+                <general>
+                    <logging_group>
+                        <loglevel>400</loglevel>
+                    </logging_group>
+                </general>
+                <account>
+                    <sandboxmode>1</sandboxmode>
+                    <api_password backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                </account>
+            </glsgermany>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,27 @@
+"Account Settings",Kontoeinstellungen
+"Allow customers to check out with <em>GLS Germany</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
+"Allow for Specific Countries","Zulassen nur für bestimmte Länder"
+"Applicable Countries","Anwendbare Länder"
+"Enable Sandbox Mode","Sandbox-Modus aktivieren"
+Enabled,Aktiviert
+"Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
+"Error Logging Level","Stufe der Fehlerprotokollierung"
+"Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Mit der GLS-Versandmethode können Sie Versandscheine für eingehende Bestellungen direkt in Ihrer Magento-Instanz anlegen."
+"GLS & Magento","GLS & Magento"
+"GLS Germany",GLS
+"GLS provides parcel shipping across Germany.","GLS bietet Paketversand in ganz Deutschland und nach über 220 Länder."
+"GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS bietet Testendpunkte für Webservice-Operationen an. Wählen Sie diese Option aus, um die Testumgebung zu verwenden."
+"General Settings","Allgemeine Einstellungen"
+"Having issues configuring the extension? Contact our support desk: ","Haben Sie Probleme beim Konfigurieren der Extension? Wenden Sie sich an unser Support-Team: "
+"If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
+"Log Level",Protokollierungsstufe
+Logging,Protokollierung
+"Module version:",Modulversion:
+"Observe upper and lower case when entering the password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des Passworts."
+Password,Passwort
+"Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
+"The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
+"To get started:","Was Sie brauchen:"
+"User Name",Benutzername
+"You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
+gls.support@netresearch.de,gls.support@netresearch.de
