@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="glsgermany" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>GLS Germany</label>
+
+                <field id="infoBox" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Netresearch\ConfigFields\Block\InfoBox</frontend_model>
+                    <attribute type="body_template">GlsGermany_Shipping::system/config/infoBoxBody.phtml</attribute>
+                    <attribute type="header_template">GlsGermany_Shipping::system/config/infoBoxHeader.phtml</attribute>
+                    <attribute type="view_model">GlsGermany\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual</attribute>
+                    <attribute type="logo">GlsGermany_Shipping::images/logo.jpg</attribute>
+                    <attribute type="css_class">glsgermany</attribute>
+                </field>
+
+                <include path="GlsGermany_Shipping::system/100_general_settings.xml"/>
+                <include path="GlsGermany_Shipping::system/200_account_settings.xml"/>
+            </group>
+        </section>
+    </system>
+</config>

@@ -51,7 +51,7 @@ class DefaultConfigTest extends TestCase
         self::assertGreaterThan(0, (int) $this->configReader->getValue('carriers/glsgermany/max_package_weight'));
         self::assertFalse($this->configReader->isSetFlag('carriers/glsgermany/active'));
         self::assertNotEmpty($this->configReader->getValue('carriers/glsgermany/title'));
-        self::assertIsNumeric($this->configReader->getValue('carriers/glsgermany/sort_order'));
+        self::assertTrue(is_numeric($this->configReader->getValue('carriers/glsgermany/sort_order')));
         self::assertTrue($this->configReader->isSetFlag('carriers/glsgermany/showmethod'));
         self::assertNotEmpty($this->configReader->getValue('carriers/glsgermany/specificerrmsg'));
         self::assertFalse($this->configReader->isSetFlag('carriers/glsgermany/sallowspecific'));

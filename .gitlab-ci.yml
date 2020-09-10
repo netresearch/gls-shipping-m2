@@ -97,6 +97,10 @@ php74-mftf-2.4:
 phpunit-additional-2.3:
   stage: test-additional
   extends: .phpunit
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
   parallel:
     matrix:
       - PHP_VERSION: ["7.2", "7.3"]
@@ -107,6 +111,10 @@ phpunit-additional-2.3:
 phpunit-additional-2.4:
   stage: test-additional
   extends: .phpunit
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
   parallel:
     matrix:
       - PHP_VERSION: "7.3"
