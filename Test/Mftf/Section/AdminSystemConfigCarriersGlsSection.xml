@@ -25,6 +25,16 @@
                  selector="#carriers_glsgermany_checkout-head"/>
         <element name="glsCarrierCheckoutSettingsSubGroupExpanded" type="button"
                  selector="#carriers_glsgermany_checkout-head:not(.open)"/>
+        <!-- Shipment Defaults sub-group -->
+        <element name="glsCarrierDefaultSettingsSubGroup" type="button"
+                 selector="#carriers_glsgermany_shipment_defaults-head"/>
+        <element name="glsCarrierDefaultSettingsSubGroupExpanded" type="button"
+                 selector="#carriers_glsgermany_shipment_defaults-head:not(.open)"/>
+        <!-- Checkout Services sub-group -->
+        <element name="glsCarrierCheckoutServicesSubGroup" type="button"
+                 selector="#carriers_glsgermany_additional_services-head"/>
+        <element name="glsCarrierCheckoutServicesSubGroupExpanded" type="button"
+                 selector="#carriers_glsgermany_additional_services-head:not(.open)"/>
 
         <!-- General Settings fields -->
         <element name="glsCarrierEnabledSetting" type="checkbox"
@@ -62,5 +72,20 @@
         <element name="glsCarrierUnavailabilityMessage" type="textarea"
                  selector="#carriers_glsgermany_checkout_specificerrmsg"/>
 
+        <!-- Shipment Defaults fields -->
+        <element name="glsCarrierLabelSizeSettingA6" type="radio"
+                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA6']"/>
+        <element name="glsCarrierLabelSizeSettingA5" type="radio"
+                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA5']"/>
+        <element name="glsCarrierLabelSizeSettingA4" type="radio"
+                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA4']"/>
+        <element name="glsCarrierTermsOfTradeSetting" type="select"
+                 selector="#carriers_glsgermany_shipment_defaults_terms_of_trade"/>
+        <element name="glsCarrierSendShipperSetting" type="checkbox"
+                 selector="#carriers_glsgermany_shipment_defaults_send_shipper"/>
+
+        <!-- Checkout Services fields -->
+        <element name="glsCarrierFlexDeliveryServiceSetting" type="checkbox"
+                 selector="#carriers_glsgermany_additional_services_flexdelivery"/>
     </section>
 </sections>

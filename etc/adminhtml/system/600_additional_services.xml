@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="additional_services" translate="label" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label>Shipping Services in Checkout</label>
+
+        <field id="flexdelivery" translate="label comment" type="checkbox"
+               sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Offer FlexDeliveryService</label>
+            <comment>Let consignees know about their delivery and provide them with a large variety of delivery options.</comment>
+        </field>
+    </group>
+</include>

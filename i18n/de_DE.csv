@@ -23,16 +23,19 @@ Enabled,Aktiviert
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
 "Label Size","Label Größe"
+"Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
 "Module version:",Modulversion:
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
+"Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
 Password,Passwort
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
 "Send Shipper Address","Versandursprung übertragen"
 "Shipment Defaults","Standardeinstellungen für Versandetiketten"
+"Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
 "Terms of Trade",Handelsklauseln
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
