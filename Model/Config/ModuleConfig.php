@@ -11,8 +11,9 @@ namespace GlsGermany\Shipping\Model\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use Netresearch\ShippingCore\Api\InfoBox\VersionInterface;
+use Netresearch\ShippingCore\Api\Rate\ProxyCarrierConfigInterface;
 
-class ModuleConfig implements VersionInterface
+class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 {
     // Defaults
     private const CONFIG_PATH_VERSION = 'carriers/glsgermany/version';
@@ -21,10 +22,13 @@ class ModuleConfig implements VersionInterface
     private const CONFIG_PATH_ENABLE_LOGGING = 'carriers/glsgermany/general/logging';
     private const CONFIG_PATH_LOGLEVEL = 'carriers/glsgermany/general/logging_group/loglevel';
 
-    // 200_gls_account.xml
+    // 200_account_settings.xml
     private const CONFIG_PATH_SANDBOX_MODE = 'carriers/glsgermany/account/sandboxmode';
     private const CONFIG_PATH_USER_NAME = 'carriers/glsgermany/account/api_username';
     private const CONFIG_PATH_PASSWORD = 'carriers/glsgermany/account/api_password';
+
+    // 400_checkout_settings.xml
+    private const CONFIG_PATH_PROXY_CARRIER = 'carriers/glsgermany/checkout/emulated_carrier';
 
     /**
      * @var ScopeConfigInterface
@@ -108,5 +112,20 @@ class ModuleConfig implements VersionInterface
     public function getLogLevel(): int
     {
         return (int) $this->scopeConfig->getValue(self::CONFIG_PATH_LOGLEVEL);
+    }
+
+    /**
+     * Get the code of the carrier to forward rate requests to.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getProxyCarrierCode($store = null): string
+    {
+        return (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_PROXY_CARRIER,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 }

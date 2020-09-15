@@ -1,46 +1,48 @@
 {
-  "name": "glsgermany/module-carrier",
-  "version": "0.1.0",
-  "type": "magento2-module",
-  "description": "GLS carrier integration",
-  "license": "OSL-3.0",
-  "authors": [
-    {
-      "email": "plugins@netresearch.de",
-      "name": "Netresearch DTT GmbH",
-      "role": "Manufacturer",
-      "homepage": "https://www.netresearch.de/"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "GlsGermany\\Shipping\\": ""
+    "name": "glsgermany/module-carrier",
+    "version": "0.1.0",
+    "type": "magento2-module",
+    "description": "GLS carrier integration",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "plugins@netresearch.de",
+            "name": "Netresearch DTT GmbH",
+            "role": "Manufacturer",
+            "homepage": "https://www.netresearch.de/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GlsGermany\\Shipping\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
     },
-    "files": [
-      "registration.php"
-    ]
-  },
-  "require": {
-    "php": "^7.1.3",
-    "ext-json": "*",
-    "magento/framework": "^102.0.0 || ^103.0.0",
-    "magento/module-config": "^101.1.0",
-    "magento/module-directory": "^100.3.0",
-    "magento/module-quote": "^101.1.0",
-    "magento/module-shipping": "^100.3.0",
-    "magento/module-store": "^101.0.0",
-    "netresearch/config-fields-m2": "^1.2.2",
-    "netresearch/module-shipping-core": "^1.0.0",
-    "netresearch/module-shipping-ui": "^1.0.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~6.2.0",
-    "symfony/yaml": "^3.3.0 || ^4.0.0",
-    "tddwizard/magento2-fixtures": "^0.12.0"
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-develop": "1.0.0.x-dev"
+    "require": {
+        "php": "^7.1.3",
+        "ext-json": "*",
+        "magento/framework": "^102.0.0 || ^103.0.0",
+        "magento/module-checkout": "^100.3.0",
+        "magento/module-config": "^101.1.0",
+        "magento/module-directory": "^100.3.0",
+        "magento/module-quote": "^101.1.0",
+        "magento/module-shipping": "^100.3.0",
+        "magento/module-store": "^101.0.0",
+        "netresearch/config-fields-m2": "^1.2.0",
+        "netresearch/module-shipping-core": "^1.0.0",
+        "netresearch/module-shipping-ui": "^1.0.0",
+        "magento/module-catalog-inventory": "^100.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.2.0",
+        "symfony/yaml": "^3.3.0 || ^4.0.0",
+        "tddwizard/magento2-fixtures": "^0.12.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.0.0.x-dev"
+        }
     }
-  }
 }

@@ -86,7 +86,7 @@ php74-mftf-2.4:
   allow_failure: true
   script:
     - ci-install
-    - ci-mftf Dhl_Paket
+    - ci-mftf GlsGermany_Shipping
   artifacts:
     when: on_failure
     paths:
