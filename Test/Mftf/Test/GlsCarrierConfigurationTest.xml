@@ -46,7 +46,6 @@
             <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierAccountSettingsSubGroupExpanded}}"/>
         </actionGroup>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSandboxEnabledSetting}}" stepKey="assertSandboxCheckbox"/>
-        <uncheckOption selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSandboxEnabledSetting}}" stepKey="uncheckSandboxCheckbox"/>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiUserNameSetting}}" stepKey="assertUserNameInput"/>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiPasswordSetting}}" stepKey="assertPasswordInput"/>
 
@@ -61,6 +60,24 @@
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingHide}}" stepKey="assertHideMethods"/>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingShow}}" stepKey="assertShowMethods"/>
         <checkOption selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingShow}}" stepKey="checkShowMethodsCheckbox"/>
-        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilityMessage}}" stepKey="assertErrorMessage"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilityMessage}}" stepKey="assertErrorMessageShown"/>
+
+        <!-- scroll to "shipment_defaults" sub-group, assert various config elements being present -->
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierShipmentDefaultsSubGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierDefaultSettingsSubGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierDefaultSettingsSubGroupExpanded}}"/>
+        </actionGroup>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLabelSizeSettingA6}}" stepKey="assertLabelSizeA6"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLabelSizeSettingA5}}" stepKey="assertLabelSizeA5"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLabelSizeSettingA4}}" stepKey="assertLabelSizeA4"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierTermsOfTradeSetting}}" stepKey="assertTermsOfTradeSelect"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSendShipperSetting}}" stepKey="assertSendShipperCheckbox"/>
+
+        <!-- scroll to "additional_services" sub-group, assert various config elements being present -->
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierCheckoutServicesSubGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutServicesSubGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutServicesSubGroupExpanded}}"/>
+        </actionGroup>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierFlexDeliveryServiceSetting}}" stepKey="assertFlexDeliveryCheckbox"/>
     </test>
 </tests>
