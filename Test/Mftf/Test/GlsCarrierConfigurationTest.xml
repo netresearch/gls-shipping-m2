@@ -8,7 +8,7 @@
     <test name="GlsCarrierConfigurationTest">
         <annotations>
             <features value="Configuration"/>
-            <stories value="DHLGW-18: Display basic configuration fields"/>
+            <stories value="GLS-18: Display basic configuration fields"/>
             <title value="GLS Carrier Configuration"/>
             <description value="Verify that carrier GLS Germany can be configured"/>
             <severity value="CRITICAL"/>

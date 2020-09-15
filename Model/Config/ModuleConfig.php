@@ -26,9 +26,16 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_SANDBOX_MODE = 'carriers/glsgermany/account/sandboxmode';
     private const CONFIG_PATH_USER_NAME = 'carriers/glsgermany/account/api_username';
     private const CONFIG_PATH_PASSWORD = 'carriers/glsgermany/account/api_password';
+    private const CONFIG_PATH_SHIPPER_ID = 'carriers/glsgermany/account/shipper_id';
+    private const CONFIG_PATH_BROKER_REFERENCE = 'carriers/glsgermany/account/broker_reference';
 
     // 400_checkout_settings.xml
     private const CONFIG_PATH_PROXY_CARRIER = 'carriers/glsgermany/checkout/emulated_carrier';
+
+    // 500_shipment_defaults.xml
+    private const CONFIG_PATH_LABEL_SIZE = 'carriers/glsgermany/shipment_defaults/label_size';
+    private const CONFIG_PATH_INCOTERMS = 'carriers/glsgermany/shipment_defaults/terms_of_trade';
+    private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
 
     /**
      * @var ScopeConfigInterface
@@ -127,5 +134,16 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
             ScopeInterface::SCOPE_STORE,
             $store
         );
+    }
+
+    /**
+     * Determine whether the shipping origin setting should be used as shipper address or not.
+     *
+     * @param mixed $store
+     * @return bool
+     */
+    public function useShippingOrigin($store = null): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::CONFIG_PATH_SEND_SHIPPER, ScopeInterface::SCOPE_STORE, $store);
     }
 }
