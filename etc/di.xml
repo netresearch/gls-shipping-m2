@@ -42,4 +42,11 @@
             <argument name="ratesManagement" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual</argument>
         </arguments>
     </type>
+    <type name="Netresearch\ShippingCore\Model\LabelStatus\LabelStatusManagement">
+        <arguments>
+            <argument name="carrierCodes" xsi:type="array">
+                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
