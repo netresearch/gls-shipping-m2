@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * See LICENSE.md for license details.
+  */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="GlsCarrierConfigurationTest">
+        <annotations>
+            <features value="Configuration"/>
+            <stories value="DHLGW-18: Display basic configuration fields"/>
+            <title value="GLS Carrier Configuration"/>
+            <description value="Verify that carrier GLS Germany can be configured"/>
+            <severity value="CRITICAL"/>
+            <group value="gls-carrier-configuration"/>
+        </annotations>
+        <before>
+            <actionGroup ref="AdminLoginActionGroup" stepKey="loginAsAdmin"/>
+        </before>
+        <after>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
+        </after>
+
+        <actionGroup ref="AdminOpenShippingMethodsConfigPageActionGroup" stepKey="navigateToDeliveryMethodsConfigSection"/>
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierGroupExpanded}}"/>
+        </actionGroup>
+
+        <!-- scroll to "general" sub-group, assert various config elements being present -->
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierGeneralSubGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierGeneralSettingsSubGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierGeneralSettingsSubGroupExpanded}}"/>
+        </actionGroup>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierEnabledSetting}}" stepKey="assertEnabledCheckbox"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierCountriesSettingDefault}}" stepKey="assertApplicableCountriesRadio1"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierCountriesSettingCustomized}}" stepKey="assertApplicableCountriesRadio2"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLoggingEnabledSetting}}" stepKey="assertLoggingCheckbox"/>
+        <checkOption selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLoggingEnabledSetting}}" stepKey="checkLoggingCheckbox"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLoggingSettingErrors}}" stepKey="assertLogLevelRadioErrors"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierLoggingSettingInfo}}" stepKey="assertLogLevelRadioInfo"/>
+
+        <!-- scroll to "account" sub-group, assert various config elements being present -->
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierAccountSubGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierAccountSettingsSubGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierAccountSettingsSubGroupExpanded}}"/>
+        </actionGroup>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSandboxEnabledSetting}}" stepKey="assertSandboxCheckbox"/>
+        <uncheckOption selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSandboxEnabledSetting}}" stepKey="uncheckSandboxCheckbox"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiUserNameSetting}}" stepKey="assertUserNameInput"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiPasswordSetting}}" stepKey="assertPasswordInput"/>
+
+        <!-- scroll to "checkout" sub-group, assert various config elements being present -->
+        <actionGroup ref="ScrollToAndExpandConfigActionGroup" stepKey="expandGlsCarrierCheckoutSubGroup">
+            <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutSettingsSubGroup}}"/>
+            <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutSettingsSubGroupExpanded}}"/>
+        </actionGroup>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutTitle}}" stepKey="assertCarrierTitle"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierCheckoutSortOrder}}" stepKey="assertCarrierSortOrder"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierEmulatedCarrier}}" stepKey="assertProxyCarrier"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingHide}}" stepKey="assertHideMethods"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingShow}}" stepKey="assertShowMethods"/>
+        <checkOption selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilitySettingShow}}" stepKey="checkShowMethodsCheckbox"/>
+        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierUnavailabilityMessage}}" stepKey="assertErrorMessage"/>
+    </test>
+</tests>

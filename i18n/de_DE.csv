@@ -2,10 +2,15 @@
 "Allow customers to check out with <em>GLS Germany</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
 "Allow for Specific Countries","Zulassen nur für bestimmte Länder"
 "Applicable Countries","Anwendbare Länder"
+"Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
+"Checkout Presentation","Checkout-Darstellung"
+"Custom Message","Benutzerdefinierte Nachricht"
+"Displayed Text","Angezeigter Text"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
 "Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
 "Error Logging Level","Stufe der Fehlerprotokollierung"
+"Field %1 is required.","Feld %1 is erforderlich."
 "Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Mit der GLS-Versandmethode können Sie Versandscheine für eingehende Bestellungen direkt in Ihrer Magento-Instanz anlegen."
 "GLS & Magento","GLS & Magento"
 "GLS Germany",GLS
@@ -20,8 +25,13 @@ Logging,Protokollierung
 "Observe upper and lower case when entering the password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des Passworts."
 Password,Passwort
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
+"Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
+"Sort Order","Sortierreihenfolge"
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
+"The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
+"This field determines where <em>GLS Germany</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Germany</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "To get started:","Was Sie brauchen:"
+"Use rates from","Verwende Tarife von"
 "User Name",Benutzername
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
 gls.support@netresearch.de,gls.support@netresearch.de
