@@ -33,7 +33,8 @@
         "netresearch/config-fields-m2": "^1.2.0",
         "netresearch/module-shipping-core": "^1.0.0",
         "netresearch/module-shipping-ui": "^1.0.0",
-        "magento/module-catalog-inventory": "^100.3.0"
+        "magento/module-catalog-inventory": "^100.3.0",
+        "glsgermany/sdk-api-parcel-processing" : "^1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.2.0",
