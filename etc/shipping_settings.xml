@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
+    <carrier code="glsgermany">
+        <serviceOptions>
+            <shippingOption code="flexdelivery" available="carriers/glsgermany/additional_services/flexdelivery">
+                <label translate="true">FlexDeliveryService</label>
+                <sortOrder>10</sortOrder>
+                <routes>
+                    <route>
+                        <origin>DE</origin>
+                        <includeDestinations>
+                            <destination>DE</destination>
+                            <destination>AT</destination>
+                            <destination>BE</destination>
+                            <destination>BG</destination>
+                            <destination>CZ</destination>
+                            <destination>DK</destination>
+                            <destination>ES</destination>
+                            <destination>ES</destination>
+                            <destination>FI</destination>
+                            <destination>FR</destination>
+                            <destination>GR</destination>
+                            <destination>HR</destination>
+                            <destination>HU</destination>
+                            <destination>IE</destination>
+                            <destination>IT</destination>
+                            <destination>LU</destination>
+                            <destination>NL</destination>
+                            <destination>NO</destination>
+                            <destination>PL</destination>
+                            <destination>PT</destination>
+                            <destination>RO</destination>
+                            <destination>SI</destination>
+                            <destination>SK</destination>
+                            <destination>UK</destination>
+                        </includeDestinations>
+                    </route>
+                </routes>
+                <inputs>
+                    <input code="enabled">
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Enable FlexDeliveryService</label>
+                        <tooltip translate="true">Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.</tooltip>
+                    </input>
+                </inputs>
+            </shippingOption>
+        </serviceOptions>
+    </carrier>
+</carriers>
