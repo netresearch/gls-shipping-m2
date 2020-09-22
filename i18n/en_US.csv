@@ -8,11 +8,13 @@
 "Custom Message","Custom Message"
 "Customer ID","Customer ID"
 "Displayed Text","Displayed Text"
+"Enable FlexDeliveryService","Enable FlexDeliveryService"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your API user name.","Enter your API user name."
 "Error Logging Level","Error Logging Level"
 "Field %1 is required.","Field %1 is required."
+FlexDeliveryService,FlexDeliveryService
 "Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite."
 "GLS & Magento","GLS & Magento"
 "GLS Germany","GLS Germany"
@@ -47,4 +49,5 @@ Password,Password
 "Use rates from","Use rates from"
 "User Name","User Name"
 "You must also have Magento general logging enabled.","You must also have Magento general logging enabled."
+"Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.","Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window."
 gls.support@netresearch.de,gls.support@netresearch.de
