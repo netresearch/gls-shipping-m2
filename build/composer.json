@@ -1,19 +1,23 @@
 {
-  "name": "glsgermany/module-carrier-meta",
-  "description": "Metapackage for testing the GLS carrier extension with dependencies",
-  "version": "0.1.0",
-  "type": "metapackage",
-  "require": {
-    "tddwizard/magento2-fixtures": "^0.12.0"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://git.netresearch.de/magento-modules/shipping/module-shipping-core.git"
+    "name": "glsgermany/module-carrier-meta",
+    "description": "Metapackage for testing the GLS carrier extension with dependencies",
+    "version": "1.0.0",
+    "type": "metapackage",
+    "require": {
+        "tddwizard/magento2-fixtures": "^0.12.0"
     },
-    {
-      "type": "vcs",
-      "url": "https://git.netresearch.de/magento-modules/shipping/module-shipping-ui.git"
-    }
-  ]
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://git.netresearch.de/magento-modules/shipping/module-shipping-core.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.netresearch.de/magento-modules/shipping/module-shipping-ui.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.netresearch.de/gls/sdk-api-parcel-processing.git"
+        }
+    ]
 }

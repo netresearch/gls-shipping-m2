@@ -3,7 +3,7 @@
 "Allow for Specific Countries","Zulassen nur für bestimmte Länder"
 "Applicable Countries","Anwendbare Länder"
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
-"Broker Reference","Broker-Referenznummer"
+"Broker Reference",Broker-Referenznummer
 "Checkout Presentation",Checkout-Darstellung
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
@@ -25,17 +25,23 @@ FlexDeliveryService,FlexDeliveryService
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
 "Label Size","Label Größe"
+"Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
+"Label for order %1, package %2 could not be created.","Paketaufkleber für Bestellung %1, Paket %2 konnte nicht erzeugt werden."
 "Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
 "Module version:",Modulversion:
+"Not implemented yet.","Noch nicht implementiert."
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
+"Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
 "Send Shipper Address","Versandursprung übertragen"
+"Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
+"Shipment %1 could not be cancelled: %2","Der Versandauftrag %1 konnte nicht storniert werden: %2"
 "Shipment Defaults","Standardeinstellungen für Versandetiketten"
 "Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
@@ -48,6 +54,7 @@ Password,Passwort
 "To get started:","Was Sie brauchen:"
 "Use rates from","Verwende Tarife von"
 "User Name",Benutzername
+"Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
 "Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.","Ihre E-Mail-Adresse wird an GLS übertragen, um Sie über die bevorstehende Zustellung zu informieren – inklusive Angabe des voraussichtlichen Zustellzeitfensters."
 gls.support@netresearch.de,gls.support@netresearch.de
