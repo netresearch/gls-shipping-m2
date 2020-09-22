@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\Carrier;
 
+use GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement;
 use GlsGermany\Shipping\Model\Config\ModuleConfig;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Directory\Helper\Data;
@@ -16,7 +17,6 @@ use Magento\Directory\Model\CurrencyFactory;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
-use Magento\Framework\DataObjectFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Xml\Security;
@@ -27,6 +27,7 @@ use Magento\Shipping\Model\Carrier\AbstractCarrierInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
 use Magento\Shipping\Model\Carrier\CarrierInterface;
 use Magento\Shipping\Model\Rate\ResultFactory as RateResultFactory;
+use Magento\Shipping\Model\Shipment\Request;
 use Magento\Shipping\Model\Simplexml\ElementFactory;
 use Magento\Shipping\Model\Tracking\Result\ErrorFactory as TrackErrorFactory;
 use Magento\Shipping\Model\Tracking\Result\StatusFactory;
@@ -50,6 +51,11 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     private $ratesManagement;
 
     /**
+     * @var ShipmentManagement
+     */
+    private $shipmentManagement;
+
+    /**
      * @var ProxyCarrierFactory
      */
     private $proxyCarrierFactory;
@@ -60,38 +66,10 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     private $proxyCarrier;
 
     /**
-     * @var DataObjectFactory
-     */
-    private $dataObjectFactory;
-
-    /**
      * @var ModuleConfig
      */
     private $moduleConfig;
 
-    /**
-     * GLS Germany carrier constructor.
-     *
-     * @param ScopeConfigInterface $scopeConfig
-     * @param RateErrorFactory $rateErrorFactory
-     * @param LoggerInterface $logger
-     * @param Security $xmlSecurity
-     * @param ElementFactory $xmlElFactory
-     * @param RateResultFactory $rateFactory
-     * @param MethodFactory $rateMethodFactory
-     * @param TrackResultFactory $trackFactory
-     * @param TrackErrorFactory $trackErrorFactory
-     * @param StatusFactory $trackStatusFactory
-     * @param RegionFactory $regionFactory
-     * @param CountryFactory $countryFactory
-     * @param CurrencyFactory $currencyFactory
-     * @param Data $directoryData
-     * @param StockRegistryInterface $stockRegistry
-     * @param RatesManagement $ratesManagement
-     * @param ModuleConfig $moduleConfig
-     * @param ProxyCarrierFactory $proxyCarrierFactory
-     * @param mixed[] $data
-     */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         RateErrorFactory $rateErrorFactory,
@@ -111,11 +89,13 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         RatesManagement $ratesManagement,
         ModuleConfig $moduleConfig,
         ProxyCarrierFactory $proxyCarrierFactory,
+        ShipmentManagement $shipmentManagement,
         array $data = []
     ) {
         $this->ratesManagement = $ratesManagement;
         $this->moduleConfig = $moduleConfig;
         $this->proxyCarrierFactory = $proxyCarrierFactory;
+        $this->shipmentManagement = $shipmentManagement;
 
         parent::__construct(
             $scopeConfig,
@@ -138,7 +118,7 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     }
 
     /**
-     * Returns the configured proxied carrier instance.
+     * Returns the configured carrier instance.
      *
      * @return AbstractCarrierInterface
      * @throws NotFoundException
@@ -160,6 +140,7 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
      *
      * GLS Germany carrier ships only from DE.
      *
+     * @todo(nr): check destination country
      * @param DataObject $request
      * @return bool|DataObject|AbstractCarrierOnline
      */
@@ -218,19 +199,25 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     }
 
     /**
-     * @param DataObject $request
+     * Perform a shipment request to the GLS web service.
+     *
+     * Return either tracking number and label data or a shipment error.
+     * Note that Magento triggers one web service request per package in multi-package shipments.
+     *
+     * @param DataObject|Request $request
      * @return DataObject
+     * @see \Magento\Shipping\Model\Carrier\AbstractCarrierOnline::requestToShipment
+     * @see \Magento\Shipping\Model\Carrier\AbstractCarrierOnline::returnOfShipment
      */
-    protected function _doShipmentRequest(DataObject $request)
+    protected function _doShipmentRequest(DataObject $request): DataObject
     {
-        return $this->dataObjectFactory->create();
+        /** @var DataObject[] $apiResult */
+        $apiResult = $this->shipmentManagement->createLabels([$request->getData('package_id') => $request]);
+
+        // one request, one response.
+        return $apiResult[0];
     }
 
-    /**
-     * Check if city option required.
-     *
-     * @return boolean
-     */
     public function isCityRequired(): bool
     {
         try {
@@ -240,12 +227,6 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         }
     }
 
-    /**
-     * Determine whether zip-code is required for the country of destination.
-     *
-     * @param string|null $countryId
-     * @return bool
-     */
     public function isZipCodeRequired($countryId = null): bool
     {
         try {

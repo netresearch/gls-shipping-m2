@@ -23,21 +23,25 @@
     "require": {
         "php": "^7.1.3",
         "ext-json": "*",
+        "glsgermany/sdk-api-parcel-processing": "^1.0.0",
         "magento/framework": "^102.0.0 || ^103.0.0",
+        "magento/module-bundle": "^100.3.0 || ^101.0.0",
+        "magento/module-catalog": "^103.0.0 || ^104.0.0",
+        "magento/module-catalog-inventory": "^100.3.0",
         "magento/module-checkout": "^100.3.0",
         "magento/module-config": "^101.1.0",
+        "magento/module-configurable-product": "^100.3.0",
         "magento/module-directory": "^100.3.0",
         "magento/module-quote": "^101.1.0",
+        "magento/module-sales": "^102.0.0 || ^103.0.0",
         "magento/module-shipping": "^100.3.0",
         "magento/module-store": "^101.0.0",
         "netresearch/config-fields-m2": "^1.2.0",
         "netresearch/module-shipping-core": "^1.0.0",
-        "netresearch/module-shipping-ui": "^1.0.0",
-        "magento/module-catalog-inventory": "^100.3.0",
-        "glsgermany/sdk-api-parcel-processing" : "^1.0.0"
+        "netresearch/module-shipping-ui": "^1.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.2.0",
+        "phpunit/phpunit": "^6.5.0 || ^9.0.0",
         "symfony/yaml": "^3.3.0 || ^4.0.0",
         "tddwizard/magento2-fixtures": "^0.12.0"
     },
