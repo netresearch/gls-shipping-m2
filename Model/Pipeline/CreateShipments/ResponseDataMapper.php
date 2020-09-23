@@ -44,6 +44,10 @@ class ResponseDataMapper
     /**
      * Map created shipment into response object as required by the shipping module.
      *
+     * Notes:
+     * - The carrier module will only ever request one parcel per shipment, thus only one parcel will be returned.
+     * - The web service returns multiple labels only for certain scenarios not supported by the carrier module.
+     *
      * @param ApiShipment $shipment
      * @param ShipmentInterface $salesShipment
      * @return LabelResponseInterface
@@ -52,14 +56,17 @@ class ResponseDataMapper
         ApiShipment $shipment,
         ShipmentInterface $salesShipment
     ): LabelResponseInterface {
-        //todo(nr): support multi-package, pass in package index
         $packages = $shipment->getParcels();
         $package = array_shift($packages);
+
+        $labels = $shipment->getLabels();
+        $label = array_shift($labels);
+
         $responseData = [
             LabelResponseInterface::REQUEST_INDEX => $package->getParcelNumber(),
             LabelResponseInterface::SALES_SHIPMENT => $salesShipment,
             LabelResponseInterface::TRACKING_NUMBER => $package->getTrackId(),
-            LabelResponseInterface::SHIPPING_LABEL_CONTENT => $shipment->getLabel(),
+            LabelResponseInterface::SHIPPING_LABEL_CONTENT => $label,
         ];
 
         return $this->shipmentResponseFactory->create(['data' => $responseData]);
