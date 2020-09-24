@@ -138,7 +138,7 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     /**
      * Check if the carrier can handle the given rate request.
      *
-     * GLS Germany carrier ships only from DE.
+     * GLS Shipping carrier ships only from DE.
      *
      * @todo(nr): check destination country
      * @param DataObject $request
@@ -178,7 +178,7 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     /**
      * Obtain shipping methods offered by the carrier.
      *
-     * The GLS Germany carrier does not offer own methods. The call gets
+     * The GLS Shipping carrier does not offer own methods. The call gets
      * forwarded to another carrier as configured via module settings.
      *
      * @return string[] Associative array of method names with method code as key.
