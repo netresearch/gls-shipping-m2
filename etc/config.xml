@@ -32,6 +32,7 @@
                 </account>
                 <shipment_defaults>
                     <label_size>A6</label_size>
+                    <terms_of_trade>20</terms_of_trade>
                 </shipment_defaults>
             </glsgermany>
         </carriers>
