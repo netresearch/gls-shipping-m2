@@ -8,7 +8,7 @@
     <system>
         <section id="carriers">
             <group id="glsgermany" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="0">
-            <label>GLS Germany</label>
+            <label>GLS Shipping</label>
                 <field id="infoBox" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <frontend_model>Netresearch\ConfigFields\Block\InfoBox</frontend_model>
                     <attribute type="body_template">GlsGermany_Shipping::system/config/infoBoxBody.phtml</attribute>

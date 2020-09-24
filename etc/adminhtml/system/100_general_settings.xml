@@ -11,7 +11,7 @@
         <field id="active" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
                translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Enabled</label>
-            <button_label><![CDATA[Allow customers to check out with <em>GLS Germany</em> shipping method.]]></button_label>
+            <button_label><![CDATA[Allow customers to check out with <em>GLS Shipping</em> shipping method.]]></button_label>
             <config_path>carriers/glsgermany/active</config_path>
         </field>
 

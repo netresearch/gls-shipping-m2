@@ -10,7 +10,7 @@
             <features value="Configuration"/>
             <stories value="GLS-18: Display basic configuration fields"/>
             <title value="GLS Carrier Configuration"/>
-            <description value="Verify that carrier GLS Germany can be configured"/>
+            <description value="Verify that carrier GLS Shipping can be configured"/>
             <severity value="CRITICAL"/>
             <group value="gls-carrier-configuration"/>
         </annotations>

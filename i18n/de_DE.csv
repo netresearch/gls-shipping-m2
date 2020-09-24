@@ -1,5 +1,5 @@
 "Account Settings",Kontoeinstellungen
-"Allow customers to check out with <em>GLS Germany</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
+"Allow customers to check out with <em>GLS Shipping</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
 "Allow for Specific Countries","Zulassen nur für bestimmte Länder"
 "Applicable Countries","Anwendbare Länder"
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
@@ -17,7 +17,7 @@ Enabled,Aktiviert
 FlexDeliveryService,FlexDeliveryService
 "Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Mit der GLS-Versandmethode können Sie Versandscheine für eingehende Bestellungen direkt in Ihrer Magento-Instanz anlegen."
 "GLS & Magento","GLS & Magento"
-"GLS Germany",GLS
+"GLS Shipping","GLS Shipping"
 "GLS provides parcel shipping across Germany.","GLS bietet Paketversand in ganz Deutschland und nach über 220 Länder."
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS bietet Testendpunkte für Webservice-Operationen an. Wählen Sie diese Option aus, um die Testumgebung zu verwenden."
 "General Settings","Allgemeine Einstellungen"
@@ -49,7 +49,7 @@ Password,Passwort
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
 "These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Sendungserstellung genutzt. Falls ein Label mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
-"This field determines where <em>GLS Germany</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Germany</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
+"This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
 "To get started:","Was Sie brauchen:"
 "Use rates from","Verwende Tarife von"
