@@ -97,12 +97,30 @@ class RequestDataMapper
             null
         );
 
+        if ($requestExtractor->isFlexDeliveryEnabled()) {
+            //todo(nr): pass in contact data here?
+            $this->requestBuilder->requestFlexDeliveryService();
+        }
+
         foreach ($requestExtractor->getPackages() as $packageId => $package) {
             $weight = $package->getWeight();
             $weightUom = $package->getWeightUom();
             $weightInKg = $this->unitConverter->convertWeight($weight, $weightUom, \Zend_Measure_Weight::KILOGRAM);
 
-            $this->requestBuilder->addParcel($weightInKg);
+            $codAmount = null;
+            $reasonForPayment = null;
+            if ($requestExtractor->isCashOnDelivery()) {
+                $codAmount = ((float)($requestExtractor->getOrder()->getBaseGrandTotal()) * 100) / 100;
+                $reasonForPayment = $requestExtractor->getCodReasonForPayment();
+            }
+
+            $this->requestBuilder->addParcel(
+                $weightInKg,
+                $requestExtractor->getOrder()->getIncrementId(),
+                null,
+                $codAmount,
+                $reasonForPayment
+            );
         }
 
         try {
