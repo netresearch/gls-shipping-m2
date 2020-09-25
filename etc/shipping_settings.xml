@@ -45,5 +45,8 @@
                 </inputs>
             </shippingOption>
         </serviceOptions>
+        <metadata>
+            <color>#172154</color>
+        </metadata>
     </carrier>
 </carriers>
