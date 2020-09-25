@@ -10,12 +10,12 @@ namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
 use GlsGermany\Shipping\Model\Config\ModuleConfig;
 use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\RecipientInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\ShipperInterface;
+use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterfaceFactory;
 
@@ -29,14 +29,14 @@ use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterf
 class RequestExtractor implements RequestExtractorInterface
 {
     /**
-     * @var RequestExtractorInterfaceFactory
-     */
-    private $requestExtractorFactory;
-
-    /**
      * @var Request
      */
     private $shipmentRequest;
+
+    /**
+     * @var RequestExtractorInterfaceFactory
+     */
+    private $requestExtractorFactory;
 
     /**
      * @var RequestExtractorInterface
@@ -44,17 +44,24 @@ class RequestExtractor implements RequestExtractorInterface
     private $coreExtractor;
 
     /**
+     * @var ServiceOptionReaderInterface
+     */
+    private $serviceOptionReader;
+
+    /**
      * @var ModuleConfig
      */
     private $moduleConfig;
 
     public function __construct(
-        RequestExtractorInterfaceFactory $requestExtractorFactory,
         Request $shipmentRequest,
+        RequestExtractorInterfaceFactory $requestExtractorFactory,
+        ServiceOptionReaderInterface $serviceOptionReader,
         ModuleConfig $moduleConfig
     ) {
-        $this->requestExtractorFactory = $requestExtractorFactory;
         $this->shipmentRequest = $shipmentRequest;
+        $this->requestExtractorFactory = $requestExtractorFactory;
+        $this->serviceOptionReader = $serviceOptionReader;
         $this->moduleConfig = $moduleConfig;
     }
 
@@ -134,17 +141,9 @@ class RequestExtractor implements RequestExtractorInterface
         return $this->getCoreExtractor()->getShipmentDate();
     }
 
-    /**
-     * Obtain the service data array.
-     *
-     * @param string $serviceName
-     * @return string[]
-     */
-    private function getServiceData(string $serviceName): array
+    public function getCodReasonForPayment(): string
     {
-        $packages = $this->shipmentRequest->getData('packages');
-        $packageId = $this->shipmentRequest->getData('package_id');
-        return $packages[$packageId]['params']['services'][$serviceName] ?? [];
+        return $this->coreExtractor->getCodReasonForPayment();
     }
 
     /**
@@ -159,44 +158,27 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function isRecipientEmailRequired(): bool
     {
-        if ($this->isParcelAnnouncement()) {
-            // parcel announcement services requires email address
+        if ($this->isFlexDeliveryEnabled()) {
+            // flex delivery service requires email address
             return true;
         }
 
         return false;
     }
 
-    /**
-     * Check if "cash on delivery" was chosen for the current shipment request.
-     *
-     * @return bool
-     */
     public function isCashOnDelivery(): bool
     {
-        return (bool) ($this->getServiceData(Codes::CHECKOUT_SERVICE_CASH_ON_DELIVERY)['enabled'] ?? false);
+        return $this->coreExtractor->isCashOnDelivery();
     }
 
     /**
      * Obtain the "parcelAnnouncement" flag for the current package.
      *
-     * @todo(nr): service is called "FlexDeliveryService"
      * @return bool
      */
-    public function isParcelAnnouncement(): bool
+    public function isFlexDeliveryEnabled(): bool
     {
-        return (bool) ($this->getServiceData(Codes::CHECKOUT_PARCEL_ANNOUNCEMENT)['enabled'] ?? false);
-    }
-
-    /**
-     * Obtain the "reasonForPayment" value for the current package.
-     *
-     * @todo(nr): add config setting, parse template
-     * @return string[] Array of maximum two lines.
-     */
-    public function getCodReasonForPayment(): array
-    {
-        throw new LocalizedException(__('Not implemented yet.'));
+        return $this->serviceOptionReader->isServiceEnabled(Codes::CHECKOUT_PARCEL_ANNOUNCEMENT);
     }
 
     /**

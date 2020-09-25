@@ -144,4 +144,18 @@
             </argument>
         </arguments>
     </type>
+    <type name="Netresearch\ShippingCore\Observer\PersistCodShippingOptionSelection">
+        <arguments>
+            <argument name="codSelectors" xsi:type="array">
+                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Netresearch\ShippingCore\Observer\DisableCodPaymentMethods">
+        <arguments>
+            <argument name="codSupportMap" xsi:type="array">
+                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

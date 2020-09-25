@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Validator;
 
-use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
@@ -16,6 +15,7 @@ use Magento\Framework\Exception\ValidatorException;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestValidatorInterface;
+use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes;
 
 /**
  * Class NoPartialValidator
@@ -86,7 +86,7 @@ class NoPartialValidator implements RequestValidatorInterface
         $hasCodService = false;
 
         foreach ($packages as $package) {
-            $serviceData = $package['params']['services'][Codes::CHECKOUT_SERVICE_CASH_ON_DELIVERY] ?? [];
+            $serviceData = $package['params']['services'][Codes::SERVICE_OPTION_CASH_ON_DELIVERY] ?? [];
             $hasCodService = $hasCodService || ($serviceData['enabled'] ?? false);
         }
 
