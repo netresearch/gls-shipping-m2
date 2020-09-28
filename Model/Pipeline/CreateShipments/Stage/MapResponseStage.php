@@ -35,46 +35,19 @@ class MapResponseStage implements CreateShipmentsStageInterface
      */
     public function execute(array $requests, ArtifactsContainerInterface $artifactsContainer): array
     {
-        $stageErrors = $artifactsContainer->getErrors();
-        $apiResponses = $artifactsContainer->getApiResponses();
-
-        foreach ($stageErrors as $requestIndex => $details) {
-            // no response received from webservice for particular shipment request
-            $response = $this->responseDataMapper->createErrorResponse(
-                (string) $requestIndex,
-                __('Label could not be created: %1', $details['message']),
-                $details['shipment']
-            );
+        foreach ($artifactsContainer->getErrors() as $requestIndex => $error) {
+            // error occurred during previous stage: validation error or negative response received from webservice.
+            $message = __('Label could not be created: %1', $error['message']);
+            $shipment = $error['shipment'];
+            $response = $this->responseDataMapper->createErrorResponse((string)$requestIndex, $message, $shipment);
             $artifactsContainer->addErrorResponse((string) $requestIndex, $response);
         }
 
-        foreach ($requests as $requestIndex => $shipmentRequest) {
-            if (isset($stageErrors[$requestIndex])) {
-                // errors from previous stages were already processed above
-                continue;
-            }
-
-            $shipment = $shipmentRequest->getOrderShipment();
-            $orderIncrementId = $shipment->getOrder()->getIncrementId();
-
-            if (isset($apiResponses[$requestIndex])) {
-                // positive response received from webservice
-                $response = $this->responseDataMapper->createShipmentResponse(
-                    $apiResponses[$requestIndex],
-                    $shipmentRequest->getOrderShipment()
-                );
-
-                $artifactsContainer->addLabelResponse((string)$requestIndex, $response);
-            } else {
-                // negative response received from webservice, details available in api log
-                $response = $this->responseDataMapper->createErrorResponse(
-                    (string)$requestIndex,
-                    __('Label for order %1, package %2 could not be created.', $orderIncrementId, $requestIndex),
-                    $shipmentRequest->getOrderShipment()
-                );
-
-                $artifactsContainer->addErrorResponse((string)$requestIndex, $response);
-            }
+        foreach ($artifactsContainer->getApiResponses() as $requestIndex => $response) {
+            // positive response received from webservice
+            $shipment = $requests[$requestIndex]->getOrderShipment();
+            $response = $this->responseDataMapper->createShipmentResponse($response, $shipment);
+            $artifactsContainer->addLabelResponse((string)$requestIndex, $response);
         }
 
         return $requests;
