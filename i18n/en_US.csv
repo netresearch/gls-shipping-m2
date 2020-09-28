@@ -12,7 +12,9 @@
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP (Freight costs and customs clearance costs paid, lowvalue clearance)"
 "DDP (Freight costs, customs costs & taxes paid)","DDP (Freight costs, customs costs & taxes paid)"
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
+DepositService,DepositService
 "Displayed Text","Displayed Text"
+"e.g. shed, garage, or patio","e.g. shed, garage, or patio"
 "Enable FlexDeliveryService","Enable FlexDeliveryService"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
@@ -31,16 +33,20 @@ FlexDeliveryService,FlexDeliveryService
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship"
 "Label Size","Label Size"
 "Label could not be created: %1","Label could not be created: %1"
-"Label for order %1, package %2 could not be created.","Label for order %1, package %2 could not be created."
 "Let consignees know about their delivery and provide them with a large variety of delivery options.","Let consignees know about their delivery and provide them with a large variety of delivery options."
+"Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.","Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present."
 "Log Level","Log Level"
 Logging,Logging
 "Module version:","Module version:"
+"Name a secure location on your premise where GLS can place the parcel.","Name a secure location on your premise where GLS can place the parcel."
 "Not implemented yet.","Not implemented yet."
 "Observe upper and lower case when entering the API password.","Observe upper and lower case when entering the API password."
+"Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
+"Place of Deposit","Place of Deposit"
+"Please choose only one of %1.","Please choose only one of %1."
 "Record communication with the GLS web services.","Record communication with the GLS web services."
 "Reference to the GLS partner","Reference to the GLS partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Select the offline shipping method that gets used to provide rates in checkout."

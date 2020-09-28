@@ -15,4 +15,6 @@ class Codes
      * Checkout services.
      */
     public const CHECKOUT_PARCEL_ANNOUNCEMENT = 'parcelAnnouncement';
+
+    public const CHECKOUT_SERVICE_DEPOSIT = 'deposit';
 }

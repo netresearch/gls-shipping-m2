@@ -13,5 +13,11 @@
             <label>Offer FlexDeliveryService</label>
             <comment>Let consignees know about their delivery and provide them with a large variety of delivery options.</comment>
         </field>
+
+        <field id="deposit" translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox"
+               sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Offer DepositService</label>
+            <comment>Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.</comment>
+        </field>
     </group>
 </include>
