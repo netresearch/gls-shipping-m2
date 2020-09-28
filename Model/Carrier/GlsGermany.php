@@ -29,6 +29,7 @@ use Magento\Shipping\Model\Carrier\CarrierInterface;
 use Magento\Shipping\Model\Rate\ResultFactory as RateResultFactory;
 use Magento\Shipping\Model\Shipment\Request;
 use Magento\Shipping\Model\Simplexml\ElementFactory;
+use Magento\Shipping\Model\Tracking\Result as TrackingResult;
 use Magento\Shipping\Model\Tracking\Result\ErrorFactory as TrackErrorFactory;
 use Magento\Shipping\Model\Tracking\Result\StatusFactory;
 use Magento\Shipping\Model\Tracking\ResultFactory as TrackResultFactory;
@@ -44,6 +45,16 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
      * @var string
      */
     protected $_code = self::CARRIER_CODE;
+
+    /**
+     * @var ModuleConfig
+     */
+    private $moduleConfig;
+
+    /**
+     * @var Tracking
+     */
+    private $tracking;
 
     /**
      * @var RatesManagement
@@ -65,11 +76,6 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
      */
     private $proxyCarrier;
 
-    /**
-     * @var ModuleConfig
-     */
-    private $moduleConfig;
-
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         RateErrorFactory $rateErrorFactory,
@@ -86,16 +92,18 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         CurrencyFactory $currencyFactory,
         Data $directoryData,
         StockRegistryInterface $stockRegistry,
-        RatesManagement $ratesManagement,
         ModuleConfig $moduleConfig,
-        ProxyCarrierFactory $proxyCarrierFactory,
+        Tracking $tracking,
+        RatesManagement $ratesManagement,
         ShipmentManagement $shipmentManagement,
+        ProxyCarrierFactory $proxyCarrierFactory,
         array $data = []
     ) {
-        $this->ratesManagement = $ratesManagement;
         $this->moduleConfig = $moduleConfig;
-        $this->proxyCarrierFactory = $proxyCarrierFactory;
+        $this->tracking = $tracking;
+        $this->ratesManagement = $ratesManagement;
         $this->shipmentManagement = $shipmentManagement;
+        $this->proxyCarrierFactory = $proxyCarrierFactory;
 
         parent::__construct(
             $scopeConfig,
@@ -234,5 +242,29 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         } catch (LocalizedException $exception) {
             return parent::isZipCodeRequired($countryId);
         }
+    }
+
+    /**
+     * Returns tracking information.
+     *
+     * @param string $shipmentNumber
+     * @return TrackingResult
+     *
+     * @see \Magento\Shipping\Model\Carrier\AbstractCarrierOnline::getTrackingInfo
+     */
+    public function getTracking(string $shipmentNumber): TrackingResult
+    {
+        $result = $this->_trackFactory->create();
+
+        $statusData = [
+            'tracking' => $shipmentNumber,
+            'carrier_title' => $this->getConfigData('title'),
+            'url' => $this->tracking->getUrl($shipmentNumber),
+        ];
+
+        $status = $this->_trackStatusFactory->create(['data' => $statusData]);
+        $result->append($status);
+
+        return $result;
     }
 }
