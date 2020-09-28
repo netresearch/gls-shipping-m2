@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
-<carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
+<carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
     <carrier code="glsgermany">
         <serviceOptions>
             <shippingOption code="flexdelivery" available="carriers/glsgermany/additional_services/flexdelivery">
@@ -41,6 +42,26 @@
                         <inputType>checkbox</inputType>
                         <label translate="true">Enable FlexDeliveryService</label>
                         <tooltip translate="true">Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.</tooltip>
+                    </input>
+                </inputs>
+            </shippingOption>
+            <shippingOption
+                    code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT"
+                    available="carriers/glsgermany/additional_services/deposit">
+                <label translate="true">DepositService</label>
+                <sortOrder>20</sortOrder>
+                <inputs>
+                    <input code="details">
+                        <sortOrder>10</sortOrder>
+                        <label translate="true">Place of Deposit</label>
+                        <labelVisible>false</labelVisible>
+                        <inputType>text</inputType>
+                        <tooltip translate="true">Name a secure location on your premise where GLS can place the parcel.</tooltip>
+                        <placeholder translate="true">e.g. shed, garage, or patio</placeholder>
+                        <validationRules>
+                            <rule name="validate-no-html-tags"/>
+                            <rule name="nrshipping-validate-no-special-chars"/>
+                        </validationRules>
                     </input>
                 </inputs>
             </shippingOption>

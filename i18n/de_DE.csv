@@ -12,7 +12,9 @@
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
 "DDP (Freight costs, customs costs & taxes paid)","DAP, cleared (Frei Haus, ohne Zoll, ohne Steuer)"
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
+"DepositService","DepositService"
 "Displayed Text","Angezeigter Text"
+"e.g. shed, garage, or patio","z.B. Schuppen, Garage oder Terrasse"
 "Enable FlexDeliveryService","FlexDeliveryService aktivieren"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
@@ -31,16 +33,20 @@ FlexDeliveryService,FlexDeliveryService
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
 "Label Size","Label Größe"
 "Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
-"Label for order %1, package %2 could not be created.","Paketaufkleber für Bestellung %1, Paket %2 konnte nicht erzeugt werden."
 "Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
+"Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.","Lassen Sie Empfänger einen Ablageort wählen, um eine unmittelbare Zustellung auch bei Abwesenheit zu ermöglichen."
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
 "Module version:",Modulversion:
+"Name a secure location on your premise where GLS can place the parcel.","Geben Sie einen sicheren Ort auf ihrem Grundstück an, an dem GLS das Paket hinterlegen kann."
 "Not implemented yet.","Noch nicht implementiert."
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
+"Offer DepositService","Bieten Sie DepositService an"
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
+"Place of Deposit","Abstellort"
+"Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Dhl_ShippingCore/etc/shipping_settings.xsd">
+    <carrier code="glsgermany">
+        <compatibilityData>
+            <rule id="flexdeliveryAndDepositExclusion">
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <masters>
+                    <master>flexdelivery</master>
+                </masters>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</subject>
+                </subjects>
+                <errorMessage translate="true">Please choose only one of %1.</errorMessage>
+            </rule>
+            <rule id="depositAndflexdeliveryExclusion">
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</master>
+                </masters>
+                <subjects>
+                    <subject>flexdelivery</subject>
+                </subjects>
+                <errorMessage translate="true">Please choose only one of %1.</errorMessage>
+            </rule>
+        </compatibilityData>
+    </carrier>
+</carriers>
