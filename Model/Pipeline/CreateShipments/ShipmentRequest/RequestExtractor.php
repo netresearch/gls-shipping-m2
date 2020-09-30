@@ -141,6 +141,11 @@ class RequestExtractor implements RequestExtractorInterface
         return $this->getCoreExtractor()->getShipmentDate();
     }
 
+    public function isCashOnDelivery(): bool
+    {
+        return $this->coreExtractor->isCashOnDelivery();
+    }
+
     public function getCodReasonForPayment(): string
     {
         return $this->coreExtractor->getCodReasonForPayment();
@@ -166,19 +171,14 @@ class RequestExtractor implements RequestExtractorInterface
         return false;
     }
 
-    public function isCashOnDelivery(): bool
-    {
-        return $this->coreExtractor->isCashOnDelivery();
-    }
-
     /**
-     * Obtain the "parcelAnnouncement" flag for the current package.
+     * Check whether FlexDeliveryService was chosen or not.
      *
      * @return bool
      */
     public function isFlexDeliveryEnabled(): bool
     {
-        return $this->serviceOptionReader->isServiceEnabled(Codes::CHECKOUT_PARCEL_ANNOUNCEMENT);
+        return $this->serviceOptionReader->isServiceEnabled(Codes::CHECKOUT_SERVICE_FLEX_DELIVERY);
     }
 
     /**

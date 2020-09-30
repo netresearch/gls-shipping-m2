@@ -5,6 +5,8 @@
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
 "Broker Reference",Broker-Referenznummer
 "Checkout Presentation",Checkout-Darstellung
+"Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
+"Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DDP (Frei Haus, verzollt, versteuert)"
@@ -29,6 +31,7 @@ FlexDeliveryService,FlexDeliveryService
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS bietet Testendpunkte für Webservice-Operationen an. Wählen Sie diese Option aus, um die Testumgebung zu verwenden."
 "General Settings","Allgemeine Einstellungen"
 "Having issues configuring the extension? Contact our support desk: ","Haben Sie Probleme beim Konfigurieren der Extension? Wenden Sie sich an unser Support-Team: "
+"I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","Ich willige ein, dass meine E-Mail-Adresse zum Zweck der Zustellbenachrichtigung und ggf. Paket-Umverfügung an GLS Germany GmbH & Co. OHG übermittelt und genutzt werden darf. Diese Einwilligung kann ich jederzeit durch Nachricht an folgende Adresse widerrufen: %1. Bitte beachten Sie, dass die Nutzung dieses Services ohne Übermittlung der E-Mail-Adresse nicht möglich ist."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
 "Label Size","Label Größe"
@@ -47,6 +50,7 @@ Logging,Protokollierung
 Password,Passwort
 "Place of Deposit","Abstellort"
 "Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
+"Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Bitte bestätigen Sie, dass Ihre E-Mail-Adresse zum angegebenen Zweck an GLS übermittelt und durch GLS genutzt werden darf oder wählen Sie eine andere Versandart."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
@@ -67,5 +71,4 @@ Password,Passwort
 "User Name",Benutzername
 "Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
-"Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.","Ihre E-Mail-Adresse wird an GLS übertragen, um Sie über die bevorstehende Zustellung zu informieren – inklusive Angabe des voraussichtlichen Zustellzeitfensters."
 gls.support@netresearch.de,gls.support@netresearch.de

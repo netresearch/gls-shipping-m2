@@ -14,8 +14,18 @@
             <comment>Let consignees know about their delivery and provide them with a large variety of delivery options.</comment>
         </field>
 
+        <field id="flexdelivery_identity" translate="label comment" type="select"
+               sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+            <label>Consent Revocation Email</label>
+            <comment>Consumers can revoke their email address transmission consent by sending a message to this address.</comment>
+            <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+            <depends>
+                <field id="flexdelivery">1</field>
+            </depends>
+        </field>
+
         <field id="deposit" translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox"
-               sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+               sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
             <label>Offer DepositService</label>
             <comment>Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.</comment>
         </field>

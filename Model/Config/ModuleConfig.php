@@ -37,6 +37,9 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_INCOTERMS = 'carriers/glsgermany/shipment_defaults/terms_of_trade';
     private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
 
+    // 600_additional_services.xml
+    private const CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL = 'carriers/glsgermany/additional_services/flexdelivery_identity';
+
     /**
      * @var ScopeConfigInterface
      */
@@ -179,5 +182,26 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     public function useShippingOrigin($store = null): bool
     {
         return $this->scopeConfig->isSetFlag(self::CONFIG_PATH_SEND_SHIPPER, ScopeInterface::SCOPE_STORE, $store);
+    }
+
+    /**
+     * Obtain email address used for revoking consent of transmitting the consumer email.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getFlexDeliveryRevocationEmail($store = null): string
+    {
+        $ident = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        return $this->scopeConfig->getValue(
+            'trans_email/ident_' . $ident . '/email',
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 }

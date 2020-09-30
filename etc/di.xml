@@ -93,20 +93,36 @@
     </virtualType>
 
     <!-- # argument di overrides -->
+    <type name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentConfiguration">
+        <arguments>
+            <argument name="shipmentManagement" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual</argument>
+        </arguments>
+    </type>
+    <type name="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement">
+        <arguments>
+            <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
+        </arguments>
+    </type>
     <type name="GlsGermany\Shipping\Model\Carrier\GlsGermany">
         <arguments>
             <argument name="ratesManagement" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual</argument>
             <argument name="shipmentManagement" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement\Proxy</argument>
         </arguments>
     </type>
+    <type name="GlsGermany\Shipping\Model\Pipeline\ApiGateway">
+        <arguments>
+            <argument name="creationPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual</argument>
+            <argument name="deletionPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual</argument>
+        </arguments>
+    </type>
+    <type name="GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage">
+        <arguments>
+            <argument xsi:type="object" name="requestValidator">GlsGermany\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual</argument>
+        </arguments>
+    </type>
     <type name="GlsGermany\Shipping\Model\Rate\RatesManagement">
         <arguments>
             <argument name="rateRequestService" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
-        </arguments>
-    </type>
-    <type name="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement">
-        <arguments>
-            <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\LabelStatus\LabelStatusManagement">
@@ -116,25 +132,11 @@
             </argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage">
+    <type name="Netresearch\ShippingCore\Model\ShippingSettings\Processor\Checkout\CheckoutDataCompositeProcessor">
         <arguments>
-            <argument xsi:type="object" name="requestValidator">GlsGermany\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual</argument>
-        </arguments>
-    </type>
-    <type name="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement">
-        <arguments>
-            <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
-        </arguments>
-    </type>
-    <type name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentConfiguration">
-        <arguments>
-            <argument name="shipmentManagement" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual</argument>
-        </arguments>
-    </type>
-    <type name="GlsGermany\Shipping\Model\Pipeline\ApiGateway">
-        <arguments>
-            <argument name="creationPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual</argument>
-            <argument name="deletionPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual</argument>
+            <argument name="serviceOptionsProcessors" xsi:type="array">
+                <item name="glsFlexDeliveryProcessor" sortOrder="100" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions\FlexDeliveryServiceProcessor</item>
+            </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Observer\SplitAddress">
