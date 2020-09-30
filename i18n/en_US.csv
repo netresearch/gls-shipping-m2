@@ -5,6 +5,8 @@
 "Behavior in Cases of Unavailability","Behavior in Cases of Unavailability"
 "Broker Reference","Broker Reference"
 "Checkout Presentation","Checkout Presentation"
+"Consent Revocation Email","Consent Revocation Email"
+"Consumers can revoke their email address transmission consent by sending a message to this address.","Consumers can revoke their email address transmission consent by sending a message to this address."
 "Custom Message","Custom Message"
 "Customer ID","Customer ID"
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DAP (Freight costs paid, customs costs & taxes unpaid)"
@@ -29,6 +31,7 @@ FlexDeliveryService,FlexDeliveryService
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS provides test endpoints for web service operations. Select this option to use the test environment."
 "General Settings","General Settings"
 "Having issues configuring the extension? Contact our support desk: ","Having issues configuring the extension? Contact our support desk: "
+"I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used."
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship"
 "Label Size","Label Size"
@@ -47,6 +50,7 @@ Logging,Logging
 Password,Password
 "Place of Deposit","Place of Deposit"
 "Please choose only one of %1.","Please choose only one of %1."
+"Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Please agree that your email address may be transmitted to and used by GLS or select another shipping method."
 "Record communication with the GLS web services.","Record communication with the GLS web services."
 "Reference to the GLS partner","Reference to the GLS partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Select the offline shipping method that gets used to provide rates in checkout."
@@ -67,5 +71,4 @@ Password,Password
 "User Name","User Name"
 "Web service request could not be created: %1","Web service request could not be created: %1"
 "You must also have Magento general logging enabled.","You must also have Magento general logging enabled."
-"Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.","Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window."
 gls.support@netresearch.de,gls.support@netresearch.de

@@ -11,10 +11,9 @@ namespace GlsGermany\Shipping\Model\ShippingSettings\ShippingOption;
 class Codes
 {
     /**
-     * fixme(nr): there is no GLS parcel announcement service
      * Checkout services.
      */
-    public const CHECKOUT_PARCEL_ANNOUNCEMENT = 'parcelAnnouncement';
+    public const CHECKOUT_SERVICE_FLEX_DELIVERY = 'flexDelivery';
 
     public const CHECKOUT_SERVICE_DEPOSIT = 'deposit';
 }

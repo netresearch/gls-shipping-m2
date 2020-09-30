@@ -3,7 +3,7 @@
           xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
     <carrier code="glsgermany">
         <serviceOptions>
-            <shippingOption code="flexdelivery" available="carriers/glsgermany/additional_services/flexdelivery">
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgermany/additional_services/flexdelivery">
                 <label translate="true">FlexDeliveryService</label>
                 <sortOrder>10</sortOrder>
                 <routes>
@@ -41,7 +41,10 @@
                     <input code="enabled">
                         <inputType>checkbox</inputType>
                         <label translate="true">Enable FlexDeliveryService</label>
-                        <tooltip translate="true">Your e-mail address will be sent to GLS to inform you about pending GLS parcel deliveries – including details of the predicted delivery time window.</tooltip>
+                        <tooltip translate="true">Please agree that your email address may be transmitted to and used by GLS or select another shipping method.</tooltip>
+                        <comment>
+                            <content translate="true">I agree that my email address may be transmitted to and used by GLS Germany GmbH &amp; Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.</content>
+                        </comment>
                     </input>
                 </inputs>
             </shippingOption>

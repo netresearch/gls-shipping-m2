@@ -34,6 +34,9 @@
                     <label_size>A6</label_size>
                     <terms_of_trade>20</terms_of_trade>
                 </shipment_defaults>
+                <additional_services>
+                    <flexdelivery_identity>support</flexdelivery_identity>
+                </additional_services>
             </glsgermany>
         </carriers>
     </default>
