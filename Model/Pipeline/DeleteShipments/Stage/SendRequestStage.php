@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage;
 
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
-use GlsGermany\Shipping\Model\Webservice\ShipmentServiceFactory;
 use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
+use GlsGermany\Shipping\Model\Webservice\CancellationServiceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\TrackRequest\TrackRequestInterface;
 use Netresearch\ShippingCore\Api\Pipeline\RequestTracksStageInterface;
@@ -18,19 +18,18 @@ use Netresearch\ShippingCore\Api\Pipeline\RequestTracksStageInterface;
 class SendRequestStage implements RequestTracksStageInterface
 {
     /**
-     * @var ShipmentServiceFactory
+     * @var CancellationServiceFactory
      */
-    private $shipmentServiceFactory;
+    private $cancellationServiceFactory;
 
-    public function __construct(ShipmentServiceFactory $shipmentServiceFactory)
+    public function __construct(CancellationServiceFactory $cancellationServiceFactory)
     {
-        $this->shipmentServiceFactory = $shipmentServiceFactory;
+        $this->cancellationServiceFactory = $cancellationServiceFactory;
     }
 
     /**
      * Send request data to shipment service.
      *
-     * @todo(nr): revise once the SDK is ready
      * @param TrackRequestInterface[] $requests
      * @param ArtifactsContainerInterface|ArtifactsContainer $artifactsContainer
      * @return TrackRequestInterface[]
@@ -39,14 +38,16 @@ class SendRequestStage implements RequestTracksStageInterface
     {
         $apiRequests = $artifactsContainer->getApiRequests();
         if (!empty($apiRequests)) {
-            $shipmentService = $this->shipmentServiceFactory->create(['storeId' => $artifactsContainer->getStoreId()]);
+            $cancellationService = $this->cancellationServiceFactory->create(
+                ['storeId' => $artifactsContainer->getStoreId()]
+            );
 
             try {
                 $shipmentNumbers = array_values($apiRequests);
-                $cancelledShipments = $shipmentService->cancelShipments($shipmentNumbers);
+                $cancelledShipments = $cancellationService->cancelParcels($shipmentNumbers);
                 // add shipment number as response index
-                foreach ($cancelledShipments as $shipmentNumber) {
-                    $artifactsContainer->addApiResponse($shipmentNumber, $shipmentNumber);
+                foreach ($cancelledShipments as $parcelNumber) {
+                    $artifactsContainer->addApiResponse($parcelNumber, $parcelNumber);
                 }
 
                 return $requests;

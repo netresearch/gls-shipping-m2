@@ -125,6 +125,13 @@
             <argument name="rateRequestService" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
         </arguments>
     </type>
+    <type name="Netresearch\ShippingCore\Model\BulkShipment\BulkShipmentConfiguration">
+        <arguments>
+            <argument name="configurations" xsi:type="array">
+                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentConfiguration</item>
+            </argument>
+        </arguments>
+    </type>
     <type name="Netresearch\ShippingCore\Model\LabelStatus\LabelStatusManagement">
         <arguments>
             <argument name="carrierCodes" xsi:type="array">
@@ -139,10 +146,10 @@
             </argument>
         </arguments>
     </type>
-    <type name="Netresearch\ShippingCore\Observer\SplitAddress">
+    <type name="Netresearch\ShippingCore\Observer\DisableCodPaymentMethods">
         <arguments>
-            <argument name="carrierCodes" xsi:type="array">
-                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+            <argument name="codSupportMap" xsi:type="array">
+                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
             </argument>
         </arguments>
     </type>
@@ -153,10 +160,10 @@
             </argument>
         </arguments>
     </type>
-    <type name="Netresearch\ShippingCore\Observer\DisableCodPaymentMethods">
+    <type name="Netresearch\ShippingCore\Observer\SplitAddress">
         <arguments>
-            <argument name="codSupportMap" xsi:type="array">
-                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
+            <argument name="carrierCodes" xsi:type="array">
+                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
             </argument>
         </arguments>
     </type>
