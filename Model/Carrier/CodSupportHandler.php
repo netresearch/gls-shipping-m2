@@ -74,7 +74,7 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
 
         return (bool) $this->quoteSelectionRepository
             ->getList($searchCriteria)
-            ->count();
+            ->getSize();
     }
 
     public function isAvailable(Quote $quote): bool
