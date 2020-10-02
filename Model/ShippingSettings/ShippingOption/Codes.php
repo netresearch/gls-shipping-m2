@@ -16,4 +16,6 @@ class Codes
     public const CHECKOUT_SERVICE_FLEX_DELIVERY = 'flexDelivery';
 
     public const CHECKOUT_SERVICE_DEPOSIT = 'deposit';
+
+    public const CHECKOUT_SERVICE_GUARANTEED24 = 'guaranteed24';
 }

@@ -29,5 +29,10 @@
             <label>Offer DepositService</label>
             <comment>Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.</comment>
         </field>
+
+        <field id="guaranteed24" translate="label" type="Netresearch\ConfigFields\Model\Type\Checkbox"
+               sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Offer Guaranteed24Service</label>
+        </field>
     </group>
 </include>

@@ -40,7 +40,7 @@
                 <inputs>
                     <input code="enabled">
                         <inputType>checkbox</inputType>
-                        <label translate="true">Enable FlexDeliveryService</label>
+                        <label translate="true">Select FlexDeliveryService</label>
                         <tooltip translate="true">Please agree that your email address may be transmitted to and used by GLS or select another shipping method.</tooltip>
                         <comment>
                             <content translate="true">I agree that my email address may be transmitted to and used by GLS Germany GmbH &amp; Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.</content>
@@ -48,9 +48,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption
-                    code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT"
-                    available="carriers/glsgermany/additional_services/deposit">
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgermany/additional_services/deposit">
                 <label translate="true">DepositService</label>
                 <sortOrder>20</sortOrder>
                 <inputs>
@@ -65,6 +63,27 @@
                             <rule name="validate-no-html-tags"/>
                             <rule name="nrshipping-validate-no-special-chars"/>
                         </validationRules>
+                    </input>
+                </inputs>
+            </shippingOption>
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgermany/additional_services/guaranteed24">
+                <label translate="true">Guaranteed24Service</label>
+                <sortOrder>20</sortOrder>
+                <routes>
+                    <route>
+                        <origin>DE</origin>
+                        <includeDestinations>
+                            <destination>DE</destination>
+                        </includeDestinations>
+                    </route>
+                </routes>
+                <inputs>
+                    <input code="enabled">
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Select Guaranteed24Service</label>
+                        <comment>
+                            <content translate="true">Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands).</content>
+                        </comment>
                     </input>
                 </inputs>
             </shippingOption>

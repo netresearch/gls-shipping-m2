@@ -143,6 +143,7 @@
         <arguments>
             <argument name="serviceOptionsProcessors" xsi:type="array">
                 <item name="glsFlexDeliveryProcessor" sortOrder="100" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions\FlexDeliveryServiceProcessor</item>
+                <item name="glsGuaranteed24Processor" sortOrder="200" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions\Guaranteed24ServiceProcessor</item>
             </argument>
         </arguments>
     </type>

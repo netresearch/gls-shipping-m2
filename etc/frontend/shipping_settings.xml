@@ -24,6 +24,28 @@
                 <action>disable</action>
                 <errorMessage translate="true">Please choose only one of %1.</errorMessage>
             </rule>
+            <rule id="guaranteed24serviceExcludeAllOthers">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</master>
+                </masters>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</subject>
+                </subjects>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+            </rule>
+            <rule id="allOthersExcludeGuaranteed24service">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</master>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</master>
+                </masters>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</subject>
+                </subjects>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+            </rule>
         </compatibilityData>
     </carrier>
 </carriers>
