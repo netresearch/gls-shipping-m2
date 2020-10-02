@@ -63,7 +63,12 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
         $optionCodeFilter = $this->filterBuilder
             ->setField(AssignedSelectionInterface::SHIPPING_OPTION_CODE)
             ->setConditionType('in')
-            ->setValue(CarrierCodes::CHECKOUT_SERVICE_DEPOSIT)
+            ->setValue(
+                [
+                    CarrierCodes::CHECKOUT_SERVICE_DEPOSIT,
+                    CarrierCodes::CHECKOUT_SERVICE_GUARANTEED24
+                ]
+            )
             ->create();
 
         $searchCriteria = $this->searchCriteriaBuilderFactory

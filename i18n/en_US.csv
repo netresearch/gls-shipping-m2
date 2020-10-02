@@ -16,8 +16,8 @@
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
 DepositService,DepositService
 "Displayed Text","Displayed Text"
-"e.g. shed, garage, or patio","e.g. shed, garage, or patio"
-"Enable FlexDeliveryService","Enable FlexDeliveryService"
+"Select FlexDeliveryService","Select FlexDeliveryService"
+"Select Guaranteed24Service","Select Guaranteed24Service"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your API user name.","Enter your API user name."
@@ -30,6 +30,7 @@ FlexDeliveryService,FlexDeliveryService
 "GLS provides parcel shipping across Germany.","GLS provides parcel shipping across Germany."
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS provides test endpoints for web service operations. Select this option to use the test environment."
 "General Settings","General Settings"
+Guaranteed24Service,Guaranteed24Service
 "Having issues configuring the extension? Contact our support desk: ","Having issues configuring the extension? Contact our support desk: "
 "I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used."
@@ -46,11 +47,13 @@ Logging,Logging
 "Observe upper and lower case when entering the API password.","Observe upper and lower case when entering the API password."
 "Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
+"Offer Guaranteed24Service","Offer Guaranteed24Service"
+"Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands).","Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands)."
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"
-"Please choose only one of %1.","Please choose only one of %1."
 "Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Please agree that your email address may be transmitted to and used by GLS or select another shipping method."
+"Please choose only one of %1.","Please choose only one of %1."
 "Record communication with the GLS web services.","Record communication with the GLS web services."
 "Reference to the GLS partner","Reference to the GLS partner"
 "Select the offline shipping method that gets used to provide rates in checkout.","Select the offline shipping method that gets used to provide rates in checkout."
@@ -71,4 +74,5 @@ Password,Password
 "User Name","User Name"
 "Web service request could not be created: %1","Web service request could not be created: %1"
 "You must also have Magento general logging enabled.","You must also have Magento general logging enabled."
+"e.g. shed, garage, or patio","e.g. shed, garage, or patio"
 gls.support@netresearch.de,gls.support@netresearch.de
