@@ -14,8 +14,8 @@ use Netresearch\ShippingCore\Model\Config\ShippingConfig;
 
 class Tracking
 {
-    const TRACKING_TEMPLATE_DE = 'https://www.gls-pakete.de/sendungsverfolgung?trackingNumber=%s';
-    const TRACKING_TEMPLATE_AT = 'https://gls-group.eu/AT/de/pakete-empfangen/paket-verfolgen?match=%s';
+    private const TRACKING_TEMPLATE_DE = 'https://www.gls-pakete.de/sendungsverfolgung?trackingNumber=%s';
+    private const TRACKING_TEMPLATE_AT = 'https://gls-group.eu/AT/de/pakete-empfangen/paket-verfolgen?match=%s';
 
     /**
      * @var ShipmentCollectionFactory
