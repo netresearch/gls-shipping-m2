@@ -1,6 +1,7 @@
 "Account Settings",Kontoeinstellungen
 "Allow customers to check out with <em>GLS Shipping</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
 "Allow for Specific Countries","Zulassen nur für bestimmte Länder"
+"An error occurred while preparing package data.","Während des Aufbereitens der Paketdaten ist ein Fehler aufgetreten."
 "Applicable Countries","Anwendbare Länder"
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
 "Broker Reference",Broker-Referenznummer
@@ -16,8 +17,6 @@
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
 DepositService,DepositService
 "Displayed Text","Angezeigter Text"
-"Select FlexDeliveryService","FlexDeliveryService wählen"
-"Select Guaranteed24Service","Guaranteed24Service wählen"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
 "Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
@@ -43,7 +42,6 @@ Guaranteed24Service,Guaranteed24Service
 Logging,Protokollierung
 "Module version:",Modulversion:
 "Name a secure location on your premise where GLS can place the parcel.","Geben Sie einen sicheren Ort auf ihrem Grundstück an, an dem GLS das Paket hinterlegen kann."
-"Not implemented yet.","Noch nicht implementiert."
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
 "Offer DepositService","Bieten Sie DepositService an"
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
@@ -56,6 +54,9 @@ Password,Passwort
 "Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
+"Select DepositService","DepositService wählen"
+"Select FlexDeliveryService","FlexDeliveryService wählen"
+"Select Guaranteed24Service","Guaranteed24Service wählen"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
 "Send Shipper Address","Versandursprung übertragen"
 "Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
@@ -70,7 +71,7 @@ Password,Passwort
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
 "To get started:","Was Sie brauchen:"
-"Use rates from","Verwende Tarife von"
+"Use Rates From","Verwende Tarife von"
 "User Name",Benutzername
 "Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."

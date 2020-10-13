@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
+    <carrier code="glsgermany">
+        <packageOptions>
+            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_CUSTOMS">
+                <inputs>
+                    <input code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE" defaultConfigValue="carriers/glsgermany/shipment_defaults/terms_of_trade">
+                        <label translate="true">Terms of Trade</label>
+                        <inputType>select</inputType>
+                        <sortOrder>20</sortOrder>
+                    </input>
+                </inputs>
+            </shippingOption>
+        </packageOptions>
+        <serviceOptions>
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT">
+                <label translate="true">Place of Deposit</label>
+                <sortOrder>1120</sortOrder>
+                <inputs>
+                    <input code="enabled">
+                        <sortOrder>10</sortOrder>
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Select DepositService</label>
+                    </input>
+                    <input code="details">
+                        <sortOrder>20</sortOrder>
+                        <inputType>static</inputType>
+                    </input>
+                </inputs>
+            </shippingOption>
+        </serviceOptions>
+    </carrier>
+</carriers>

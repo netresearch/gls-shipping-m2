@@ -10,9 +10,12 @@ namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments;
 
 use GlsGermany\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
 use GlsGermany\Sdk\ParcelProcessing\Exception\RequestValidatorException;
+use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
 use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Shipping\Model\Shipment\Request;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterface;
 use Netresearch\ShippingCore\Api\Util\UnitConverterInterface;
 
 class RequestDataMapper
@@ -28,6 +31,11 @@ class RequestDataMapper
     private $requestBuilder;
 
     /**
+     * @var ModuleConfig
+     */
+    private $moduleConfig;
+
+    /**
      * @var UnitConverterInterface
      */
     private $unitConverter;
@@ -35,10 +43,12 @@ class RequestDataMapper
     public function __construct(
         ShipmentRequestBuilderInterface $requestBuilder,
         RequestExtractorFactory $requestExtractorFactory,
+        ModuleConfig $moduleConfig,
         UnitConverterInterface $unitConverter
     ) {
         $this->requestBuilder = $requestBuilder;
         $this->requestExtractorFactory = $requestExtractorFactory;
+        $this->moduleConfig = $moduleConfig;
         $this->unitConverter = $unitConverter;
     }
 
@@ -55,26 +65,28 @@ class RequestDataMapper
         $requestExtractor = $this->requestExtractorFactory->create(['shipmentRequest' => $request]);
 
         $this->requestBuilder->setShipperAccount(
-            $requestExtractor->getShipperId(),
-            $requestExtractor->getBrokerReference()
+            $this->moduleConfig->getShipperId($requestExtractor->getStoreId()),
+            $this->moduleConfig->getBrokerReference($requestExtractor->getStoreId())
         );
 
-        // todo(nr): omit shipper to use gls account setting
-        $this->requestBuilder->setShipperAddress(
-            $requestExtractor->getShipper()->getCountryCode(),
-            $requestExtractor->getShipper()->getPostalCode(),
-            $requestExtractor->getShipper()->getCity(),
-            implode(' ', $requestExtractor->getShipper()->getStreet()),
-            $requestExtractor->getShipper()->getContactCompanyName(),
-            null,
-            null,
-            null,
-            $requestExtractor->getShipper()->getState(),
-            $requestExtractor->getShipper()->getContactPersonName(),
-            null,
-            null,
-            null
-        );
+        if ($this->moduleConfig->isSendFromStoreShippingOrigin($requestExtractor->getStoreId())) {
+            // include shipping origin with label request.
+            $this->requestBuilder->setShipperAddress(
+                $requestExtractor->getShipper()->getCountryCode(),
+                $requestExtractor->getShipper()->getPostalCode(),
+                $requestExtractor->getShipper()->getCity(),
+                implode(' ', $requestExtractor->getShipper()->getStreet()),
+                $requestExtractor->getShipper()->getContactCompanyName(),
+                null,
+                null,
+                null,
+                $requestExtractor->getShipper()->getState(),
+                $requestExtractor->getShipper()->getContactPersonName(),
+                null,
+                null,
+                null
+            );
+        }
 
         if ($requestExtractor->isRecipientEmailRequired()) {
             $recipientEmail = $requestExtractor->getRecipient()->getContactEmail();
@@ -93,15 +105,23 @@ class RequestDataMapper
             null,
             null,
             null,
-            $requestExtractor->getShipper()->getState(),
+            $requestExtractor->getRecipient()->getState(),
             null
         );
 
         if ($requestExtractor->isFlexDeliveryEnabled()) {
-            //todo(nr): pass in contact data here?
             $this->requestBuilder->requestFlexDeliveryService();
         }
 
+        if ($requestExtractor->isNextDayDeliveryEnabled()) {
+            $this->requestBuilder->requestNextDayDelivery();
+        }
+
+        if ($requestExtractor->isPlaceOfDepositBooked()) {
+            $this->requestBuilder->setPlaceOfDeposit($requestExtractor->getPlaceOfDeposit());
+        }
+
+        /** @var PackageInterface $package */
         foreach ($requestExtractor->getPackages() as $packageId => $package) {
             $weight = $package->getWeight();
             $weightUom = $package->getWeightUom();
@@ -121,6 +141,11 @@ class RequestDataMapper
                 $codAmount,
                 $reasonForPayment
             );
+
+            $packageAdditional = $package->getPackageAdditional();
+            if ($packageAdditional instanceof PackageAdditional && !empty($packageAdditional->getTermsOfTrade())) {
+                $this->requestBuilder->setCustomsDetails((int) $packageAdditional->getTermsOfTrade());
+            }
         }
 
         try {

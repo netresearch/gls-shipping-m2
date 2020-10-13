@@ -19,8 +19,8 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_VERSION = 'carriers/glsgermany/version';
 
     // 100_general_settings.xml
-    private const CONFIG_PATH_ENABLE_LOGGING = 'carriers/glsgermany/general/logging';
-    private const CONFIG_PATH_LOGLEVEL = 'carriers/glsgermany/general/logging_group/loglevel';
+    public const CONFIG_PATH_ENABLE_LOGGING = 'carriers/glsgermany/general/logging';
+    public const CONFIG_PATH_LOGLEVEL = 'carriers/glsgermany/general/logging_group/loglevel';
 
     // 200_account_settings.xml
     private const CONFIG_PATH_SANDBOX_MODE = 'carriers/glsgermany/account/sandboxmode';
@@ -179,7 +179,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      * @param mixed $store
      * @return bool
      */
-    public function useShippingOrigin($store = null): bool
+    public function isSendFromStoreShippingOrigin($store = null): bool
     {
         return $this->scopeConfig->isSetFlag(self::CONFIG_PATH_SEND_SHIPPER, ScopeInterface::SCOPE_STORE, $store);
     }

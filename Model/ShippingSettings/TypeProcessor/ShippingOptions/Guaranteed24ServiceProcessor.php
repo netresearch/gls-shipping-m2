@@ -6,12 +6,13 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions;
+namespace GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
 
 use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOptionInterface;
-use Netresearch\ShippingCore\Api\ShippingSettings\Processor\Checkout\ShippingOptionsProcessorInterface;
+use Netresearch\ShippingCore\Api\ShippingSettings\TypeProcessor\ShippingOptionsProcessorInterface;
 use Netresearch\ShippingCore\Model\Config\ParcelProcessingConfig;
 
 class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
@@ -33,32 +34,34 @@ class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
     }
 
     /**
-     * @param ShippingOptionInterface[] $optionsData
+     * @param ShippingOptionInterface[] $shippingOptions
+     * @param int $storeId
      * @param string $countryCode Destination country code
      * @param string $postalCode Destination postal code
-     * @param int|null $storeId
+     * @param ShipmentInterface|null $shipment
      *
      * @return ShippingOptionInterface[]
      */
     public function process(
-        array $optionsData,
+        array $shippingOptions,
+        int $storeId,
         string $countryCode,
         string $postalCode,
-        int $storeId = null
+        ShipmentInterface $shipment = null
     ): array {
-        $guaranteed24Option = $optionsData[Codes::CHECKOUT_SERVICE_GUARANTEED24] ?? false;
+        $guaranteed24Option = $shippingOptions[Codes::CHECKOUT_SERVICE_GUARANTEED24] ?? false;
         if (!$guaranteed24Option) {
-            return $optionsData;
+            return $shippingOptions;
         }
 
         $isEnabledInput = $guaranteed24Option->getInputs()['enabled'] ?? false;
         if (!$isEnabledInput) {
-            return $optionsData;
+            return $shippingOptions;
         }
 
         $comment = $isEnabledInput->getComment();
         if (!$comment) {
-            return $optionsData;
+            return $shippingOptions;
         }
 
         $commentText = $comment->getContent();
@@ -69,6 +72,6 @@ class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
         );
         $comment->setContent(__($commentText, $formattedTime)->render());
 
-        return $optionsData;
+        return $shippingOptions;
     }
 }

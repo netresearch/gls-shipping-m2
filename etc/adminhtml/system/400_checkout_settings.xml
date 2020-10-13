@@ -23,7 +23,7 @@
 
         <field id="emulated_carrier" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="30"
                translate="label comment tooltip" type="select">
-            <label>Use rates from</label>
+            <label>Use Rates From</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\OfflineCarriers</source_model>
             <can_be_empty>0</can_be_empty>
             <comment>Select the offline shipping method that gets used to provide rates in checkout.</comment>

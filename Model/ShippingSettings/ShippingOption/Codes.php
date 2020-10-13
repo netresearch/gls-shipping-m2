@@ -10,12 +10,11 @@ namespace GlsGermany\Shipping\Model\ShippingSettings\ShippingOption;
 
 class Codes
 {
-    /**
-     * Checkout services.
-     */
+    // packaging inputs
+    public const PACKAGING_INPUT_TERMS_OF_TRADE = 'termsOfTrade';
+
+    // checkout options
     public const CHECKOUT_SERVICE_FLEX_DELIVERY = 'flexDelivery';
-
     public const CHECKOUT_SERVICE_DEPOSIT = 'deposit';
-
     public const CHECKOUT_SERVICE_GUARANTEED24 = 'guaranteed24';
 }

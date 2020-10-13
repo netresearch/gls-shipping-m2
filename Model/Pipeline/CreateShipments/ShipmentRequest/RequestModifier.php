@@ -40,10 +40,9 @@ class RequestModifier implements RequestModifierInterface
      * during bulk label creation where no user input (packaging popup) is involved.
      *
      * @param Request $shipmentRequest
-     * @throws LocalizedException
      */
     public function modify(Request $shipmentRequest): void
     {
-        throw new LocalizedException(__('Not implemented yet.'));
+        $this->coreModifier->modify($shipmentRequest);
     }
 }
