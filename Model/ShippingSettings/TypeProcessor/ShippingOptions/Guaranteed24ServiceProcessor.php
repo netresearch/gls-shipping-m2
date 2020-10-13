@@ -8,32 +8,38 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
 
+use GlsGermany\Shipping\Model\Config\ModuleConfig;
 use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOptionInterface;
 use Netresearch\ShippingCore\Api\ShippingSettings\TypeProcessor\ShippingOptionsProcessorInterface;
-use Netresearch\ShippingCore\Model\Config\ParcelProcessingConfig;
 
 class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
 {
     /**
-     * @var ParcelProcessingConfig
+     * @var ModuleConfig
      */
     private $config;
 
     /**
      * @var TimezoneInterface
      */
-    protected $localeDate;
+    private $timezone;
 
-    public function __construct(ParcelProcessingConfig $config, TimezoneInterface $localeDate)
-    {
+    public function __construct(
+        ModuleConfig $config,
+        TimezoneInterface $timezone
+    ) {
         $this->config = $config;
-        $this->localeDate = $localeDate;
+        $this->timezone = $timezone;
     }
 
     /**
+     * Remove the G24 service after cut-off time expired.
+     *
+     * If no handover to the carrier happens anymore at the day of checkout, the service must not be booked.
+     *
      * @param ShippingOptionInterface[] $shippingOptions
      * @param int $storeId
      * @param string $countryCode Destination country code
@@ -51,26 +57,17 @@ class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
     ): array {
         $guaranteed24Option = $shippingOptions[Codes::CHECKOUT_SERVICE_GUARANTEED24] ?? false;
         if (!$guaranteed24Option) {
+            // service not available for selection, nothing to modify.
             return $shippingOptions;
         }
 
-        $isEnabledInput = $guaranteed24Option->getInputs()['enabled'] ?? false;
-        if (!$isEnabledInput) {
-            return $shippingOptions;
-        }
+        $currentDateTime =  $this->timezone->scopeDate($storeId, null, true);
+        $weekDay = $currentDateTime->format('N');
+        $shipmentDates = $this->config->getCutOffTimes($storeId);
 
-        $comment = $isEnabledInput->getComment();
-        if (!$comment) {
-            return $shippingOptions;
+        if (!isset($shipmentDates[$weekDay]) || $currentDateTime > $shipmentDates[$weekDay]) {
+            unset($shippingOptions[Codes::CHECKOUT_SERVICE_GUARANTEED24]);
         }
-
-        $commentText = $comment->getContent();
-        $formattedTime = $this->localeDate->formatDateTime(
-            $this->config->getCutOffTime($storeId),
-            \IntlDateFormatter::NONE,
-            \IntlDateFormatter::SHORT
-        );
-        $comment->setContent(__($commentText, $formattedTime)->render());
 
         return $shippingOptions;
     }

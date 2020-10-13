@@ -10,11 +10,14 @@
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
+"Cut-off Times",Auftragsabschlusszeiten
+"Cut-off Time",Auftragsabschlusszeit
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DDP (Frei Haus, verzollt, versteuert)"
 "DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP (Frei Haus, unverzollt, unversteuert)"
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
 "DDP (Freight costs, customs costs & taxes paid)","DAP, cleared (Frei Haus, ohne Zoll, ohne Steuer)"
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
+Day,Tag
 DepositService,DepositService
 "Displayed Text","Angezeigter Text"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
@@ -46,7 +49,6 @@ Logging,Protokollierung
 "Offer DepositService","Bieten Sie DepositService an"
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
 "Offer Guaranteed24Service","Bieten Sie Guaranteed24Service an"
-"Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands).","Vor %1 aufgegebene Bestellungen werden garantiert am nächsten Werktag (außer samstags, Inseln ausgenommen) geliefert."
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort

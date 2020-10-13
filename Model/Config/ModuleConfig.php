@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace GlsGermany\Shipping\Model\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Store\Model\ScopeInterface;
 use Netresearch\ShippingCore\Api\InfoBox\VersionInterface;
 use Netresearch\ShippingCore\Api\Rate\ProxyCarrierConfigInterface;
@@ -19,6 +20,8 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_VERSION = 'carriers/glsgermany/version';
 
     // 100_general_settings.xml
+    private const CONFIG_PATH_CUT_OFF_TIMES = 'carriers/glsgermany/general/cut_off_times';
+
     public const CONFIG_PATH_ENABLE_LOGGING = 'carriers/glsgermany/general/logging';
     public const CONFIG_PATH_LOGLEVEL = 'carriers/glsgermany/general/logging_group/loglevel';
 
@@ -34,7 +37,6 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 
     // 500_shipment_defaults.xml
     private const CONFIG_PATH_LABEL_SIZE = 'carriers/glsgermany/shipment_defaults/label_size';
-    private const CONFIG_PATH_INCOTERMS = 'carriers/glsgermany/shipment_defaults/terms_of_trade';
     private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
 
     // 600_additional_services.xml
@@ -45,9 +47,17 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     private $scopeConfig;
 
-    public function __construct(ScopeConfigInterface $scopeConfig)
-    {
+    /**
+     * @var TimezoneInterface
+     */
+    private $timezone;
+
+    public function __construct(
+        ScopeConfigInterface $scopeConfig,
+        TimezoneInterface $timezone
+    ) {
         $this->scopeConfig = $scopeConfig;
+        $this->timezone = $timezone;
     }
 
     /**
@@ -96,7 +106,6 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     public function getPassword($store = null): string
     {
-
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_PASSWORD,
             ScopeInterface::SCOPE_STORE,
@@ -107,13 +116,11 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     /**
      * Get the shipper id.
      *
-     * @todo(nr): move to shipping settings
      * @param mixed $store
      * @return string
      */
     public function getShipperId($store = null): string
     {
-
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_SHIPPER_ID,
             ScopeInterface::SCOPE_STORE,
@@ -124,13 +131,11 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     /**
      * Get the shipper id.
      *
-     * @todo(nr): move to shipping settings
      * @param mixed $store
      * @return string
      */
     public function getBrokerReference($store = null): string
     {
-
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_BROKER_REFERENCE,
             ScopeInterface::SCOPE_STORE,
@@ -203,5 +208,39 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
             ScopeInterface::SCOPE_STORE,
             $store
         );
+    }
+
+    /**
+     * Obtain the list of cut-off times, applied to the upcoming days (max. seven entries).
+     *
+     * @param mixed $store
+     * @return \DateTime[]
+     */
+    public function getCutOffTimes($store = null): array
+    {
+        $cutOffTimes = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_CUT_OFF_TIMES,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        $cutOffTimes = array_column($cutOffTimes, 'time', 'day');
+
+        $days = [];
+        for ($i = 0; $i <= 6; $i++) {
+            $day = $this->timezone->scopeDate($store)->modify("+$i day");
+            $weekDay = $day->format('N');
+            if (!isset($cutOffTimes[$weekDay])) {
+                // no cut-off configured for the given day, next.
+                continue;
+            }
+
+            $cutOffTime =  explode(':', $cutOffTimes[$weekDay]);
+            list($hours, $minutes) = array_map('intval', $cutOffTime);
+            $day->setTime($hours, $minutes);
+            $days[$weekDay] = $day;
+        }
+
+        return $days;
     }
 }

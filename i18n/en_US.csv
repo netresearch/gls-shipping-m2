@@ -10,11 +10,14 @@
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Consumers can revoke their email address transmission consent by sending a message to this address."
 "Custom Message","Custom Message"
 "Customer ID","Customer ID"
+"Cut-off Times","Cut-off Times"
+"Cut-off Time","Cut-off Time"
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DAP (Freight costs paid, customs costs & taxes unpaid)"
 "DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)"
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP (Freight costs and customs clearance costs paid, lowvalue clearance)"
 "DDP (Freight costs, customs costs & taxes paid)","DDP (Freight costs, customs costs & taxes paid)"
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
+Day,Day
 DepositService,DepositService
 "Displayed Text","Displayed Text"
 "Enable Sandbox Mode","Enable Sandbox Mode"
@@ -46,7 +49,6 @@ Logging,Logging
 "Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
 "Offer Guaranteed24Service","Offer Guaranteed24Service"
-"Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands).","Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands)."
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"

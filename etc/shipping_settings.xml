@@ -81,9 +81,6 @@
                     <input code="enabled">
                         <inputType>checkbox</inputType>
                         <label translate="true">Select Guaranteed24Service</label>
-                        <comment>
-                            <content translate="true">Orders placed before %1 are guaranteed to be delivered on the next working day (except on Saturday, excluding islands).</content>
-                        </comment>
                     </input>
                 </inputs>
             </shippingOption>

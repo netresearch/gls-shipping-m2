@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
+use GlsGermany\Shipping\Model\Config\ModuleConfig;
 use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditionalFactory;
 use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Framework\Exception\LocalizedException;
@@ -21,6 +22,7 @@ use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\Servi
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterfaceFactory;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterfaceFactory;
+use Netresearch\ShippingCore\Api\ShipmentDate\ShipmentDateCalculatorInterface;
 use Zend\Hydrator\Reflection;
 
 /**
@@ -58,6 +60,16 @@ class RequestExtractor implements RequestExtractorInterface
     private $packageFactory;
 
     /**
+     * @var ModuleConfig
+     */
+    private $moduleConfig;
+
+    /**
+     * @var ShipmentDateCalculatorInterface
+     */
+    private $shipmentDate;
+
+    /**
      * @var Reflection
      */
     private $hydrator;
@@ -78,6 +90,8 @@ class RequestExtractor implements RequestExtractorInterface
         ServiceOptionReaderInterfaceFactory $serviceOptionReaderFactory,
         PackageAdditionalFactory $packageAdditionalFactory,
         PackageInterfaceFactory $packageFactory,
+        ModuleConfig $moduleConfig,
+        ShipmentDateCalculatorInterface $shipmentDate,
         Reflection $hydrator
     ) {
         $this->shipmentRequest = $shipmentRequest;
@@ -85,6 +99,8 @@ class RequestExtractor implements RequestExtractorInterface
         $this->serviceOptionReaderFactory = $serviceOptionReaderFactory;
         $this->packageAdditionalFactory = $packageAdditionalFactory;
         $this->packageFactory = $packageFactory;
+        $this->moduleConfig = $moduleConfig;
+        $this->shipmentDate = $shipmentDate;
         $this->hydrator = $hydrator;
     }
 
@@ -203,7 +219,14 @@ class RequestExtractor implements RequestExtractorInterface
 
     public function getShipmentDate(): \DateTime
     {
-        return $this->getCoreExtractor()->getShipmentDate();
+        try {
+            return $this->shipmentDate->getDate(
+                $this->moduleConfig->getCutOffTimes($this->getStoreId()),
+                $this->getStoreId()
+            );
+        } catch (\RuntimeException $exception) {
+            return $this->getCoreExtractor()->getShipmentDate();
+        }
     }
 
     public function isCashOnDelivery(): bool
