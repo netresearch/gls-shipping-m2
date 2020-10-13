@@ -148,6 +148,8 @@ class RequestDataMapper
             }
         }
 
+        $this->requestBuilder->setShipmentDate($requestExtractor->getShipmentDate());
+
         try {
             return $this->requestBuilder->create();
         } catch (RequestValidatorException $exception) {

@@ -25,6 +25,17 @@
                     <logging_group>
                         <loglevel>400</loglevel>
                     </logging_group>
+                    <cut_off_times backend_model="Netresearch\ShippingCore\Model\Config\Backend\ArraySerialized">
+                        <![CDATA[
+                        {
+                            "_1602502601932_932":{"day":"1","time":"16:00"},
+                            "_1602502739056_56":{"day":"2","time":"16:00"},
+                            "_1602502744398_398":{"day":"3","time":"16:00"},
+                            "_1602502747873_873":{"day":"4","time":"16:00"},
+                            "_1602502750891_891":{"day":"5","time":"16:00"}
+                        }
+                        ]]>
+                    </cut_off_times>
                 </general>
                 <account>
                     <sandboxmode>1</sandboxmode>

@@ -33,14 +33,22 @@
             <config_path>carriers/glsgermany/specificcountry</config_path>
         </field>
 
+        <!-- Cut-off times -->
+        <field id="cut_off_times" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
+               translate="label comment tooltip" type="select">
+            <label>Cut-off Times</label>
+            <frontend_model>GlsGermany\Shipping\Block\Adminhtml\System\Config\Form\Field\CutOffTimes</frontend_model>
+            <backend_model>Netresearch\ShippingCore\Model\Config\Backend\ArraySerialized</backend_model>
+        </field>
+
         <!-- Logging -->
-        <field id="logging" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="40"
+        <field id="logging" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50"
                translate="label comment button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Logging</label>
             <button_label>Record communication with the GLS web services.</button_label>
             <comment>You must also have Magento general logging enabled.</comment>
         </field>
-        <group id="logging_group" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50"
+        <group id="logging_group" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="60"
                translate="label">
             <fieldset_css>simple</fieldset_css>
             <attribute type="expanded">1</attribute>
