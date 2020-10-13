@@ -1,6 +1,7 @@
 "Account Settings","Account Settings"
 "Allow customers to check out with <em>GLS Shipping</em> shipping method.","Allow customers to check out with <em>GLS Shipping</em> shipping method."
 "Allow for Specific Countries","Allow for Specific Countries"
+"An error occurred while preparing package data.","An error occurred while preparing package data."
 "Applicable Countries","Applicable Countries"
 "Behavior in Cases of Unavailability","Behavior in Cases of Unavailability"
 "Broker Reference","Broker Reference"
@@ -16,8 +17,6 @@
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
 DepositService,DepositService
 "Displayed Text","Displayed Text"
-"Select FlexDeliveryService","Select FlexDeliveryService"
-"Select Guaranteed24Service","Select Guaranteed24Service"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your API user name.","Enter your API user name."
@@ -43,7 +42,6 @@ Guaranteed24Service,Guaranteed24Service
 Logging,Logging
 "Module version:","Module version:"
 "Name a secure location on your premise where GLS can place the parcel.","Name a secure location on your premise where GLS can place the parcel."
-"Not implemented yet.","Not implemented yet."
 "Observe upper and lower case when entering the API password.","Observe upper and lower case when entering the API password."
 "Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
@@ -56,6 +54,9 @@ Password,Password
 "Please choose only one of %1.","Please choose only one of %1."
 "Record communication with the GLS web services.","Record communication with the GLS web services."
 "Reference to the GLS partner","Reference to the GLS partner"
+"Select DepositService","Select DepositService"
+"Select FlexDeliveryService","Select FlexDeliveryService"
+"Select Guaranteed24Service","Select Guaranteed24Service"
 "Select the offline shipping method that gets used to provide rates in checkout.","Select the offline shipping method that gets used to provide rates in checkout."
 "Send Shipper Address","Send Shipper Address"
 "Shipment %1 could not be cancelled.","Shipment %1 could not be cancelled."
@@ -70,7 +71,7 @@ Password,Password
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","This information will be provided to you by your depot or can be found in your GLS account settings."
 "To get started:","To get started:"
-"Use rates from","Use rates from"
+"Use Rates From","Use Rates From"
 "User Name","User Name"
 "Web service request could not be created: %1","Web service request could not be created: %1"
 "You must also have Magento general logging enabled.","You must also have Magento general logging enabled."

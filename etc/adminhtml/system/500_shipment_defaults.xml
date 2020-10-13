@@ -27,4 +27,5 @@
             <button_label><![CDATA[If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.]]></button_label>
         </field>
     </group>
+
 </include>

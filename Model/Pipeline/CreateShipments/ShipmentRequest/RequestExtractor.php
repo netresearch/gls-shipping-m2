@@ -8,16 +8,20 @@ declare(strict_types=1);
 
 namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditionalFactory;
 use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Model\Shipment\Request;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterfaceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\RecipientInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\ShipperInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterface;
+use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterfaceFactory;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterfaceFactory;
+use Zend\Hydrator\Reflection;
 
 /**
  * Class RequestExtractor
@@ -39,6 +43,26 @@ class RequestExtractor implements RequestExtractorInterface
     private $requestExtractorFactory;
 
     /**
+     * @var ServiceOptionReaderInterfaceFactory
+     */
+    private $serviceOptionReaderFactory;
+
+    /**
+     * @var PackageAdditionalFactory
+     */
+    private $packageAdditionalFactory;
+
+    /**
+     * @var PackageInterfaceFactory
+     */
+    private $packageFactory;
+
+    /**
+     * @var Reflection
+     */
+    private $hydrator;
+
+    /**
      * @var RequestExtractorInterface
      */
     private $coreExtractor;
@@ -48,21 +72,20 @@ class RequestExtractor implements RequestExtractorInterface
      */
     private $serviceOptionReader;
 
-    /**
-     * @var ModuleConfig
-     */
-    private $moduleConfig;
-
     public function __construct(
         Request $shipmentRequest,
         RequestExtractorInterfaceFactory $requestExtractorFactory,
-        ServiceOptionReaderInterface $serviceOptionReader,
-        ModuleConfig $moduleConfig
+        ServiceOptionReaderInterfaceFactory $serviceOptionReaderFactory,
+        PackageAdditionalFactory $packageAdditionalFactory,
+        PackageInterfaceFactory $packageFactory,
+        Reflection $hydrator
     ) {
         $this->shipmentRequest = $shipmentRequest;
         $this->requestExtractorFactory = $requestExtractorFactory;
-        $this->serviceOptionReader = $serviceOptionReader;
-        $this->moduleConfig = $moduleConfig;
+        $this->serviceOptionReaderFactory = $serviceOptionReaderFactory;
+        $this->packageAdditionalFactory = $packageAdditionalFactory;
+        $this->packageFactory = $packageFactory;
+        $this->hydrator = $hydrator;
     }
 
     /**
@@ -79,6 +102,22 @@ class RequestExtractor implements RequestExtractorInterface
         }
 
         return $this->coreExtractor;
+    }
+
+    /**
+     * Obtain service option reader to read carrier specific service data.
+     *
+     * @return ServiceOptionReaderInterface
+     */
+    private function getServiceOptionReader(): ServiceOptionReaderInterface
+    {
+        if (empty($this->serviceOptionReader)) {
+            $this->serviceOptionReader = $this->serviceOptionReaderFactory->create(
+                ['shipmentRequest' => $this->shipmentRequest]
+            );
+        }
+
+        return $this->serviceOptionReader;
     }
 
     public function isReturnShipmentRequest(): bool
@@ -123,7 +162,33 @@ class RequestExtractor implements RequestExtractorInterface
 
     public function getPackages(): array
     {
-        return $this->getCoreExtractor()->getPackages();
+        $packages = $this->getCoreExtractor()->getPackages();
+        $glsPackages = [];
+
+        foreach ($packages as $packageId => $package) {
+            // read generic export data from shipment request
+            $packageParams = $this->shipmentRequest->getData('packages')[$packageId]['params'];
+            $customsParams = $packageParams['customs'] ?? [];
+            if (empty($customsParams)) {
+                // GLS has only additional package params for customs, nothing to do.
+                $glsPackages[$packageId] = $package;
+                continue;
+            }
+
+            try {
+                $packageData = $this->hydrator->extract($package);
+                $packageData['packageAdditional'] = $this->packageAdditionalFactory->create(
+                    ['termsOfTrade' => $customsParams['termsOfTrade']]
+                );
+
+                // create new extended package instance with paket-specific export data
+                $glsPackages[$packageId] = $this->packageFactory->create($packageData);
+            } catch (\Exception $exception) {
+                throw new LocalizedException(__('An error occurred while preparing package data.'), $exception);
+            }
+        }
+
+        return $glsPackages;
     }
 
     public function getAllItems(): array
@@ -178,28 +243,39 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function isFlexDeliveryEnabled(): bool
     {
-        return $this->serviceOptionReader->isServiceEnabled(Codes::CHECKOUT_SERVICE_FLEX_DELIVERY);
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_FLEX_DELIVERY);
     }
 
     /**
-     * Obtain the shipper id.
+     * Check whether Guaranteed24Service was chosen or not.
      *
-     * @todo(nr): read from shipping settings
-     * @return string
+     * @return bool
      */
-    public function getShipperId(): string
+    public function isNextDayDeliveryEnabled(): bool
     {
-        return $this->moduleConfig->getShipperId();
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_GUARANTEED24);
     }
 
     /**
-     * Obtain all broker reference.
+     * Check whether DepositService was chosen or not.
      *
-     * @todo(nr): read from shipping settings
+     * @return bool
+     */
+    public function isPlaceOfDepositBooked(): bool
+    {
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_DEPOSIT);
+    }
+
+    /**
+     * Check whether DepositService was chosen or not.
+     *
      * @return string
      */
-    public function getBrokerReference(): string
+    public function getPlaceOfDeposit(): string
     {
-        return $this->moduleConfig->getBrokerReference();
+        return $this->getServiceOptionReader()->getServiceOptionValue(
+            Codes::CHECKOUT_SERVICE_DEPOSIT,
+            'details'
+        );
     }
 }

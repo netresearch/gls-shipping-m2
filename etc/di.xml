@@ -5,7 +5,6 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
     <!-- # sdk preferences -->
     <preference for="GlsGermany\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface" type="GlsGermany\Sdk\ParcelProcessing\RequestBuilder\ShipmentRequestBuilder"/>
     <preference for="GlsGermany\Sdk\ParcelProcessing\Api\ServiceFactoryInterface" type="GlsGermany\Sdk\ParcelProcessing\Service\ServiceFactory"/>
@@ -17,7 +16,6 @@
             <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
         </arguments>
     </virtualType>
-
     <virtualType name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual" type="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement\Proxy">
         <arguments>
             <argument name="instanceName" xsi:type="string">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Virtual</argument>
@@ -74,7 +72,6 @@
             </argument>
         </arguments>
     </virtualType>
-
     <virtualType name="GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement">
         <arguments>
             <argument name="rateRequestService" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
@@ -89,6 +86,36 @@
     <virtualType name="GlsGermany\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual" type="Netresearch\ShippingCore\ViewModel\Adminhtml\System\InfoBox">
         <arguments>
             <argument name="version" xsi:type="object">GlsGermany\Shipping\Model\Config\ModuleConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GlsGermany\Shipping\Model\Logger\Handler\Virtual" type="Netresearch\ShippingCore\Model\Util\ApiLogHandler">
+        <arguments>
+            <argument name="fileName" xsi:type="string">var/log/gls_germany.log</argument>
+            <argument name="logEnabledConfigPath" xsi:type="const">GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_ENABLE_LOGGING</argument>
+            <argument name="logLevelConfigPath" xsi:type="const">GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_LOGLEVEL</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GlsGermany\Shipping\Model\Logger\Virtual" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="apilog" xsi:type="object">GlsGermany\Shipping\Model\Logger\Handler\Virtual</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Checkout\ShippingDataProcessor\Virtual">
+        <arguments>
+            <argument name="shippingOptionsProcessors" xsi:type="array">
+                <item name="glsFlexDeliveryProcessor" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
+                <item name="glsGuaranteed24Processor" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Packaging\ShippingDataProcessor\Virtual">
+        <arguments>
+            <argument name="shippingOptionsProcessors" xsi:type="array">
+                <item name="processGlsInputs" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\InputDataProcessor</item>
+            </argument>
         </arguments>
     </virtualType>
 
@@ -139,14 +166,6 @@
             </argument>
         </arguments>
     </type>
-    <type name="Netresearch\ShippingCore\Model\ShippingSettings\Processor\Checkout\CheckoutDataCompositeProcessor">
-        <arguments>
-            <argument name="serviceOptionsProcessors" xsi:type="array">
-                <item name="glsFlexDeliveryProcessor" sortOrder="100" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions\FlexDeliveryServiceProcessor</item>
-                <item name="glsGuaranteed24Processor" sortOrder="200" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\Processor\Checkout\ServiceOptions\Guaranteed24ServiceProcessor</item>
-            </argument>
-        </arguments>
-    </type>
     <type name="Netresearch\ShippingCore\Observer\DisableCodPaymentMethods">
         <arguments>
             <argument name="codSupportMap" xsi:type="array">
@@ -165,6 +184,34 @@
         <arguments>
             <argument name="carrierCodes" xsi:type="array">
                 <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Netresearch\ShippingCore\Model\ShippingSettings\TypeProcessor\ShippingOptions\RemoveUnusedConsumerServicesProcessor">
+        <arguments>
+            <argument name="carrierConsumerServices" xsi:type="array">
+                <item name="glsgermany" xsi:type="array">
+                    <item name="0" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</item>
+                    <item name="1" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</item>
+                    <item name="2" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="GlsGermany\Shipping\Model\Webservice\ShipmentService">
+        <arguments>
+            <argument name="logger" xsi:type="object">GlsGermany\Shipping\Model\Logger\Virtual</argument>
+        </arguments>
+    </type>
+    <type name="GlsGermany\Shipping\Model\Webservice\CancellationService">
+        <arguments>
+            <argument name="logger" xsi:type="object">GlsGermany\Shipping\Model\Logger\Virtual</argument>
+        </arguments>
+    </type>
+    <type name="Netresearch\ShippingCore\Model\Util\ApiLogAnonymizer">
+        <arguments>
+            <argument name="patterns" xsi:type="array">
+                <item name="glsShipperId" xsi:type="string">|"shipperId":\s?"([^"]+)"|</item>
             </argument>
         </arguments>
     </type>
