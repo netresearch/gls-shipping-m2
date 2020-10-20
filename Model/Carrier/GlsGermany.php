@@ -41,6 +41,8 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
 {
     public const CARRIER_CODE = 'glsgermany';
 
+    public const TRACKING_URL_TEMPLATE = 'https://gls-group.eu/track/%s';
+
     /**
      * @var string
      */
@@ -50,11 +52,6 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
      * @var ModuleConfig
      */
     private $moduleConfig;
-
-    /**
-     * @var Tracking
-     */
-    private $tracking;
 
     /**
      * @var RatesManagement
@@ -93,14 +90,12 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         Data $directoryData,
         StockRegistryInterface $stockRegistry,
         ModuleConfig $moduleConfig,
-        Tracking $tracking,
         RatesManagement $ratesManagement,
         ShipmentManagement $shipmentManagement,
         ProxyCarrierFactory $proxyCarrierFactory,
         array $data = []
     ) {
         $this->moduleConfig = $moduleConfig;
-        $this->tracking = $tracking;
         $this->ratesManagement = $ratesManagement;
         $this->shipmentManagement = $shipmentManagement;
         $this->proxyCarrierFactory = $proxyCarrierFactory;
@@ -259,7 +254,7 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         $statusData = [
             'tracking' => $shipmentNumber,
             'carrier_title' => $this->getConfigData('title'),
-            'url' => $this->tracking->getUrl($shipmentNumber),
+            'url' => sprintf(self::TRACKING_URL_TEMPLATE, $shipmentNumber),
         ];
 
         $status = $this->_trackStatusFactory->create(['data' => $statusData]);
