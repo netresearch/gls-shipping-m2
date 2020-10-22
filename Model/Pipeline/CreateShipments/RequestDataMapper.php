@@ -11,6 +11,7 @@ namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments;
 use GlsGermany\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
 use GlsGermany\Sdk\ParcelProcessing\Exception\RequestValidatorException;
 use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGermany\Shipping\Model\Config\Source\LabelSize;
 use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
 use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -117,8 +118,19 @@ class RequestDataMapper
             $this->requestBuilder->requestNextDayDelivery();
         }
 
-        if ($requestExtractor->isPlaceOfDepositBooked()) {
-            $this->requestBuilder->setPlaceOfDeposit($requestExtractor->getPlaceOfDeposit());
+        $depositLocation = $requestExtractor->getPlaceOfDeposit();
+        if ($depositLocation) {
+            $this->requestBuilder->setPlaceOfDeposit($depositLocation);
+        }
+
+        if ($requestExtractor->isShopReturnBooked()) {
+            $this->requestBuilder->setReturnAddress(
+                $requestExtractor->getShipper()->getCountryCode(),
+                $requestExtractor->getShipper()->getPostalCode(),
+                $requestExtractor->getShipper()->getCity(),
+                implode(' ', $requestExtractor->getShipper()->getStreet()),
+                $requestExtractor->getShipper()->getContactCompanyName()
+            );
         }
 
         /** @var PackageInterface $package */
@@ -149,6 +161,16 @@ class RequestDataMapper
         }
 
         $this->requestBuilder->setShipmentDate($requestExtractor->getShipmentDate());
+        $this->requestBuilder->setLabelFormat(ShipmentRequestBuilderInterface::LABEL_FORMAT_PDF);
+
+        $labelSize = $this->moduleConfig->getLabelSize($requestExtractor->getStoreId());
+        if ($labelSize === LabelSize::LABEL_SIZE_A6) {
+            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A6);
+        } elseif ($labelSize === LabelSize::LABEL_SIZE_A5) {
+            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A5);
+        } elseif ($labelSize === LabelSize::LABEL_SIZE_A4) {
+            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A4);
+        }
 
         try {
             return $this->requestBuilder->create();

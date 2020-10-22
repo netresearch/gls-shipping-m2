@@ -5,7 +5,7 @@
         <serviceOptions>
             <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgermany/additional_services/flexdelivery">
                 <label translate="true">FlexDeliveryService</label>
-                <sortOrder>10</sortOrder>
+                <sortOrder>110</sortOrder>
                 <routes>
                     <route>
                         <origin>DE</origin>
@@ -50,10 +50,15 @@
             </shippingOption>
             <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgermany/additional_services/deposit">
                 <label translate="true">DepositService</label>
-                <sortOrder>20</sortOrder>
+                <sortOrder>120</sortOrder>
                 <inputs>
-                    <input code="details">
+                    <input code="enabled">
                         <sortOrder>10</sortOrder>
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Select DepositService</label>
+                    </input>
+                    <input code="details">
+                        <sortOrder>20</sortOrder>
                         <label translate="true">Place of Deposit</label>
                         <labelVisible>false</labelVisible>
                         <inputType>text</inputType>
@@ -68,7 +73,7 @@
             </shippingOption>
             <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgermany/additional_services/guaranteed24">
                 <label translate="true">Guaranteed24Service</label>
-                <sortOrder>20</sortOrder>
+                <sortOrder>130</sortOrder>
                 <routes>
                     <route>
                         <origin>DE</origin>
@@ -87,6 +92,7 @@
         </serviceOptions>
         <metadata>
             <color>#172154</color>
+            <imageUrl>GlsGermany_Shipping::images/logo.jpg</imageUrl>
         </metadata>
     </carrier>
 </carriers>

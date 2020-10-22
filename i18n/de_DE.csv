@@ -10,8 +10,8 @@
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
-"Cut-off Times",Auftragsabschlusszeiten
 "Cut-off Time",Auftragsabschlusszeit
+"Cut-off Times",Auftragsabschlusszeiten
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DDP (Frei Haus, verzollt, versteuert)"
 "DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP (Frei Haus, unverzollt, unversteuert)"
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
@@ -41,6 +41,7 @@ Guaranteed24Service,Guaranteed24Service
 "Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
 "Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
 "Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.","Lassen Sie Empfänger einen Ablageort wählen, um eine unmittelbare Zustellung auch bei Abwesenheit zu ermöglichen."
+Letterbox,"Briefkasten"
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
 "Module version:",Modulversion:
@@ -54,11 +55,16 @@ Password,Passwort
 "Place of Deposit",Abstellort
 "Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Bitte bestätigen Sie, dass Ihre E-Mail-Adresse zum angegebenen Zweck an GLS übermittelt und durch GLS genutzt werden darf oder wählen Sie eine andere Versandart."
 "Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
+"Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Aktivieren Sie LetterboxService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit ShopReturnService kombiniert werden kann."
+"Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
+"Returns","Retouren"
 "Select DepositService","DepositService wählen"
 "Select FlexDeliveryService","FlexDeliveryService wählen"
 "Select Guaranteed24Service","Guaranteed24Service wählen"
+"Select LetterboxService","LetterboxService wählen"
+"Select ShopReturnService","ShopReturnService wählen"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
 "Send Shipper Address","Versandursprung übertragen"
 "Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
@@ -73,7 +79,9 @@ Password,Passwort
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
 "To get started:","Was Sie brauchen:"
+"Use LetterboxService","LetterboxService aktivieren"
 "Use Rates From","Verwende Tarife von"
+"Use ShopReturnService","ShopReturnService aktivieren"
 "User Name",Benutzername
 "Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."

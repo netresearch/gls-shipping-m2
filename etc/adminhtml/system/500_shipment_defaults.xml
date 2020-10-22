@@ -9,23 +9,35 @@
         <label>Shipment Defaults</label>
         <comment><![CDATA[These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.]]></comment>
 
-        <field id="label_size" translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset"
-               sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="label_size" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
+               translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
             <label>Label Size</label>
             <source_model>GlsGermany\Shipping\Model\Config\Source\LabelSize</source_model>
         </field>
 
-        <field id="terms_of_trade" translate="label" type="select"
-               sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="terms_of_trade" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
+               translate="label" type="select">
             <label>Terms of Trade</label>
             <source_model>GlsGermany\Shipping\Model\Config\Source\TermsOfTrade</source_model>
         </field>
 
-        <field id="send_shipper" translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox"
-               sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="send_shipper" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"
+               translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Send Shipper Address</label>
             <button_label><![CDATA[If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.]]></button_label>
         </field>
-    </group>
 
+        <field id="shopreturn" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
+               translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
+            <label>Use ShopReturnService</label>
+            <comment>Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.</comment>
+        </field>
+
+        <field id="letterbox" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
+               translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
+            <label>Use LetterboxService</label>
+            <comment>Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.</comment>
+        </field>
+
+    </group>
 </include>

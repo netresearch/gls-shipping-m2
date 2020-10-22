@@ -1,3 +1,5 @@
+@gls-yellow: #F2B700;
+
 /**
  * Use this to style system config groups in a simpler way:
  *
@@ -77,6 +79,27 @@
 
         header {
             background: #FFFFFF;
+        }
+    }
+}
+
+.nrshipping-packaging-popup {
+    .fieldset-wrapper {
+        &.package,
+        &.service {
+            > .fieldset-wrapper-title {
+                background: @gls-yellow;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .nrshipping-packaging-popup {
+        .package-action-buttons {
+            img {
+                height: 48px;
+            }
         }
     }
 }

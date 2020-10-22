@@ -33,6 +33,9 @@ use Magento\Shipping\Model\Tracking\Result as TrackingResult;
 use Magento\Shipping\Model\Tracking\Result\ErrorFactory as TrackErrorFactory;
 use Magento\Shipping\Model\Tracking\Result\StatusFactory;
 use Magento\Shipping\Model\Tracking\ResultFactory as TrackResultFactory;
+use Netresearch\ShippingCore\Api\Data\Pipeline\TrackRequest\TrackRequestInterfaceFactory;
+use Netresearch\ShippingCore\Api\Data\Pipeline\TrackResponse\TrackErrorResponseInterface;
+use Netresearch\ShippingCore\Api\Data\Pipeline\TrackResponse\TrackResponseInterface;
 use Netresearch\ShippingCore\Model\Rate\Emulation\ProxyCarrierFactory;
 use Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement;
 use Psr\Log\LoggerInterface;
@@ -64,6 +67,11 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
     private $shipmentManagement;
 
     /**
+     * @var TrackRequestInterfaceFactory
+     */
+    private $trackRequestFactory;
+
+    /**
      * @var ProxyCarrierFactory
      */
     private $proxyCarrierFactory;
@@ -92,12 +100,14 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
         ModuleConfig $moduleConfig,
         RatesManagement $ratesManagement,
         ShipmentManagement $shipmentManagement,
+        TrackRequestInterfaceFactory $trackRequestFactory,
         ProxyCarrierFactory $proxyCarrierFactory,
         array $data = []
     ) {
         $this->moduleConfig = $moduleConfig;
         $this->ratesManagement = $ratesManagement;
         $this->shipmentManagement = $shipmentManagement;
+        $this->trackRequestFactory = $trackRequestFactory;
         $this->proxyCarrierFactory = $proxyCarrierFactory;
 
         parent::__construct(
@@ -219,6 +229,44 @@ class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
 
         // one request, one response.
         return $apiResult[0];
+    }
+
+    /**
+     * Delete requested shipments if the current shipment request is failed
+     *
+     * In case one request succeeded and another request failed, Magento will
+     * discard the successfully created label. That means, labels created through
+     * GLS API must be cancelled.
+     *
+     * @param string[][] $data Arrays of info data with tracking_number and label_content
+     * @return bool
+     */
+    public function rollBack($data): bool
+    {
+        if (!is_array($data) || empty($data)) {
+            return parent::rollBack($data);
+        }
+
+        $cancelRequests = [];
+        foreach ($data as $rollbackInfo) {
+            $trackNumber = $rollbackInfo['tracking_number'];
+            $cancelRequests[$trackNumber] = $this->trackRequestFactory->create(
+                [
+                    'storeId' => $this->getData('store'),
+                    'trackNumber' => $trackNumber,
+                ]
+            );
+        }
+
+        $result = $this->shipmentManagement->cancelLabels($cancelRequests);
+        $errors = array_filter(
+            $result,
+            function (TrackResponseInterface $trackResponse) {
+                return ($trackResponse instanceof TrackErrorResponseInterface);
+            }
+        );
+
+        return (empty($errors) && parent::rollBack($data));
     }
 
     public function isCityRequired(): bool
