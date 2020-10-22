@@ -37,7 +37,10 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 
     // 500_shipment_defaults.xml
     private const CONFIG_PATH_LABEL_SIZE = 'carriers/glsgermany/shipment_defaults/label_size';
+    private const CONFIG_PATH_TERMS_OF_TRADE = 'carriers/glsgermany/shipment_defaults/terms_of_trade';
     private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
+    private const CONFIG_PATH_USE_SHOPRETURN = 'carriers/glsgermany/shipment_defaults/shopreturn';
+    private const CONFIG_PATH_USE_LETTERBOX = 'carriers/glsgermany/shipment_defaults/letterbox';
 
     // 600_additional_services.xml
     private const CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL = 'carriers/glsgermany/additional_services/flexdelivery_identity';
@@ -173,6 +176,21 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     {
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_PROXY_CARRIER,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * Obtain the preferred document size for shipping labels.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getLabelSize($store = null): string
+    {
+        return (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_LABEL_SIZE,
             ScopeInterface::SCOPE_STORE,
             $store
         );

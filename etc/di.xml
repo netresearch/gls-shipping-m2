@@ -194,6 +194,7 @@
                     <item name="0" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</item>
                     <item name="1" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</item>
                     <item name="2" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</item>
+                    <item name="3" xsi:type="const">Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_CASH_ON_DELIVERY</item>
                 </item>
             </argument>
         </arguments>
@@ -228,6 +229,13 @@
                 <item name="carriers/glsgermany/general/logging" xsi:type="string">1</item>
                 <item name="carriers/glsgermany/general/logging_group/loglevel" xsi:type="string">1</item>
                 <item name="carriers/glsgermany/account/sandboxmode" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Netresearch\ShippingCore\Model\ShippingSettings\PackagingPopup">
+        <arguments>
+            <argument name="supportMap" xsi:type="array">
+                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
             </argument>
         </arguments>
     </type>

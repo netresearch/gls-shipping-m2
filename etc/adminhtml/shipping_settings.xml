@@ -1,13 +1,48 @@
 <?xml version="1.0" ?>
 <carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
     <carrier code="glsgermany">
+        <itemOptions>
+            <itemShippingOptions itemId="0">
+                <shippingOptions>
+                    <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::ITEM_OPTION_CUSTOMS">
+                        <inputs>
+                            <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::ITEM_INPUT_HS_CODE">
+                                <inputType>hidden</inputType>
+                            </input>
+                            <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::ITEM_INPUT_COUNTRY_OF_ORIGIN">
+                                <inputType>hidden</inputType>
+                            </input>
+                        </inputs>
+                    </shippingOption>
+                </shippingOptions>
+            </itemShippingOptions>
+        </itemOptions>
         <packageOptions>
+            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_DETAILS">
+                <inputs>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_LENGTH">
+                        <inputType>hidden</inputType>
+                    </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_WIDTH">
+                        <inputType>hidden</inputType>
+                    </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_HEIGHT">
+                        <inputType>hidden</inputType>
+                    </input>
+                </inputs>
+            </shippingOption>
             <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_CUSTOMS">
                 <inputs>
-                    <input code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE" defaultConfigValue="carriers/glsgermany/shipment_defaults/terms_of_trade">
+                    <input code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE" defaultConfigValue="GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_TERMS_OF_TRADE">
                         <label translate="true">Terms of Trade</label>
                         <inputType>select</inputType>
-                        <sortOrder>20</sortOrder>
+                        <sortOrder>15</sortOrder>
+                    </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_CONTENT_TYPE">
+                        <inputType>hidden</inputType>
+                    </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_EXPLANATION">
+                        <inputType>hidden</inputType>
                     </input>
                 </inputs>
             </shippingOption>
@@ -15,19 +50,129 @@
         <serviceOptions>
             <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT">
                 <label translate="true">Place of Deposit</label>
-                <sortOrder>1120</sortOrder>
                 <inputs>
-                    <input code="enabled">
-                        <sortOrder>10</sortOrder>
-                        <inputType>checkbox</inputType>
-                        <label translate="true">Select DepositService</label>
-                    </input>
                     <input code="details">
-                        <sortOrder>20</sortOrder>
                         <inputType>static</inputType>
                     </input>
                 </inputs>
             </shippingOption>
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN">
+                <label translate="true">Returns</label>
+                <sortOrder>1010</sortOrder>
+                <routes>
+                    <route>
+                        <origin>DE</origin>
+                        <includeDestinations>
+                            <destination>AT</destination>
+                            <destination>BE</destination>
+                            <destination>DE</destination>
+                            <destination>DK</destination>
+                            <destination>LU</destination>
+                            <destination>PL</destination>
+                        </includeDestinations>
+                    </route>
+                    <route>
+                        <origin>AT</origin>
+                        <includeDestinations>
+                            <destination>AT</destination>
+                            <destination>BE</destination>
+                            <destination>DE</destination>
+                            <destination>DK</destination>
+                            <destination>LU</destination>
+                            <destination>PL</destination>
+                        </includeDestinations>
+                    </route>
+                </routes>
+                <inputs>
+                    <input code="enabled" defaultConfigValue="GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_USE_SHOPRETURN">
+                        <sortOrder>10</sortOrder>
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Select ShopReturnService</label>
+                    </input>
+                </inputs>
+            </shippingOption>
+            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX">
+                <label translate="true">Letterbox</label>
+                <sortOrder>1020</sortOrder>
+                <routes>
+                    <route>
+                        <origin>DE</origin>
+                        <includeDestinations>
+                            <destination>DE</destination>
+                        </includeDestinations>
+                    </route>
+                </routes>
+                <inputs>
+                    <input code="enabled" defaultConfigValue="GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_USE_LETTERBOX">
+                        <sortOrder>10</sortOrder>
+                        <inputType>checkbox</inputType>
+                        <label translate="true">Select LetterboxService</label>
+                    </input>
+                </inputs>
+            </shippingOption>
         </serviceOptions>
+        <compatibilityData>
+            <rule id="depositServiceExcludeOthers">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</master>
+                </masters>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
+                </subjects>
+            </rule>
+            <rule id="guaranteed24ServiceExcludeOthers">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</master>
+                </masters>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
+                </subjects>
+            </rule>
+            <rule id="cashOnDeliveryServiceExcludeOthers">
+                <masters>
+                    <master>Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_CASH_ON_DELIVERY.enabled</master>
+                </masters>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
+                </subjects>
+            </rule>
+            <rule id="shopReturnServiceExcludeOthers">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</master>
+                </masters>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                </subjects>
+            </rule>
+            <rule id="letterBoxExcludeOthers">
+                <masters>
+                    <master>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</master>
+                </masters>
+                <triggerValue>*</triggerValue>
+                <action>disable</action>
+                <subjects>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
+                    <subject>GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
+                </subjects>
+            </rule>
+        </compatibilityData>
     </carrier>
 </carriers>

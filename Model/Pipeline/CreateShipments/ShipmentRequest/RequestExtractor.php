@@ -280,25 +280,38 @@ class RequestExtractor implements RequestExtractorInterface
     }
 
     /**
-     * Check whether DepositService was chosen or not.
+     * Check whether ShopReturnService was chosen or not.
      *
      * @return bool
      */
-    public function isPlaceOfDepositBooked(): bool
+    public function isShopReturnBooked(): bool
     {
-        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_DEPOSIT);
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::PACKAGING_SERVICE_SHOP_RETURN);
     }
 
     /**
-     * Check whether DepositService was chosen or not.
+     * Obtain the alternative location to place the parcel.
+     *
+     * Note: The location selected by the consumer in checkout always
+     * takes precedence over the merchant's service default setting.
+     * That is, if the consumer commissions the courier to place the
+     * parcel in the garage, the letterbox service will be ignored.
      *
      * @return string
      */
     public function getPlaceOfDeposit(): string
     {
-        return $this->getServiceOptionReader()->getServiceOptionValue(
-            Codes::CHECKOUT_SERVICE_DEPOSIT,
-            'details'
-        );
+        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_DEPOSIT)) {
+            return $this->getServiceOptionReader()->getServiceOptionValue(
+                Codes::CHECKOUT_SERVICE_DEPOSIT,
+                'details'
+            );
+        }
+
+        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::PACKAGING_SERVICE_LETTERBOX)) {
+            return 'Briefkasten';
+        }
+
+        return '';
     }
 }
