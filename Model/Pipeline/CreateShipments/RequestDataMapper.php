@@ -67,7 +67,7 @@ class RequestDataMapper
 
         $this->requestBuilder->setShipperAccount(
             $this->moduleConfig->getShipperId($requestExtractor->getStoreId()),
-            $this->moduleConfig->getBrokerReference($requestExtractor->getStoreId())
+            $this->moduleConfig->getBrokerReference()
         );
 
         if ($this->moduleConfig->isSendFromStoreShippingOrigin($requestExtractor->getStoreId())) {

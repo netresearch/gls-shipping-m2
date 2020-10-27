@@ -4,7 +4,6 @@
 "An error occurred while preparing package data.","Während des Aufbereitens der Paketdaten ist ein Fehler aufgetreten."
 "Applicable Countries","Anwendbare Länder"
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
-"Broker Reference",Broker-Referenznummer
 "Checkout Presentation",Checkout-Darstellung
 "Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
@@ -59,7 +58,6 @@ Password,Passwort
 "Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Aktivieren Sie LetterboxService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit ShopReturnService kombiniert werden kann."
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
-"Reference to the GLS partner","Verweis auf den GLS-Partner"
 Returns,Retouren
 "Select DepositService","DepositService wählen"
 "Select FlexDeliveryService","FlexDeliveryService wählen"

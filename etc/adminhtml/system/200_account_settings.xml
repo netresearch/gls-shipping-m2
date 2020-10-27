@@ -37,11 +37,5 @@
             <label>Contact ID</label>
             <comment>This information will be provided to you by your depot or can be found in your GLS account settings.</comment>
         </field>
-
-        <field id="broker_reference" showInDefault="1" showInWebsite="1" showInStore="0"
-               sortOrder="60" translate="label comment" type="text">
-            <label>Broker Reference</label>
-            <comment>Reference to the GLS partner</comment>
-        </field>
     </group>
 </include>

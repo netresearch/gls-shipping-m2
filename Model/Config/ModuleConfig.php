@@ -143,16 +143,11 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     /**
      * Get the shipper id.
      *
-     * @param mixed $store
      * @return string
      */
-    public function getBrokerReference($store = null): string
+    public function getBrokerReference(): string
     {
-        return (string) $this->scopeConfig->getValue(
-            self::CONFIG_PATH_BROKER_REFERENCE,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
+        return (string) $this->scopeConfig->getValue(self::CONFIG_PATH_BROKER_REFERENCE);
     }
 
     /**
