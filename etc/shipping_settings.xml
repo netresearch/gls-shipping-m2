@@ -51,6 +51,14 @@
             <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgermany/additional_services/deposit">
                 <label translate="true">DepositService</label>
                 <sortOrder>120</sortOrder>
+                <routes>
+                    <route>
+                        <origin>DE</origin>
+                        <includeDestinations>
+                            <destination>DE</destination>
+                        </includeDestinations>
+                    </route>
+                </routes>
                 <inputs>
                     <input code="enabled">
                         <sortOrder>10</sortOrder>
