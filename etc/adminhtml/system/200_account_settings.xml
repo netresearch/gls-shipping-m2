@@ -26,14 +26,20 @@
             <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
         </field>
 
-        <field id="shipper_id" translate="label comment" type="text"
+        <field id="customer_id" translate="label comment" type="text"
                sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
             <label>Customer ID</label>
             <comment>This information will be provided to you by your depot or can be found in your GLS account settings.</comment>
         </field>
 
+        <field id="contact_id" translate="label comment" type="text"
+               sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Contact ID</label>
+            <comment>This information will be provided to you by your depot or can be found in your GLS account settings.</comment>
+        </field>
+
         <field id="broker_reference" showInDefault="1" showInWebsite="1" showInStore="0"
-               sortOrder="50" translate="label comment" type="text">
+               sortOrder="60" translate="label comment" type="text">
             <label>Broker Reference</label>
             <comment>Reference to the GLS partner</comment>
         </field>

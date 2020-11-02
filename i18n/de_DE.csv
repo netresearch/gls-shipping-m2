@@ -8,6 +8,7 @@
 "Checkout Presentation",Checkout-Darstellung
 "Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
+"Contact ID","Kontaktnummer"
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
 "Cut-off Time",Auftragsabschlusszeit
@@ -41,7 +42,7 @@ Guaranteed24Service,Guaranteed24Service
 "Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
 "Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
 "Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.","Lassen Sie Empfänger einen Ablageort wählen, um eine unmittelbare Zustellung auch bei Abwesenheit zu ermöglichen."
-Letterbox,"Briefkasten"
+Letterbox,Briefkasten
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
 "Module version:",Modulversion:
@@ -59,7 +60,7 @@ Password,Passwort
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
 "Reference to the GLS partner","Verweis auf den GLS-Partner"
-"Returns","Retouren"
+Returns,Retouren
 "Select DepositService","DepositService wählen"
 "Select FlexDeliveryService","FlexDeliveryService wählen"
 "Select Guaranteed24Service","Guaranteed24Service wählen"

@@ -8,6 +8,7 @@
 "Checkout Presentation","Checkout Presentation"
 "Consent Revocation Email","Consent Revocation Email"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Consumers can revoke their email address transmission consent by sending a message to this address."
+"Contact ID","Contact ID"
 "Custom Message","Custom Message"
 "Customer ID","Customer ID"
 "Cut-off Time","Cut-off Time"
@@ -58,8 +59,8 @@ Password,Password
 "Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService."
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService."
 "Record communication with the GLS web services.","Record communication with the GLS web services."
-"Returns","Returns"
 "Reference to the GLS partner","Reference to the GLS partner"
+Returns,Returns
 "Select DepositService","Select DepositService"
 "Select FlexDeliveryService","Select FlexDeliveryService"
 "Select Guaranteed24Service","Select Guaranteed24Service"

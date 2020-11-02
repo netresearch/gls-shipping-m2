@@ -50,7 +50,8 @@ class RetryFailedLabelsTest extends AutoCreateTest
      *
      * @magentoConfigFixture current_store carriers/glsgermany/active 1
      * @magentoConfigFixture current_store carriers/glsgermany/checkout/emulated_carrier flatrate
-     * @magentoConfigFixture current_store carriers/glsgermany/account/shipper_id foo bar
+     * @magentoConfigFixture current_store carriers/glsgermany/account/customer_id foo
+     * @magentoConfigFixture current_store carriers/glsgermany/account/contact_id bar
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F
