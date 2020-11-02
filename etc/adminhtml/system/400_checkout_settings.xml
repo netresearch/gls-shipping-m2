@@ -5,14 +5,20 @@
  */
 -->
 <include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
-    <group id="checkout" translate="label" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="0">
+    <group id="checkout" translate="label" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Checkout Presentation</label>
 
-        <field id="title" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
+        <field id="title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
                translate="label" type="text" canRestore="1">
-            <label>Displayed Text</label>
+            <label>Carrier Title</label>
             <config_path>carriers/glsgermany/title</config_path>
         </field>
+
+        <field id="method_title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
+               translate="label" type="text" canRestore="1">
+            <label>Method Title</label>
+        </field>
+
         <field id="sort_order" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label comment" type="text">
             <label>Sort Order</label>

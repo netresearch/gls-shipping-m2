@@ -35,6 +35,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 
     // 400_checkout_settings.xml
     private const CONFIG_PATH_PROXY_CARRIER = 'carriers/glsgermany/checkout/emulated_carrier';
+    private const CONFIG_PATH_SHIPPING_METHOD_TITLE = 'carriers/glsgermany/checkout/method_title';
 
     // 500_shipment_defaults.xml
     private const CONFIG_PATH_LABEL_SIZE = 'carriers/glsgermany/shipment_defaults/label_size';
@@ -264,5 +265,20 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
         }
 
         return $days;
+    }
+
+    /**
+     * Obtain the carrier method title for checkout presentation.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getMethodTitle($store = null): string
+    {
+        return (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_SHIPPING_METHOD_TITLE,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 }

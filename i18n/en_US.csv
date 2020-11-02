@@ -4,6 +4,7 @@
 "An error occurred while preparing package data.","An error occurred while preparing package data."
 "Applicable Countries","Applicable Countries"
 "Behavior in Cases of Unavailability","Behavior in Cases of Unavailability"
+"Carrier Title","Carrier Title"
 "Checkout Presentation","Checkout Presentation"
 "Consent Revocation Email","Consent Revocation Email"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Consumers can revoke their email address transmission consent by sending a message to this address."
@@ -19,7 +20,6 @@
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
 Day,Day
 DepositService,DepositService
-"Displayed Text","Displayed Text"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your API user name.","Enter your API user name."
@@ -44,6 +44,7 @@ Guaranteed24Service,Guaranteed24Service
 Letterbox,Letterbox
 "Log Level","Log Level"
 Logging,Logging
+"Method Title","Method Title"
 "Module version:","Module version:"
 "Name a secure location on your premise where GLS can place the parcel.","Name a secure location on your premise where GLS can place the parcel."
 "Observe upper and lower case when entering the API password.","Observe upper and lower case when entering the API password."

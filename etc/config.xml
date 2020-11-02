@@ -42,6 +42,9 @@
                     <api_password backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
                     <broker_reference>Magento2viaGLS</broker_reference>
                 </account>
+                <checkout>
+                    <method_title>Standard</method_title>
+                </checkout>
                 <shipment_defaults>
                     <label_size>A6</label_size>
                     <terms_of_trade>20</terms_of_trade>
