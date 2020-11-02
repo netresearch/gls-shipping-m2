@@ -223,7 +223,8 @@
             <argument name="sensitive" xsi:type="array">
                 <item name="carriers/glsgermany/account/api_username" xsi:type="string">1</item>
                 <item name="carriers/glsgermany/account/api_password" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/account/shipper_id" xsi:type="string">1</item>
+                <item name="carriers/glsgermany/account/customer_id" xsi:type="string">1</item>
+                <item name="carriers/glsgermany/account/contact_id" xsi:type="string">1</item>
             </argument>
             <argument name="environment" xsi:type="array">
                 <item name="carriers/glsgermany/general/logging" xsi:type="string">1</item>

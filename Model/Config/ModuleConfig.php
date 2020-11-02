@@ -29,7 +29,8 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_SANDBOX_MODE = 'carriers/glsgermany/account/sandboxmode';
     private const CONFIG_PATH_USER_NAME = 'carriers/glsgermany/account/api_username';
     private const CONFIG_PATH_PASSWORD = 'carriers/glsgermany/account/api_password';
-    private const CONFIG_PATH_SHIPPER_ID = 'carriers/glsgermany/account/shipper_id';
+    private const CONFIG_PATH_CUSTOMER_ID = 'carriers/glsgermany/account/customer_id';
+    private const CONFIG_PATH_CONTACT_ID = 'carriers/glsgermany/account/contact_id';
     private const CONFIG_PATH_BROKER_REFERENCE = 'carriers/glsgermany/account/broker_reference';
 
     // 400_checkout_settings.xml
@@ -124,11 +125,19 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     public function getShipperId($store = null): string
     {
-        return (string) $this->scopeConfig->getValue(
-            self::CONFIG_PATH_SHIPPER_ID,
+        $customerId = (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_CUSTOMER_ID,
             ScopeInterface::SCOPE_STORE,
             $store
         );
+
+        $contactId = (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_CONTACT_ID,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        return $customerId . ' ' . $contactId;
     }
 
     /**
