@@ -4,6 +4,7 @@
 "An error occurred while preparing package data.","Während des Aufbereitens der Paketdaten ist ein Fehler aufgetreten."
 "Applicable Countries","Anwendbare Länder"
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
+"Carrier Title","Anzeigetext Versanddienstleister"
 "Checkout Presentation",Checkout-Darstellung
 "Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
@@ -19,7 +20,6 @@
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
 Day,Tag
 DepositService,DepositService
-"Displayed Text","Angezeigter Text"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
 "Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
@@ -44,6 +44,7 @@ Guaranteed24Service,Guaranteed24Service
 Letterbox,Briefkasten
 "Log Level",Protokollierungsstufe
 Logging,Protokollierung
+"Method Title","Anzeigetext Versandart"
 "Module version:",Modulversion:
 "Name a secure location on your premise where GLS can place the parcel.","Geben Sie einen sicheren Ort auf ihrem Grundstück an, an dem GLS das Paket hinterlegen kann."
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
