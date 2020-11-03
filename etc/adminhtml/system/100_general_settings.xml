@@ -35,10 +35,11 @@
 
         <!-- Cut-off times -->
         <field id="cut_off_times" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
-               translate="label comment tooltip" type="select">
+               translate="label comment" type="select">
             <label>Cut-off Times</label>
             <frontend_model>GlsGermany\Shipping\Block\Adminhtml\System\Config\Form\Field\CutOffTimes</frontend_model>
             <backend_model>Netresearch\ShippingCore\Model\Config\Backend\ArraySerialized</backend_model>
+            <comment>Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.</comment>
         </field>
 
         <!-- Logging -->
