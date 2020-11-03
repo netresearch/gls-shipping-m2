@@ -55,6 +55,7 @@ Logging,Logging
 "Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
 "Offer Guaranteed24Service","Offer Guaranteed24Service"
+"Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout."
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"
