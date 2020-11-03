@@ -29,6 +29,7 @@
                     <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_HEIGHT">
                         <inputType>hidden</inputType>
                     </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_WEIGHT" defaultConfigValue="GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_PACKAGE_DEFAULT_WEIGHT"/>
                 </inputs>
             </shippingOption>
             <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_CUSTOMS">

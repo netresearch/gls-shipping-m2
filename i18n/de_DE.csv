@@ -6,8 +6,8 @@
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
 "Carrier Title","Anzeigetext Versanddienstleister"
 "Checkout Presentation",Checkout-Darstellung
-City,"Stadt"
-Company,"Firma"
+City,Stadt
+Company,Firma
 "Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Contact ID",Kontaktnummer
@@ -56,6 +56,7 @@ Logging,Protokollierung
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
 "Offer Guaranteed24Service","Bieten Sie Guaranteed24Service an"
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Es wird davon ausgegangen, dass Bestellungen, die nach der konfigurierten Zeit eingehen, am nachfolgend konfigurierten Tag an GLS übergeben werden. Diese Einstellung beeinflusst das bei der Label-Buchung übergebene Datum sowie die Verfügbarkeit von Services im Checkout."
+"Package Default Weight","Standard-Paketgewicht"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort
@@ -77,10 +78,11 @@ Returns,Retouren
 "Shipment Defaults","Standardeinstellungen für Versandetiketten"
 "Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
-"Street Address","Straße"
+"Street Address",Straße
 "Terms of Trade",Handelsklauseln
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
+"The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","Der Wert muss in Kilogramm angegeben werden und wird während der Label-Erstellung verwendet falls weder Artikelgewicht noch Verpackungsgewicht definiert sind."
 "These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Sendungserstellung genutzt. Falls ein Label mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
@@ -93,6 +95,6 @@ Returns,Retouren
 "User Name",Benutzername
 "Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
-"ZIP/Postal Code","Postleitzahl"
+"ZIP/Postal Code",Postleitzahl
 "e.g. shed, garage, or patio","z.B. Schuppen, Garage oder Terrasse"
 gls.support@netresearch.de,gls.support@netresearch.de

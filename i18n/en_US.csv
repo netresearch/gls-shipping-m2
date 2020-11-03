@@ -56,6 +56,7 @@ Logging,Logging
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
 "Offer Guaranteed24Service","Offer Guaranteed24Service"
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout."
+"Package Default Weight","Package Default Weight"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"
@@ -81,6 +82,7 @@ Returns,Returns
 "Terms of Trade","Terms of Trade"
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method."
+"The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured."
 "These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders."
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","This information will be provided to you by your depot or can be found in your GLS account settings."
