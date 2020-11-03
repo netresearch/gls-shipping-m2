@@ -48,8 +48,7 @@
             <button_label>Record communication with the GLS web services.</button_label>
             <comment>You must also have Magento general logging enabled.</comment>
         </field>
-        <group id="logging_group" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="60"
-               translate="label">
+        <group id="logging_group" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="60" translate="label">
             <fieldset_css>simple</fieldset_css>
             <attribute type="expanded">1</attribute>
             <depends>

@@ -43,6 +43,8 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
     private const CONFIG_PATH_USE_SHOPRETURN = 'carriers/glsgermany/shipment_defaults/shopreturn';
     private const CONFIG_PATH_USE_LETTERBOX = 'carriers/glsgermany/shipment_defaults/letterbox';
+    private const CONFIG_PATH_ENABLE_ALT_RETURN_ADDRESS = 'carriers/glsgermany/shipment_defaults/return_address';
+    private const CONFIG_PATH_ALT_RETURN_ADDRESS = 'carriers/glsgermany/shipment_defaults/alt_return_address';
 
     // 600_additional_services.xml
     private const CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL = 'carriers/glsgermany/additional_services/flexdelivery_identity';
@@ -277,6 +279,37 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     {
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_SHIPPING_METHOD_TITLE,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * Obtain configured alternative return address.
+     *
+     * - company
+     * - country_id
+     * - postcode
+     * - city
+     * - street
+     *
+     * @param mixed $store
+     * @return string[] Empty array if alternative address should not be used, address details otherwise.
+     */
+    public function getAlternativeReturnAddress($store = null): array
+    {
+        $useAlternativeAddress = $this->scopeConfig->isSetFlag(
+            self::CONFIG_PATH_ENABLE_ALT_RETURN_ADDRESS,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        if (!$useAlternativeAddress) {
+            return [];
+        }
+
+        return (array)$this->scopeConfig->getValue(
+            self::CONFIG_PATH_ALT_RETURN_ADDRESS,
             ScopeInterface::SCOPE_STORE,
             $store
         );

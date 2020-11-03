@@ -18,6 +18,7 @@ use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterfaceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\RecipientInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\ShipperInterface;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\ShipperInterfaceFactory;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterfaceFactory;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
@@ -70,6 +71,16 @@ class RequestExtractor implements RequestExtractorInterface
     private $shipmentDate;
 
     /**
+     * @var ShipperInterface
+     */
+    private $returnRecipient;
+
+    /**
+     * @var ShipperInterfaceFactory
+     */
+    private $shipperFactory;
+
+    /**
      * @var Reflection
      */
     private $hydrator;
@@ -92,6 +103,7 @@ class RequestExtractor implements RequestExtractorInterface
         PackageInterfaceFactory $packageFactory,
         ModuleConfig $moduleConfig,
         ShipmentDateCalculatorInterface $shipmentDate,
+        ShipperInterfaceFactory $shipperFactory,
         Reflection $hydrator
     ) {
         $this->shipmentRequest = $shipmentRequest;
@@ -101,6 +113,7 @@ class RequestExtractor implements RequestExtractorInterface
         $this->packageFactory = $packageFactory;
         $this->moduleConfig = $moduleConfig;
         $this->shipmentDate = $shipmentDate;
+        $this->shipperFactory = $shipperFactory;
         $this->hydrator = $hydrator;
     }
 
@@ -164,6 +177,39 @@ class RequestExtractor implements RequestExtractorInterface
     public function getShipper(): ShipperInterface
     {
         return $this->getCoreExtractor()->getShipper();
+    }
+
+    public function getReturnRecipient(): ShipperInterface
+    {
+        if (!empty($this->returnRecipient)) {
+            return $this->returnRecipient;
+        }
+
+        $alternativeAddress = $this->moduleConfig->getAlternativeReturnAddress($this->getStoreId());
+        if (empty($alternativeAddress)) {
+            $this->returnRecipient = $this->getShipper();
+        } else {
+            $this->returnRecipient = $this->shipperFactory->create(
+                [
+                    'contactPersonName' => '',
+                    'contactPersonFirstName' => '',
+                    'contactPersonLastName' => '',
+                    'contactCompanyName' => $alternativeAddress['company'],
+                    'contactEmail' => '',
+                    'contactPhoneNumber' => '',
+                    'street' => [$alternativeAddress['street']],
+                    'city' => $alternativeAddress['city'],
+                    'state' => '',
+                    'postalCode' => $alternativeAddress['postcode'],
+                    'countryCode' => $alternativeAddress['country_id'],
+                    'streetName' => '',
+                    'streetNumber' => '',
+                    'addressAddition' => '',
+                ]
+            );
+        }
+
+        return $this->returnRecipient;
     }
 
     public function getRecipient(): RecipientInterface
@@ -245,9 +291,9 @@ class RequestExtractor implements RequestExtractorInterface
      * By default, recipient email address is not included with the request.
      * There are some services though that require an email address.
      *
+     * @return bool
      * @todo(nr): apply proper rules
      *
-     * @return bool
      */
     public function isRecipientEmailRequired(): bool
     {

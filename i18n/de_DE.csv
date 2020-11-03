@@ -6,9 +6,12 @@
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
 "Carrier Title","Anzeigetext Versanddienstleister"
 "Checkout Presentation",Checkout-Darstellung
+City,"Stadt"
+Company,"Firma"
 "Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Contact ID","Kontaktnummer"
+Country,Land
 "Custom Message","Benutzerdefinierte Nachricht"
 "Customer ID",Kundennummer
 "Cut-off Time",Auftragsabschlusszeit
@@ -36,6 +39,7 @@ Guaranteed24Service,Guaranteed24Service
 "Having issues configuring the extension? Contact our support desk: ","Haben Sie Probleme beim Konfigurieren der Extension? Wenden Sie sich an unser Support-Team: "
 "I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","Ich willige ein, dass meine E-Mail-Adresse zum Zweck der Zustellbenachrichtigung und ggf. Paket-Umverfügung an GLS Germany GmbH & Co. OHG übermittelt und genutzt werden darf. Diese Einwilligung kann ich jederzeit durch Nachricht an folgende Adresse widerrufen: %1. Bitte beachten Sie, dass die Nutzung dieses Services ohne Übermittlung der E-Mail-Adresse nicht möglich ist."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
+"If enabled, the configured address will be used for returns. Otherwise the <em>Shipping Origin</em> setting will be used.","Wenn diese Option aktiviert ist, wird die konfigurierte Adresse beim Abrufen von Retouretiketten übertragen. Andernfalls wird die Absenderadresse aus den <em>Versandeinstellungen</em> verwendet."
 "If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
 "Label Size","Label Größe"
 "Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
@@ -59,6 +63,7 @@ Password,Passwort
 "Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Aktivieren Sie LetterboxService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit ShopReturnService kombiniert werden kann."
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
 "Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
+"Return Shipment Address","Adresse für Retouren"
 Returns,Retouren
 "Select DepositService","DepositService wählen"
 "Select FlexDeliveryService","FlexDeliveryService wählen"
@@ -66,12 +71,12 @@ Returns,Retouren
 "Select LetterboxService","LetterboxService wählen"
 "Select ShopReturnService","ShopReturnService wählen"
 "Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
-"Send Shipper Address","Versandursprung übertragen"
 "Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
 "Shipment %1 could not be cancelled: %2","Der Versandauftrag %1 konnte nicht storniert werden: %2"
 "Shipment Defaults","Standardeinstellungen für Versandetiketten"
 "Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
+"Street Address","Straße"
 "Terms of Trade",Handelsklauseln
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
@@ -79,11 +84,14 @@ Returns,Retouren
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
 "This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
 "To get started:","Was Sie brauchen:"
+"Use Alternative Returns Address","Verwende alternative Adresse für Retouren"
+"Use Alternative Shipper Address","Verwende alternative Adresse für Versender"
 "Use LetterboxService","LetterboxService aktivieren"
 "Use Rates From","Verwende Tarife von"
 "Use ShopReturnService","ShopReturnService aktivieren"
 "User Name",Benutzername
 "Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
 "You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
+"ZIP/Postal Code","Postleitzahl"
 "e.g. shed, garage, or patio","z.B. Schuppen, Garage oder Terrasse"
 gls.support@netresearch.de,gls.support@netresearch.de
