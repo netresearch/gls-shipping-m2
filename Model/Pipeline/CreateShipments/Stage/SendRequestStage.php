@@ -43,7 +43,7 @@ class SendRequestStage implements CreateShipmentsStageInterface
 
             foreach ($requests as $requestIndex => $request) {
                 try {
-                    $shipment = $shipmentService->createShipment($artifactsContainer->getApiRequests()[$requestIndex]);
+                    $shipment = $shipmentService->createShipment($apiRequests[$requestIndex]);
                     $artifactsContainer->addApiResponse((string)$requestIndex, $shipment);
                 } catch (DetailedServiceException $exception) {
                     $artifactsContainer->addError(

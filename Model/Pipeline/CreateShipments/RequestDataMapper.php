@@ -63,6 +63,11 @@ class RequestDataMapper
      */
     public function mapRequest(Request $request): \JsonSerializable
     {
+        $implode = function (array $parts) {
+            $parts = array_filter($parts);
+            return implode(' ', $parts);
+        };
+
         $requestExtractor = $this->requestExtractorFactory->create(['shipmentRequest' => $request]);
 
         $this->requestBuilder->setShipperAccount(
@@ -76,7 +81,7 @@ class RequestDataMapper
                 $requestExtractor->getShipper()->getCountryCode(),
                 $requestExtractor->getShipper()->getPostalCode(),
                 $requestExtractor->getShipper()->getCity(),
-                implode(' ', $requestExtractor->getShipper()->getStreet()),
+                $implode($requestExtractor->getShipper()->getStreet()),
                 $requestExtractor->getShipper()->getContactCompanyName(),
                 null,
                 null,
@@ -99,7 +104,7 @@ class RequestDataMapper
             $requestExtractor->getRecipient()->getCountryCode(),
             $requestExtractor->getRecipient()->getPostalCode(),
             $requestExtractor->getRecipient()->getCity(),
-            implode(' ', $requestExtractor->getRecipient()->getStreet()),
+            $implode($requestExtractor->getRecipient()->getStreet()),
             $requestExtractor->getRecipient()->getContactPersonName(),
             $requestExtractor->getRecipient()->getContactCompanyName(),
             $recipientEmail,
@@ -125,11 +130,11 @@ class RequestDataMapper
 
         if ($requestExtractor->isShopReturnBooked()) {
             $this->requestBuilder->setReturnAddress(
-                $requestExtractor->getShipper()->getCountryCode(),
-                $requestExtractor->getShipper()->getPostalCode(),
-                $requestExtractor->getShipper()->getCity(),
-                implode(' ', $requestExtractor->getShipper()->getStreet()),
-                $requestExtractor->getShipper()->getContactCompanyName()
+                $requestExtractor->getReturnRecipient()->getCountryCode(),
+                $requestExtractor->getReturnRecipient()->getPostalCode(),
+                $requestExtractor->getReturnRecipient()->getCity(),
+                $implode($requestExtractor->getReturnRecipient()->getStreet()),
+                $requestExtractor->getReturnRecipient()->getContactCompanyName()
             );
         }
 

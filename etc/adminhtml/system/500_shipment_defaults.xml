@@ -21,23 +21,59 @@
             <source_model>GlsGermany\Shipping\Model\Config\Source\TermsOfTrade</source_model>
         </field>
 
-        <field id="send_shipper" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"
-               translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
-            <label>Send Shipper Address</label>
-            <button_label><![CDATA[If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.]]></button_label>
-        </field>
-
-        <field id="shopreturn" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
+        <field id="shopreturn" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"
                translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Use ShopReturnService</label>
             <comment>Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.</comment>
         </field>
 
-        <field id="letterbox" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
+        <field id="letterbox" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
                translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Use LetterboxService</label>
             <comment>Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.</comment>
         </field>
 
+        <field id="send_shipper" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
+               translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
+            <label>Use Alternative Shipper Address</label>
+            <button_label><![CDATA[If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.]]></button_label>
+        </field>
+
+        <field id="return_address" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="60"
+               translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
+            <label>Use Alternative Returns Address</label>
+            <button_label><![CDATA[If enabled, the configured address will be used for returns. Otherwise the <em>Shipping Origin</em> setting will be used.]]></button_label>
+        </field>
+        <group id="alt_return_address" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="70" translate="label">
+            <label>Return Shipment Address</label>
+            <fieldset_css>simple</fieldset_css>
+            <attribute type="expanded">1</attribute>
+            <depends>
+                <field id="return_address">1</field>
+            </depends>
+
+            <field id="company" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
+                   translate="label" type="text">
+                <label>Company</label>
+            </field>
+            <field id="country_id" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="11"
+                   translate="label" type="select">
+                <label>Country</label>
+                <frontend_class>countries</frontend_class>
+                <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+            </field>
+            <field id="postcode" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="12"
+                   translate="label" type="text">
+                <label>ZIP/Postal Code</label>
+            </field>
+            <field id="city" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="13"
+                   translate="label" type="text">
+                <label>City</label>
+            </field>
+            <field id="street" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="14"
+                   translate="label" type="text">
+                <label>Street Address</label>
+            </field>
+        </group>
     </group>
 </include>
