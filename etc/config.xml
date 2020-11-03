@@ -47,6 +47,7 @@
                 </checkout>
                 <shipment_defaults>
                     <label_size>A6</label_size>
+                    <package_default_weight>0.1</package_default_weight>
                     <terms_of_trade>20</terms_of_trade>
                 </shipment_defaults>
                 <additional_services>

@@ -39,6 +39,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 
     // 500_shipment_defaults.xml
     private const CONFIG_PATH_LABEL_SIZE = 'carriers/glsgermany/shipment_defaults/label_size';
+    private const CONFIG_PATH_PACKAGE_DEFAULT_WEIGHT = 'carriers/glsgermany/shipment_defaults/package_default_weight';
     private const CONFIG_PATH_TERMS_OF_TRADE = 'carriers/glsgermany/shipment_defaults/terms_of_trade';
     private const CONFIG_PATH_SEND_SHIPPER = 'carriers/glsgermany/shipment_defaults/send_shipper';
     private const CONFIG_PATH_USE_SHOPRETURN = 'carriers/glsgermany/shipment_defaults/shopreturn';
