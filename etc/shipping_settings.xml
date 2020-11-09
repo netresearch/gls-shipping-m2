@@ -73,6 +73,7 @@
                         <tooltip translate="true">Name a secure location on your premise where GLS can place the parcel.</tooltip>
                         <placeholder translate="true">e.g. shed, garage, or patio</placeholder>
                         <validationRules>
+                            <rule name="required"/>
                             <rule name="validate-no-html-tags"/>
                             <rule name="nrshipping-validate-no-special-chars"/>
                         </validationRules>
