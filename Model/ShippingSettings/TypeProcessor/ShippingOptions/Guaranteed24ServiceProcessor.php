@@ -36,9 +36,11 @@ class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
     }
 
     /**
-     * Remove the G24 service after cut-off time expired.
+     * Remove the G24 service if delivery on the next day is not possible.
      *
-     * If no handover to the carrier happens anymore at the day of checkout, the service must not be booked.
+     * The service must not be booked
+     * - if no handover to the carrier happens anymore at the day of checkout
+     * - on Friday, Saturday, Sunday (no next day delivery even before cut-off time)
      *
      * @param ShippingOptionInterface[] $shippingOptions
      * @param int $storeId
@@ -65,7 +67,7 @@ class Guaranteed24ServiceProcessor implements ShippingOptionsProcessorInterface
         $weekDay = $currentDateTime->format('N');
         $shipmentDates = $this->config->getCutOffTimes($storeId);
 
-        if (!isset($shipmentDates[$weekDay]) || $currentDateTime > $shipmentDates[$weekDay]) {
+        if (!isset($shipmentDates[$weekDay]) || $currentDateTime > $shipmentDates[$weekDay] || (int) $weekDay > 4) {
             unset($shippingOptions[Codes::CHECKOUT_SERVICE_GUARANTEED24]);
         }
 
