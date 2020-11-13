@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage;
 
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;

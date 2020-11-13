@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\DeleteShipments;
+namespace GlsGroup\Shipping\Model\Pipeline\DeleteShipments;
 
 use Magento\Framework\Phrase;
 use Magento\Sales\Api\Data\ShipmentInterface;

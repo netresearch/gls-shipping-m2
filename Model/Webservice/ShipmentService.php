@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Webservice;
+namespace GlsGroup\Shipping\Model\Webservice;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
-use GlsGermany\Sdk\ParcelProcessing\Api\ServiceFactoryInterface;
-use GlsGermany\Sdk\ParcelProcessing\Api\ShipmentServiceInterface;
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
+use GlsGroup\Sdk\ParcelProcessing\Api\ServiceFactoryInterface;
+use GlsGroup\Sdk\ParcelProcessing\Api\ShipmentServiceInterface;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
 use Psr\Log\LoggerInterface;
 
 class ShipmentService implements ShipmentServiceInterface

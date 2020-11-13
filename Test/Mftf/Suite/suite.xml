@@ -5,7 +5,7 @@
   */
 -->
 <suites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Suite/etc/suiteSchema.xsd">
-    <suite name="GlsGermany_Shipping">
+    <suite name="GlsGroup_Shipping">
         <include>
             <group name="gls-carrier-configuration"/>
         </include>

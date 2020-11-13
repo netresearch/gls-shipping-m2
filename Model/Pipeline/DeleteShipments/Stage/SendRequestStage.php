@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage;
+namespace GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage;
 
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
-use GlsGermany\Shipping\Model\Webservice\CancellationServiceFactory;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
+use GlsGroup\Shipping\Model\Webservice\CancellationServiceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\TrackRequest\TrackRequestInterface;
 use Netresearch\ShippingCore\Api\Pipeline\RequestTracksStageInterface;

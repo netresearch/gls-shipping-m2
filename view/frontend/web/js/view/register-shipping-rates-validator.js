@@ -8,8 +8,8 @@ define(
         'uiComponent',
         'Magento_Checkout/js/model/shipping-rates-validator',
         'Magento_Checkout/js/model/shipping-rates-validation-rules',
-        'GlsGermany_Shipping/js/model/shipping-rates-validator',
-        'GlsGermany_Shipping/js/model/shipping-rates-validation-rules'
+        'GlsGroup_Shipping/js/model/shipping-rates-validator',
+        'GlsGroup_Shipping/js/model/shipping-rates-validation-rules'
     ],
     function (
         Component,
@@ -20,8 +20,8 @@ define(
     ) {
         'use strict';
 
-        defaultShippingRatesValidator.registerValidator('glsgermany', shippingRatesValidator);
-        defaultShippingRatesValidationRules.registerRules('glsgermany', shippingRatesValidationRules);
+        defaultShippingRatesValidator.registerValidator('glsgroup', shippingRatesValidator);
+        defaultShippingRatesValidationRules.registerRules('glsgroup', shippingRatesValidationRules);
 
         return Component;
     }

@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
+namespace GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
 
-use GlsGermany\Shipping\Model\Config\Source\TermsOfTrade;
-use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
+use GlsGroup\Shipping\Model\Config\Source\TermsOfTrade;
+use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\OptionInterfaceFactory;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOptionInterface;

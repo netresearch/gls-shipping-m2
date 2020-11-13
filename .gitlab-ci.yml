@@ -86,7 +86,7 @@ php74-mftf-2.4:
   allow_failure: true
   script:
     - ci-install
-    - ci-mftf GlsGermany_Shipping
+    - ci-mftf GlsGroup_Shipping
   artifacts:
     when: on_failure
     paths:
@@ -153,7 +153,7 @@ github:
     - master
   variables:
     GIT_STRATEGY: "clone"
-    VAULT_PATH: "projects/GLS/Github/module-carrier"
+    VAULT_PATH: "projects/GLS/Github/shipping-m2"
   before_script:
     - ci-github-before
   script:

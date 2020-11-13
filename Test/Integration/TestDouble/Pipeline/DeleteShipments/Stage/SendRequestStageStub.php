@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage;
+namespace GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage;
 
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\TrackRequest\TrackRequestInterface;
 

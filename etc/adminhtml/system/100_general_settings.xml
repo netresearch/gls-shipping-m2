@@ -12,7 +12,7 @@
                translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Enabled</label>
             <button_label><![CDATA[Allow customers to check out with <em>GLS Shipping</em> shipping method.]]></button_label>
-            <config_path>carriers/glsgermany/active</config_path>
+            <config_path>carriers/glsgroup/active</config_path>
         </field>
 
         <!-- Applicable Countries -->
@@ -20,7 +20,7 @@
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
             <label>Applicable Countries</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\CustomizeApplicableCountries</source_model>
-            <config_path>carriers/glsgermany/sallowspecific</config_path>
+            <config_path>carriers/glsgroup/sallowspecific</config_path>
             <!-- frontend_class "shipping-applicable-country" intentionally omitted. -->
         </field>
         <field id="specificcountry" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30" translate="label" type="multiselect">
@@ -30,14 +30,14 @@
                 <field id="sallowspecific">1</field>
             </depends>
             <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
-            <config_path>carriers/glsgermany/specificcountry</config_path>
+            <config_path>carriers/glsgroup/specificcountry</config_path>
         </field>
 
         <!-- Cut-off times -->
         <field id="cut_off_times" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
                translate="label comment" type="select">
             <label>Cut-off Times</label>
-            <frontend_model>GlsGermany\Shipping\Block\Adminhtml\System\Config\Form\Field\CutOffTimes</frontend_model>
+            <frontend_model>GlsGroup\Shipping\Block\Adminhtml\System\Config\Form\Field\CutOffTimes</frontend_model>
             <backend_model>Netresearch\ShippingCore\Model\Config\Backend\ArraySerialized</backend_model>
             <comment>Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.</comment>
         </field>

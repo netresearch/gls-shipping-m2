@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data;
 
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageAdditionalInterface;
 

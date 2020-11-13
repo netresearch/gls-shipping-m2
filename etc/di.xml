@@ -6,208 +6,208 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <!-- # sdk preferences -->
-    <preference for="GlsGermany\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface" type="GlsGermany\Sdk\ParcelProcessing\RequestBuilder\ShipmentRequestBuilder"/>
-    <preference for="GlsGermany\Sdk\ParcelProcessing\Api\ServiceFactoryInterface" type="GlsGermany\Sdk\ParcelProcessing\Service\ServiceFactory"/>
+    <preference for="GlsGroup\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface" type="GlsGroup\Sdk\ParcelProcessing\RequestBuilder\ShipmentRequestBuilder"/>
+    <preference for="GlsGroup\Sdk\ParcelProcessing\Api\ServiceFactoryInterface" type="GlsGroup\Sdk\ParcelProcessing\Service\ServiceFactory"/>
 
     <!-- # virtual types -->
-    <virtualType name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Virtual" type="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement">
+    <virtualType name="GlsGroup\Shipping\Model\BulkShipment\BulkShipmentManagement\Virtual" type="GlsGroup\Shipping\Model\BulkShipment\ShipmentManagement">
         <arguments>
             <argument name="createResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CreateLabelResponseProcessor\Virtual</argument>
             <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual" type="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement\Proxy">
+    <virtualType name="GlsGroup\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual" type="GlsGroup\Shipping\Model\BulkShipment\ShipmentManagement\Proxy">
         <arguments>
-            <argument name="instanceName" xsi:type="string">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Virtual</argument>
+            <argument name="instanceName" xsi:type="string">GlsGroup\Shipping\Model\BulkShipment\BulkShipmentManagement\Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\Rate\RateResponseProcessor\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Rate\RateResponseProcessor">
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\Rate\RateResponseProcessor\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Rate\RateResponseProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="carrierDetails" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\Rate\ResponseProcessor\CarrierDetails</item>
-                <item name="methodTitle" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\Rate\ResponseProcessor\MethodTitle</item>
+                <item name="methodTitle" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\Rate\ResponseProcessor\MethodTitle</item>
                 <item name="freeShipping" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\Rate\ResponseProcessor\FreeShipping</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RateRequestService">
+    <virtualType name="GlsGroup\Shipping\Model\Rate\Emulation\RateRequestService\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RateRequestService">
         <arguments>
-            <argument name="responseProcessor" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\Rate\RateResponseProcessor\Virtual</argument>
+            <argument name="responseProcessor" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\Rate\RateResponseProcessor\Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainerFactory\Virtual" type="Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterfaceFactory">
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainerFactory\Virtual" type="Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterfaceFactory">
         <arguments>
-            <argument name="instanceName" xsi:type="string">GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer</argument>
+            <argument name="instanceName" xsi:type="string">GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Shipment\CreateShipmentsPipeline">
-        <arguments>
-            <argument name="stages" xsi:type="array">
-                <item name="validate" sortOrder="100" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage</item>
-                <item name="mapRequest" sortOrder="200" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\MapRequestStage</item>
-                <item name="send" sortOrder="300" xsi:type="object"> GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage</item>
-                <item name="mapResponse" sortOrder="400" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\MapResponseStage</item>
-            </argument>
-            <argument name="artifactsContainerFactory" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainerFactory\Virtual</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainerFactory\Virtual" type="Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterfaceFactory">
-        <arguments>
-            <argument name="instanceName" xsi:type="string">GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Track\RequestTracksPipeline">
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Shipment\CreateShipmentsPipeline">
         <arguments>
             <argument name="stages" xsi:type="array">
-                <item name="mapRequest" sortOrder="100" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\MapRequestStage</item>
-                <item name="send" sortOrder="200" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage</item>
-                <item name="mapResponse" sortOrder="300" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\MapResponseStage</item>
+                <item name="validate" sortOrder="100" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage</item>
+                <item name="mapRequest" sortOrder="200" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\MapRequestStage</item>
+                <item name="send" sortOrder="300" xsi:type="object"> GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage</item>
+                <item name="mapResponse" sortOrder="400" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\MapResponseStage</item>
             </argument>
-            <argument name="artifactsContainerFactory" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainerFactory\Virtual</argument>
+            <argument name="artifactsContainerFactory" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainerFactory\Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator">
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainerFactory\Virtual" type="Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterfaceFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Track\RequestTracksPipeline">
+        <arguments>
+            <argument name="stages" xsi:type="array">
+                <item name="mapRequest" sortOrder="100" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\MapRequestStage</item>
+                <item name="send" sortOrder="200" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage</item>
+                <item name="mapResponse" sortOrder="300" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\MapResponseStage</item>
+            </argument>
+            <argument name="artifactsContainerFactory" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainerFactory\Virtual</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GlsGroup\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual" type="Netresearch\ShippingCore\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="noPartialShipment" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Validator\NoPartialValidator</item>
+                <item name="noPartialShipment" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Validator\NoPartialValidator</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement">
+    <virtualType name="GlsGroup\Shipping\Model\Rate\Emulation\RatesManagement\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement">
         <arguments>
-            <argument name="rateRequestService" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
-            <argument name="proxyConfig" xsi:type="object">GlsGermany\Shipping\Model\Config\ModuleConfig</argument>
+            <argument name="rateRequestService" xsi:type="object">GlsGroup\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
+            <argument name="proxyConfig" xsi:type="object">GlsGroup\Shipping\Model\Config\ModuleConfig</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement\Proxy">
+    <virtualType name="GlsGroup\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual" type="Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement\Proxy">
         <arguments>
-            <argument name="instanceName" xsi:type="string">GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Virtual</argument>
+            <argument name="instanceName" xsi:type="string">GlsGroup\Shipping\Model\Rate\Emulation\RatesManagement\Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual" type="Netresearch\ShippingCore\ViewModel\Adminhtml\System\InfoBox">
+    <virtualType name="GlsGroup\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual" type="Netresearch\ShippingCore\ViewModel\Adminhtml\System\InfoBox">
         <arguments>
-            <argument name="version" xsi:type="object">GlsGermany\Shipping\Model\Config\ModuleConfig</argument>
+            <argument name="version" xsi:type="object">GlsGroup\Shipping\Model\Config\ModuleConfig</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Logger\Handler\Virtual" type="Netresearch\ShippingCore\Model\Util\ApiLogHandler">
+    <virtualType name="GlsGroup\Shipping\Model\Logger\Handler\Virtual" type="Netresearch\ShippingCore\Model\Util\ApiLogHandler">
         <arguments>
-            <argument name="fileName" xsi:type="string">var/log/gls_germany.log</argument>
-            <argument name="logEnabledConfigPath" xsi:type="const">GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_ENABLE_LOGGING</argument>
-            <argument name="logLevelConfigPath" xsi:type="const">GlsGermany\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_LOGLEVEL</argument>
+            <argument name="fileName" xsi:type="string">var/log/gls_shipping.log</argument>
+            <argument name="logEnabledConfigPath" xsi:type="const">GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_ENABLE_LOGGING</argument>
+            <argument name="logLevelConfigPath" xsi:type="const">GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_LOGLEVEL</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GlsGermany\Shipping\Model\Logger\Virtual" type="Monolog\Logger">
+    <virtualType name="GlsGroup\Shipping\Model\Logger\Virtual" type="Monolog\Logger">
         <arguments>
-            <argument name="name" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</argument>
+            <argument name="name" xsi:type="const">GlsGroup\Shipping\Model\Carrier\GlsGroup::CARRIER_CODE</argument>
             <argument name="handlers" xsi:type="array">
-                <item name="apilog" xsi:type="object">GlsGermany\Shipping\Model\Logger\Handler\Virtual</item>
+                <item name="apilog" xsi:type="object">GlsGroup\Shipping\Model\Logger\Handler\Virtual</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Checkout\ShippingDataProcessor\Virtual">
         <arguments>
             <argument name="shippingOptionsProcessors" xsi:type="array">
-                <item name="glsFlexDeliveryProcessor" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
-                <item name="glsGuaranteed24Processor" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
+                <item name="glsFlexDeliveryProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
+                <item name="glsGuaranteed24Processor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Packaging\ShippingDataProcessor\Virtual">
         <arguments>
             <argument name="shippingOptionsProcessors" xsi:type="array">
-                <item name="processGlsInputs" xsi:type="object">GlsGermany\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\InputDataProcessor</item>
+                <item name="processGlsInputs" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\InputDataProcessor</item>
             </argument>
         </arguments>
     </virtualType>
 
     <!-- # argument di overrides -->
-    <type name="GlsGermany\Shipping\Model\BulkShipment\BulkShipmentConfiguration">
+    <type name="GlsGroup\Shipping\Model\BulkShipment\BulkShipmentConfiguration">
         <arguments>
-            <argument name="shipmentManagement" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual</argument>
+            <argument name="shipmentManagement" xsi:type="object">GlsGroup\Shipping\Model\BulkShipment\BulkShipmentManagement\Proxy\Virtual</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement">
+    <type name="GlsGroup\Shipping\Model\BulkShipment\ShipmentManagement">
         <arguments>
             <argument name="deleteResponseProcessor" xsi:type="object">Netresearch\ShippingCore\Model\Pipeline\BulkShipment\CancelLabelResponseProcessor\Virtual</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Carrier\GlsGermany">
+    <type name="GlsGroup\Shipping\Model\Carrier\GlsGroup">
         <arguments>
-            <argument name="ratesManagement" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual</argument>
-            <argument name="shipmentManagement" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement\Proxy</argument>
+            <argument name="ratesManagement" xsi:type="object">GlsGroup\Shipping\Model\Rate\Emulation\RatesManagement\Proxy\Virtual</argument>
+            <argument name="shipmentManagement" xsi:type="object">GlsGroup\Shipping\Model\BulkShipment\ShipmentManagement\Proxy</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Pipeline\ApiGateway">
+    <type name="GlsGroup\Shipping\Model\Pipeline\ApiGateway">
         <arguments>
-            <argument name="creationPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual</argument>
-            <argument name="deletionPipeline" xsi:type="object">GlsGermany\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual</argument>
+            <argument name="creationPipeline" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipmentsPipeline\Virtual</argument>
+            <argument name="deletionPipeline" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\DeleteShipmentsPipeline\Virtual</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage">
+    <type name="GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\ValidateStage">
         <arguments>
-            <argument xsi:type="object" name="requestValidator">GlsGermany\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual</argument>
+            <argument xsi:type="object" name="requestValidator">GlsGroup\Shipping\Model\Pipeline\Shipment\ShipmentRequest\Validator\CompositeValidator\Virtual</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Rate\RatesManagement">
+    <type name="GlsGroup\Shipping\Model\Rate\RatesManagement">
         <arguments>
-            <argument name="rateRequestService" xsi:type="object">GlsGermany\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
+            <argument name="rateRequestService" xsi:type="object">GlsGroup\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\BulkShipment\BulkShipmentConfiguration">
         <arguments>
             <argument name="configurations" xsi:type="array">
-                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\BulkShipment\BulkShipmentConfiguration</item>
+                <item name="glsgroup" xsi:type="object">GlsGroup\Shipping\Model\BulkShipment\BulkShipmentConfiguration</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\LabelStatus\LabelStatusManagement">
         <arguments>
             <argument name="carrierCodes" xsi:type="array">
-                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+                <item name="glsgroup" xsi:type="const">GlsGroup\Shipping\Model\Carrier\GlsGroup::CARRIER_CODE</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Observer\DisableCodPaymentMethods">
         <arguments>
             <argument name="codSupportMap" xsi:type="array">
-                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
+                <item name="glsgroup" xsi:type="object">GlsGroup\Shipping\Model\Carrier\CodSupportHandler</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Observer\PersistCodShippingOptionSelection">
         <arguments>
             <argument name="codSelectors" xsi:type="array">
-                <item name="glsgermany" xsi:type="object">GlsGermany\Shipping\Model\Carrier\CodSupportHandler</item>
+                <item name="glsgroup" xsi:type="object">GlsGroup\Shipping\Model\Carrier\CodSupportHandler</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Observer\SplitAddress">
         <arguments>
             <argument name="carrierCodes" xsi:type="array">
-                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+                <item name="glsgroup" xsi:type="const">GlsGroup\Shipping\Model\Carrier\GlsGroup::CARRIER_CODE</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\ShippingSettings\TypeProcessor\ShippingOptions\RemoveUnusedConsumerServicesProcessor">
         <arguments>
             <argument name="carrierConsumerServices" xsi:type="array">
-                <item name="glsgermany" xsi:type="array">
-                    <item name="0" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</item>
-                    <item name="1" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</item>
-                    <item name="2" xsi:type="const">GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</item>
+                <item name="glsgroup" xsi:type="array">
+                    <item name="0" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</item>
+                    <item name="1" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</item>
+                    <item name="2" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</item>
                     <item name="3" xsi:type="const">Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_CASH_ON_DELIVERY</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Webservice\ShipmentService">
+    <type name="GlsGroup\Shipping\Model\Webservice\ShipmentService">
         <arguments>
-            <argument name="logger" xsi:type="object">GlsGermany\Shipping\Model\Logger\Virtual</argument>
+            <argument name="logger" xsi:type="object">GlsGroup\Shipping\Model\Logger\Virtual</argument>
         </arguments>
     </type>
-    <type name="GlsGermany\Shipping\Model\Webservice\CancellationService">
+    <type name="GlsGroup\Shipping\Model\Webservice\CancellationService">
         <arguments>
-            <argument name="logger" xsi:type="object">GlsGermany\Shipping\Model\Logger\Virtual</argument>
+            <argument name="logger" xsi:type="object">GlsGroup\Shipping\Model\Logger\Virtual</argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\Util\ApiLogAnonymizer">
@@ -222,22 +222,22 @@
     <type name="Magento\Config\Model\Config\TypePool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
-                <item name="carriers/glsgermany/account/api_username" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/account/api_password" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/account/customer_id" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/account/contact_id" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/account/api_username" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/account/api_password" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/account/customer_id" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/account/contact_id" xsi:type="string">1</item>
             </argument>
             <argument name="environment" xsi:type="array">
-                <item name="carriers/glsgermany/general/logging" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/general/logging_group/loglevel" xsi:type="string">1</item>
-                <item name="carriers/glsgermany/account/sandboxmode" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/general/logging" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/general/logging_group/loglevel" xsi:type="string">1</item>
+                <item name="carriers/glsgroup/account/sandboxmode" xsi:type="string">1</item>
             </argument>
         </arguments>
     </type>
     <type name="Netresearch\ShippingCore\Model\ShippingSettings\PackagingPopup">
         <arguments>
             <argument name="supportMap" xsi:type="array">
-                <item name="glsgermany" xsi:type="const">GlsGermany\Shipping\Model\Carrier\GlsGermany::CARRIER_CODE</item>
+                <item name="glsgroup" xsi:type="const">GlsGroup\Shipping\Model\Carrier\GlsGroup::CARRIER_CODE</item>
             </argument>
         </arguments>
     </type>

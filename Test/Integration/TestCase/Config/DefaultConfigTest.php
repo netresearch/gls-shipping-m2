@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Config;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
@@ -37,7 +37,7 @@ class DefaultConfigTest extends TestCase
     {
         /** @var CarrierFactoryInterface $carrierFactory */
         $carrierFactory = Bootstrap::getObjectManager()->create(CarrierFactoryInterface::class);
-        self::assertInstanceOf(AbstractCarrierOnline::class, $carrierFactory->get('glsgermany'));
+        self::assertInstanceOf(AbstractCarrierOnline::class, $carrierFactory->get('glsgroup'));
     }
 
     /**
@@ -47,13 +47,13 @@ class DefaultConfigTest extends TestCase
      */
     public function carrierDefaults()
     {
-        self::assertTrue($this->configReader->isSetFlag('carriers/glsgermany/is_online'));
-        self::assertGreaterThan(0, (int) $this->configReader->getValue('carriers/glsgermany/max_package_weight'));
-        self::assertFalse($this->configReader->isSetFlag('carriers/glsgermany/active'));
-        self::assertNotEmpty($this->configReader->getValue('carriers/glsgermany/title'));
-        self::assertTrue(is_numeric($this->configReader->getValue('carriers/glsgermany/sort_order')));
-        self::assertTrue($this->configReader->isSetFlag('carriers/glsgermany/showmethod'));
-        self::assertNotEmpty($this->configReader->getValue('carriers/glsgermany/specificerrmsg'));
-        self::assertFalse($this->configReader->isSetFlag('carriers/glsgermany/sallowspecific'));
+        self::assertTrue($this->configReader->isSetFlag('carriers/glsgroup/is_online'));
+        self::assertGreaterThan(0, (int) $this->configReader->getValue('carriers/glsgroup/max_package_weight'));
+        self::assertFalse($this->configReader->isSetFlag('carriers/glsgroup/active'));
+        self::assertNotEmpty($this->configReader->getValue('carriers/glsgroup/title'));
+        self::assertTrue(is_numeric($this->configReader->getValue('carriers/glsgroup/sort_order')));
+        self::assertTrue($this->configReader->isSetFlag('carriers/glsgroup/showmethod'));
+        self::assertNotEmpty($this->configReader->getValue('carriers/glsgroup/specificerrmsg'));
+        self::assertFalse($this->configReader->isSetFlag('carriers/glsgroup/sallowspecific'));
     }
 }

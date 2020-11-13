@@ -7,7 +7,7 @@ define(
     [
         'jquery',
         'mageUtils',
-        'GlsGermany_Shipping/js/model/shipping-rates-validation-rules',
+        'GlsGroup_Shipping/js/model/shipping-rates-validation-rules',
         'mage/translate'
     ],
     function ($, utils, validationRules, $t) {

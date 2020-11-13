@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Validator;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Validator;
 
 use Magento\Bundle\Model\Product\Type;
 use Magento\Catalog\Model\Product\Type\AbstractType;

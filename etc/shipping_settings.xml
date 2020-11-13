@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <carriers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
-    <carrier code="glsgermany">
+    <carrier code="glsgroup">
         <serviceOptions>
-            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgermany/additional_services/flexdelivery">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgroup/additional_services/flexdelivery">
                 <label translate="true">FlexDeliveryService</label>
                 <sortOrder>110</sortOrder>
                 <routes>
@@ -48,7 +48,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgermany/additional_services/deposit">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgroup/additional_services/deposit">
                 <label translate="true">DepositService</label>
                 <sortOrder>120</sortOrder>
                 <routes>
@@ -80,7 +80,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgermany/additional_services/guaranteed24">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgroup/additional_services/guaranteed24">
                 <label translate="true">Guaranteed24Service</label>
                 <sortOrder>130</sortOrder>
                 <routes>
@@ -101,7 +101,7 @@
         </serviceOptions>
         <metadata>
             <color>#172154</color>
-            <imageUrl>GlsGermany_Shipping::images/logo.jpg</imageUrl>
+            <imageUrl>GlsGroup_Shipping::images/logo.jpg</imageUrl>
         </metadata>
     </carrier>
 </carriers>

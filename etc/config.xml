@@ -7,9 +7,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <carriers>
-            <glsgermany>
+            <glsgroup>
                 <version>1.0.0</version>
-                <model>GlsGermany\Shipping\Model\Carrier\GlsGermany</model>
+                <model>GlsGroup\Shipping\Model\Carrier\GlsGroup</model>
                 <is_online>1</is_online>
                 <max_package_weight>1000</max_package_weight>
 
@@ -53,7 +53,7 @@
                 <additional_services>
                     <flexdelivery_identity>support</flexdelivery_identity>
                 </additional_services>
-            </glsgermany>
+            </glsgroup>
         </carriers>
     </default>
 </config>

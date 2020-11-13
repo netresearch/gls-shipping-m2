@@ -6,14 +6,14 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
-use GlsGermany\Sdk\ParcelProcessing\Exception\RequestValidatorException;
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
-use GlsGermany\Shipping\Model\Config\Source\LabelSize;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
+use GlsGroup\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
+use GlsGroup\Sdk\ParcelProcessing\Exception\RequestValidatorException;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Shipping\Model\Config\Source\LabelSize;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterface;

@@ -1,5 +1,5 @@
 {
-    "name": "glsgermany/module-carrier-meta",
+    "name": "gls/shipping-m2-meta",
     "description": "Metapackage for testing the GLS carrier extension with dependencies",
     "version": "1.0.0",
     "type": "metapackage",

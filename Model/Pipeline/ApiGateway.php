@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline;
+namespace GlsGroup\Shipping\Model\Pipeline;
 
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer as CreateArtifactsContainer;
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer as DeleteArtifactsContainer;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer as CreateArtifactsContainer;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer as DeleteArtifactsContainer;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\LabelResponseInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentErrorResponseInterface;

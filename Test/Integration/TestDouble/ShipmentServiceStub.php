@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestDouble;
+namespace GlsGroup\Shipping\Test\Integration\TestDouble;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
-use GlsGermany\Sdk\ParcelProcessing\Api\ShipmentServiceInterface;
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub as CreationStage;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub as CancellationStage;
+use GlsGroup\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
+use GlsGroup\Sdk\ParcelProcessing\Api\ShipmentServiceInterface;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub as CreationStage;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub as CancellationStage;
 
 /**
  * Return responses on webservice calls which can be predefined via artifacts containers.
@@ -49,7 +49,7 @@ class ShipmentServiceStub implements ShipmentServiceInterface
      * @param \JsonSerializable $shipmentRequest
      * @return ShipmentInterface
      * @throws ServiceException
-     * @see \GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub
+     * @see \GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub
      */
     public function createShipment(\JsonSerializable $shipmentRequest): ShipmentInterface
     {

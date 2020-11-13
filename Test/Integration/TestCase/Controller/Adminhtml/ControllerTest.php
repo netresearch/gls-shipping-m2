@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml;
 
-use GlsGermany\Shipping\Model\Webservice\CancellationService;
-use GlsGermany\Shipping\Model\Webservice\ShipmentService;
-use GlsGermany\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
-use GlsGermany\Shipping\Test\Integration\TestDouble\ShipmentServiceStub;
+use GlsGroup\Shipping\Model\Webservice\CancellationService;
+use GlsGroup\Shipping\Model\Webservice\ShipmentService;
+use GlsGroup\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
+use GlsGroup\Shipping\Test\Integration\TestDouble\ShipmentServiceStub;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 
