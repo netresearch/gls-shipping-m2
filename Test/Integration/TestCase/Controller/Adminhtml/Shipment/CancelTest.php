@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Shipment;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Shipment;
 
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage;
-use GlsGermany\Shipping\Model\Webservice\CancellationService;
-use GlsGermany\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage;
+use GlsGroup\Shipping\Model\Webservice\CancellationService;
+use GlsGroup\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub;
 use Magento\Sales\Api\Data\TrackInterface;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
 use Magento\Sales\Model\Order;
@@ -93,16 +93,16 @@ class CancelTest extends AbstractBackendController
      * @magentoConfigFixture default_store general/store_information/country_id DE
      * @magentoConfigFixture default_store general/store_information/postcode 36286
      * @magentoConfigFixture default_store general/store_information/city Neuenstein
-     * @magentoConfigFixture default_store general/store_information/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store general/store_information/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store shipping/origin/country_id DE
      * @magentoConfigFixture default_store shipping/origin/region_id 86
      * @magentoConfigFixture default_store shipping/origin/postcode 36286
      * @magentoConfigFixture default_store shipping/origin/city Neuenstein
-     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS-Germany-Straße 1 - 7
      *
-     * @magentoConfigFixture current_store carriers/glsgermany/active 1
-     * @magentoConfigFixture current_store carriers/glsgermany/checkout/emulated_carrier flatrate
+     * @magentoConfigFixture current_store carriers/glsgroup/active 1
+     * @magentoConfigFixture current_store carriers/glsgroup/checkout/emulated_carrier flatrate
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F
@@ -114,7 +114,7 @@ class CancelTest extends AbstractBackendController
         $trackingNumbers = ['GLS123', 'GLS456'];
 
         /** @var Order $order */
-        $order = OrderBuilder::anOrder()->withShippingMethod('glsgermany_flatrate')->build();
+        $order = OrderBuilder::anOrder()->withShippingMethod('glsgroup_flatrate')->build();
         $this->orderFixtures->add($order);
 
         $fixtureShipment = ShipmentBuilder::forOrder($order)
@@ -167,16 +167,16 @@ class CancelTest extends AbstractBackendController
      * @magentoConfigFixture default_store general/store_information/country_id DE
      * @magentoConfigFixture default_store general/store_information/postcode 36286
      * @magentoConfigFixture default_store general/store_information/city Neuenstein
-     * @magentoConfigFixture default_store general/store_information/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store general/store_information/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store shipping/origin/country_id DE
      * @magentoConfigFixture default_store shipping/origin/region_id 86
      * @magentoConfigFixture default_store shipping/origin/postcode 36286
      * @magentoConfigFixture default_store shipping/origin/city Neuenstein
-     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS-Germany-Straße 1 - 7
      *
-     * @magentoConfigFixture current_store carriers/glsgermany/active 1
-     * @magentoConfigFixture current_store carriers/glsgermany/checkout/emulated_carrier flatrate
+     * @magentoConfigFixture current_store carriers/glsgroup/active 1
+     * @magentoConfigFixture current_store carriers/glsgroup/checkout/emulated_carrier flatrate
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F
@@ -188,7 +188,7 @@ class CancelTest extends AbstractBackendController
         $trackingNumbers = ['GLS123', 'GLS456'];
 
         /** @var Order $order */
-        $order = OrderBuilder::anOrder()->withShippingMethod('glsgermany_flatrate')->build();
+        $order = OrderBuilder::anOrder()->withShippingMethod('glsgroup_flatrate')->build();
         $this->orderFixtures->add($order);
 
         $fixtureShipment = ShipmentBuilder::forOrder($order)

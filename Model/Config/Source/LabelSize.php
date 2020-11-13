@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Config\Source;
+namespace GlsGroup\Shipping\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 

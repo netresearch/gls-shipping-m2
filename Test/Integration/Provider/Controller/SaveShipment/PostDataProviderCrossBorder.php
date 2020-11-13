@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\Provider\Controller\SaveShipment;
+namespace GlsGroup\Shipping\Test\Integration\Provider\Controller\SaveShipment;
 
 use Magento\Sales\Api\Data\OrderInterface;
 

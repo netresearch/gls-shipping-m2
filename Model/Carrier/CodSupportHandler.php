@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Carrier;
+namespace GlsGroup\Shipping\Model\Carrier;
 
-use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes as CarrierCodes;
+use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes as CarrierCodes;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\Search\SearchCriteriaBuilderFactory;
 use Magento\Quote\Model\Quote;

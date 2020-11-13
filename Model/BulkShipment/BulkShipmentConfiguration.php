@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\BulkShipment;
+namespace GlsGroup\Shipping\Model\BulkShipment;
 
-use GlsGermany\Shipping\Model\Carrier\GlsGermany;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestModifier;
+use GlsGroup\Shipping\Model\Carrier\GlsGroup;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestModifier;
 use Netresearch\ShippingCore\Api\BulkShipment\BulkLabelCancellationInterface;
 use Netresearch\ShippingCore\Api\BulkShipment\BulkLabelCreationInterface;
 use Netresearch\ShippingCore\Api\BulkShipment\BulkShipmentConfigurationInterface;
@@ -37,7 +37,7 @@ class BulkShipmentConfiguration implements BulkShipmentConfigurationInterface
 
     public function getCarrierCode(): string
     {
-        return GlsGermany::CARRIER_CODE;
+        return GlsGroup::CARRIER_CODE;
     }
 
     public function getRequestModifier(): RequestModifierInterface

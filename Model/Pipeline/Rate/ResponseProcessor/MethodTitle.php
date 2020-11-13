@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\Rate\ResponseProcessor;
+namespace GlsGroup\Shipping\Model\Pipeline\Rate\ResponseProcessor;
 
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Netresearch\ShippingCore\Api\Pipeline\RateResponseProcessorInterface;

@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Shipment;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Shipment;
 
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage as CreationStage;
-use GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\ControllerTest;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage as CreationStage;
+use GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\ControllerTest;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub;
 use Magento\Framework\Exception\AuthenticationException;
 use TddWizard\Fixtures\Sales\OrderFixturePool;
 
@@ -84,20 +84,20 @@ abstract class AutoCreateTest extends ControllerTest
      * @magentoConfigFixture default_store general/store_information/country_id DE
      * @magentoConfigFixture default_store general/store_information/postcode 36286
      * @magentoConfigFixture default_store general/store_information/city Neuenstein
-     * @magentoConfigFixture default_store general/store_information/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store general/store_information/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store shipping/origin/country_id DE
      * @magentoConfigFixture default_store shipping/origin/region_id 86
      * @magentoConfigFixture default_store shipping/origin/postcode 36286
      * @magentoConfigFixture default_store shipping/origin/city Neuenstein
-     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store catalog/price/scope 0
      * @magentoConfigFixture default_store currency/options/base EUR
      * @magentoConfigFixture default_store shipping/batch_processing/retry_failed_shipments_shipments 0
      *
-     * @magentoConfigFixture current_store carriers/glsgermany/active 1
-     * @magentoConfigFixture current_store  carriers/glsgermany/checkout/emulated_carrier flatrate
+     * @magentoConfigFixture current_store carriers/glsgroup/active 1
+     * @magentoConfigFixture current_store  carriers/glsgroup/checkout/emulated_carrier flatrate
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F

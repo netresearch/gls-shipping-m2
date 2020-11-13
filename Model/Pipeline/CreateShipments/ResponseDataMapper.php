@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\Data\ShipmentInterface as ApiShipment;
+use GlsGroup\Sdk\ParcelProcessing\Api\Data\ShipmentInterface as ApiShipment;
 use Magento\Framework\Phrase;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\LabelResponseInterface;

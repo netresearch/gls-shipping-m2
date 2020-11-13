@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\ShippingSettings\ShippingOption;
+namespace GlsGroup\Shipping\Model\ShippingSettings\ShippingOption;
 
 class Codes
 {

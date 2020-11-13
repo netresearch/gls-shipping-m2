@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Observer;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Observer;
 
-use GlsGermany\Shipping\Model\Carrier\GlsGermany;
-use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
+use GlsGroup\Shipping\Model\Carrier\GlsGroup;
+use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Checkout\Model\Cart;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Model\Session;
@@ -115,7 +115,7 @@ class DisableCodPaymentMethodsTest extends TestCase
     {
         /** @var AddressRepositoryInterface $customerAddressRepository */
         $customerAddressRepository = Bootstrap::getObjectManager()->get(AddressRepositoryInterface::class);
-        $shippingMethod = GlsGermany::CARRIER_CODE . '_flatrate';
+        $shippingMethod = GlsGroup::CARRIER_CODE . '_flatrate';
 
         // prepare checkout
         self::$productFixture = new ProductFixture(ProductBuilder::aSimpleProduct()->build());

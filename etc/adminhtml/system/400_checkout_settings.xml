@@ -11,7 +11,7 @@
         <field id="title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
                translate="label" type="text" canRestore="1">
             <label>Carrier Title</label>
-            <config_path>carriers/glsgermany/title</config_path>
+            <config_path>carriers/glsgroup/title</config_path>
         </field>
 
         <field id="method_title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
@@ -24,7 +24,7 @@
             <label>Sort Order</label>
             <frontend_class>validate-number</frontend_class>
             <comment><![CDATA[This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.]]></comment>
-            <config_path>carriers/glsgermany/sort_order</config_path>
+            <config_path>carriers/glsgroup/sort_order</config_path>
         </field>
 
         <field id="emulated_carrier" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="30"
@@ -41,7 +41,7 @@
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
             <label>Behavior in Cases of Unavailability</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\ShowIfNotApplicable</source_model>
-            <config_path>carriers/glsgermany/showmethod</config_path>
+            <config_path>carriers/glsgroup/showmethod</config_path>
         </field>
         <field id="specificerrmsg" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
                translate="label" type="textarea" canRestore="1">
@@ -49,7 +49,7 @@
             <depends>
                 <field id="showmethod">1</field>
             </depends>
-            <config_path>carriers/glsgermany/specificerrmsg</config_path>
+            <config_path>carriers/glsgroup/specificerrmsg</config_path>
         </field>
     </group>
 </include>

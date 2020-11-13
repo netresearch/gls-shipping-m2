@@ -12,7 +12,7 @@
         <field id="label_size" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
             <label>Label Size</label>
-            <source_model>GlsGermany\Shipping\Model\Config\Source\LabelSize</source_model>
+            <source_model>GlsGroup\Shipping\Model\Config\Source\LabelSize</source_model>
         </field>
 
         <field id="package_default_weight" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
@@ -25,7 +25,7 @@
         <field id="terms_of_trade" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label" type="select">
             <label>Terms of Trade</label>
-            <source_model>GlsGermany\Shipping\Model\Config\Source\TermsOfTrade</source_model>
+            <source_model>GlsGroup\Shipping\Model\Config\Source\TermsOfTrade</source_model>
         </field>
 
         <field id="shopreturn" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"

@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\BulkShipment;
+namespace GlsGroup\Shipping\Model\BulkShipment;
 
-use GlsGermany\Shipping\Model\Pipeline\ApiGateway;
-use GlsGermany\Shipping\Model\Pipeline\ApiGatewayFactory;
+use GlsGroup\Shipping\Model\Pipeline\ApiGateway;
+use GlsGroup\Shipping\Model\Pipeline\ApiGatewayFactory;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\BulkShipment\BulkLabelCancellationInterface;
 use Netresearch\ShippingCore\Api\BulkShipment\BulkLabelCreationInterface;

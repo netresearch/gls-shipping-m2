@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'GlsGermany_Shipping',
+    'GlsGroup_Shipping',
     __DIR__
 );

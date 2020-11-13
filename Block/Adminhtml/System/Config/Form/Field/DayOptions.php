@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Block\Adminhtml\System\Config\Form\Field;
+namespace GlsGroup\Shipping\Block\Adminhtml\System\Config\Form\Field;
 
 use Magento\Config\Model\Config\Source\Locale\Weekdays;
 use Magento\Framework\Escaper;

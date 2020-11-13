@@ -6,12 +6,12 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage;
 
-use GlsGermany\Sdk\ParcelProcessing\Exception\DetailedServiceException;
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
-use GlsGermany\Shipping\Model\Webservice\ShipmentServiceFactory;
+use GlsGroup\Sdk\ParcelProcessing\Exception\DetailedServiceException;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
+use GlsGroup\Shipping\Model\Webservice\ShipmentServiceFactory;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 use Netresearch\ShippingCore\Api\Pipeline\CreateShipmentsStageInterface;

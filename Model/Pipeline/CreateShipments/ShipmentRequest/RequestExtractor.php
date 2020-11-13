@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditionalFactory;
-use GlsGermany\Shipping\Model\ShippingSettings\ShippingOption\Codes;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditionalFactory;
+use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipment;

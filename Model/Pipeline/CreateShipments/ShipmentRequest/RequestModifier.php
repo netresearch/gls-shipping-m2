@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
+namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
 use Magento\Framework\DataObjectFactory;
 use Magento\Framework\Exception\LocalizedException;

@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestDouble;
+namespace GlsGroup\Shipping\Test\Integration\TestDouble;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\CancellationServiceInterface;
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub;
+use GlsGroup\Sdk\ParcelProcessing\Api\CancellationServiceInterface;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub;
 
 /**
  * Return responses on webservice calls which can be predefined via artifacts containers.
@@ -33,7 +33,7 @@ class CancellationServiceStub implements CancellationServiceInterface
      * @param string[] $parcelIds
      * @return string[]
      * @throws ServiceException
-     * @see \GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub
+     * @see \GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub
      *
      */
     public function cancelParcels(array $parcelIds): array
@@ -61,7 +61,7 @@ class CancellationServiceStub implements CancellationServiceInterface
      * @param string $parcelId
      * @return string
      * @throws ServiceException
-     * @see \GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub
+     * @see \GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub
      *
      */
     public function cancelParcel(string $parcelId): string

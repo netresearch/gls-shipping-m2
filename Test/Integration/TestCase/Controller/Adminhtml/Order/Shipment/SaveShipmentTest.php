@@ -6,15 +6,15 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order\Shipment;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order\Shipment;
 
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage as CreationStage;
-use GlsGermany\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage as CancellationStage;
-use GlsGermany\Shipping\Test\Integration\Provider\Controller\SaveShipment\PostDataProviderCrossBorder;
-use GlsGermany\Shipping\Test\Integration\Provider\Controller\SaveShipment\PostDataProviderDomestic;
-use GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\ControllerTest;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub as CreationStageStub;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub as CancellationStageStub;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage as CreationStage;
+use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage as CancellationStage;
+use GlsGroup\Shipping\Test\Integration\Provider\Controller\SaveShipment\PostDataProviderCrossBorder;
+use GlsGroup\Shipping\Test\Integration\Provider\Controller\SaveShipment\PostDataProviderDomestic;
+use GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\ControllerTest;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub as CreationStageStub;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub as CancellationStageStub;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Sales\Api\Data\OrderInterface;
 use TddWizard\Fixtures\Sales\OrderFixturePool;
@@ -145,19 +145,19 @@ abstract class SaveShipmentTest extends ControllerTest
      * @magentoConfigFixture default_store general/store_information/country_id DE
      * @magentoConfigFixture default_store general/store_information/postcode 36286
      * @magentoConfigFixture default_store general/store_information/city Neuenstein
-     * @magentoConfigFixture default_store general/store_information/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store general/store_information/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store shipping/origin/country_id DE
      * @magentoConfigFixture default_store shipping/origin/region_id 86
      * @magentoConfigFixture default_store shipping/origin/postcode 36286
      * @magentoConfigFixture default_store shipping/origin/city Neuenstein
-     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store catalog/price/scope 0
      * @magentoConfigFixture default_store currency/options/base EUR
      *
-     * @magentoConfigFixture current_store carriers/glsgermany/active 1
-     * @magentoConfigFixture current_store carriers/glsgermany/checkout_settings/emulated_carrier flatrate
+     * @magentoConfigFixture current_store carriers/glsgroup/active 1
+     * @magentoConfigFixture current_store carriers/glsgroup/checkout_settings/emulated_carrier flatrate
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F

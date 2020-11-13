@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order\Shipment;
+namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order\Shipment;
 
-use GlsGermany\Sdk\ParcelProcessing\Exception\ServiceException;
-use GlsGermany\Shipping\Model\Carrier\GlsGermany;
-use GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub;
+use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
+use GlsGroup\Shipping\Model\Carrier\GlsGroup;
+use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection;
 use Netresearch\ShippingCore\Api\LabelStatus\LabelStatusManagementInterface;
 use Netresearch\ShippingCore\Model\LabelStatus\LabelStatusProvider;
@@ -42,18 +42,18 @@ class ServiceFailureTest extends SaveShipmentTest
      * @magentoConfigFixture default_store general/store_information/country_id DE
      * @magentoConfigFixture default_store general/store_information/postcode 36286
      * @magentoConfigFixture default_store general/store_information/city Neuenstein
-     * @magentoConfigFixture default_store general/store_information/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store general/store_information/street_line1 GLS-Germany-Straße 1 - 7
      *
      * @magentoConfigFixture default_store shipping/origin/country_id DE
      * @magentoConfigFixture default_store shipping/origin/region_id 86
      * @magentoConfigFixture default_store shipping/origin/postcode 36286
      * @magentoConfigFixture default_store shipping/origin/city Neuenstein
-     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS Germany-Straße 1 - 7
+     * @magentoConfigFixture default_store shipping/origin/street_line1 GLS-Germany-Straße 1 - 7
      *
-     * @magentoConfigFixture current_store carriers/glsgermany/active 1
-     * @magentoConfigFixture current_store carriers/glsgermany/checkout/emulated_carrier flatrate
-     * @magentoConfigFixture current_store carriers/glsgermany/account/customer_id foo
-     * @magentoConfigFixture current_store carriers/glsgermany/account/contact_id bar
+     * @magentoConfigFixture current_store carriers/glsgroup/active 1
+     * @magentoConfigFixture current_store carriers/glsgroup/checkout/emulated_carrier flatrate
+     * @magentoConfigFixture current_store carriers/glsgroup/account/customer_id foo
+     * @magentoConfigFixture current_store carriers/glsgroup/account/contact_id bar
      *
      * @magentoConfigFixture current_store carriers/flatrate/type O
      * @magentoConfigFixture current_store carriers/flatrate/handling_type F
@@ -68,7 +68,7 @@ class ServiceFailureTest extends SaveShipmentTest
 
         /** @var \Magento\Sales\Model\Order $order */
         $order = OrderBuilder::anOrder()
-            ->withShippingMethod(GlsGermany::CARRIER_CODE . '_flatrate')
+            ->withShippingMethod(GlsGroup::CARRIER_CODE . '_flatrate')
             ->withProducts(
                 ProductBuilder::aSimpleProduct()->withWeight(0.65)->withSku('foo'),
                 ProductBuilder::aSimpleProduct()->withWeight(0.99)->withSku('bar')

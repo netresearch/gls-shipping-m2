@@ -6,10 +6,10 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Carrier;
+namespace GlsGroup\Shipping\Model\Carrier;
 
-use GlsGermany\Shipping\Model\BulkShipment\ShipmentManagement;
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Shipping\Model\BulkShipment\ShipmentManagement;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Directory\Helper\Data;
 use Magento\Directory\Model\CountryFactory;
@@ -40,9 +40,9 @@ use Netresearch\ShippingCore\Model\Rate\Emulation\ProxyCarrierFactory;
 use Netresearch\ShippingCore\Model\Rate\Emulation\RatesManagement;
 use Psr\Log\LoggerInterface;
 
-class GlsGermany extends AbstractCarrierOnline implements CarrierInterface
+class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
 {
-    public const CARRIER_CODE = 'glsgermany';
+    public const CARRIER_CODE = 'glsgroup';
 
     public const TRACKING_URL_TEMPLATE = 'https://gls-group.eu/track/%s';
 

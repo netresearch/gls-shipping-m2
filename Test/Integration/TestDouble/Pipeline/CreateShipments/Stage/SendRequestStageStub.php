@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage;
+namespace GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage;
 
-use GlsGermany\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
-use GlsGermany\Sdk\ParcelProcessing\Service\ShipmentService\Parcel;
-use GlsGermany\Sdk\ParcelProcessing\Service\ShipmentService\Shipment;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
-use GlsGermany\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage;
+use GlsGroup\Sdk\ParcelProcessing\Api\Data\ShipmentInterface;
+use GlsGroup\Sdk\ParcelProcessing\Service\ShipmentService\Parcel;
+use GlsGroup\Sdk\ParcelProcessing\Service\ShipmentService\Shipment;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainer;
+use GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 

@@ -7,85 +7,85 @@
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
     <section name="AdminSystemConfigCarriersGlsSection">
         <!-- GLS Shipping delivery method group -->
-        <element name="glsCarrierGroup" type="button" selector="#carriers_glsgermany-head"/>
-        <element name="glsCarrierGroupExpanded" type="button" selector="#carriers_glsgermany-head:not(.open)"/>
+        <element name="glsCarrierGroup" type="button" selector="#carriers_glsgroup-head"/>
+        <element name="glsCarrierGroupExpanded" type="button" selector="#carriers_glsgroup-head:not(.open)"/>
 
         <!-- General Settings sub-group -->
         <element name="glsCarrierGeneralSettingsSubGroup" type="button"
-                 selector="#carriers_glsgermany_general-head"/>
+                 selector="#carriers_glsgroup_general-head"/>
         <element name="glsCarrierGeneralSettingsSubGroupExpanded" type="button"
-                 selector="#carriers_glsgermany_general-head:not(.open)"/>
+                 selector="#carriers_glsgroup_general-head:not(.open)"/>
         <!-- Account Settings sub-group -->
         <element name="glsCarrierAccountSettingsSubGroup" type="button"
-                 selector="#carriers_glsgermany_account-head"/>
+                 selector="#carriers_glsgroup_account-head"/>
         <element name="glsCarrierAccountSettingsSubGroupExpanded" type="button"
-                 selector="#carriers_glsgermany_account-head:not(.open)"/>
+                 selector="#carriers_glsgroup_account-head:not(.open)"/>
         <!-- Checkout Presentation sub-group -->
         <element name="glsCarrierCheckoutSettingsSubGroup" type="button"
-                 selector="#carriers_glsgermany_checkout-head"/>
+                 selector="#carriers_glsgroup_checkout-head"/>
         <element name="glsCarrierCheckoutSettingsSubGroupExpanded" type="button"
-                 selector="#carriers_glsgermany_checkout-head:not(.open)"/>
+                 selector="#carriers_glsgroup_checkout-head:not(.open)"/>
         <!-- Shipment Defaults sub-group -->
         <element name="glsCarrierDefaultSettingsSubGroup" type="button"
-                 selector="#carriers_glsgermany_shipment_defaults-head"/>
+                 selector="#carriers_glsgroup_shipment_defaults-head"/>
         <element name="glsCarrierDefaultSettingsSubGroupExpanded" type="button"
-                 selector="#carriers_glsgermany_shipment_defaults-head:not(.open)"/>
+                 selector="#carriers_glsgroup_shipment_defaults-head:not(.open)"/>
         <!-- Checkout Services sub-group -->
         <element name="glsCarrierCheckoutServicesSubGroup" type="button"
-                 selector="#carriers_glsgermany_additional_services-head"/>
+                 selector="#carriers_glsgroup_additional_services-head"/>
         <element name="glsCarrierCheckoutServicesSubGroupExpanded" type="button"
-                 selector="#carriers_glsgermany_additional_services-head:not(.open)"/>
+                 selector="#carriers_glsgroup_additional_services-head:not(.open)"/>
 
         <!-- General Settings fields -->
         <element name="glsCarrierEnabledSetting" type="checkbox"
-                 selector="#carriers_glsgermany_general_active"/>
+                 selector="#carriers_glsgroup_general_active"/>
         <element name="glsCarrierCountriesSettingDefault" type="radio"
-                 selector="//label[@for='carriers_glsgermany_general_sallowspecific0']"/>
+                 selector="//label[@for='carriers_glsgroup_general_sallowspecific0']"/>
         <element name="glsCarrierCountriesSettingCustomized" type="radio"
-                 selector="//label[@for='carriers_glsgermany_general_sallowspecific1']"/>
+                 selector="//label[@for='carriers_glsgroup_general_sallowspecific1']"/>
         <element name="glsCarrierLoggingEnabledSetting" type="checkbox"
-                 selector="#carriers_glsgermany_general_logging"/>
+                 selector="#carriers_glsgroup_general_logging"/>
         <element name="glsCarrierLoggingSettingErrors" type="radio"
-                 selector="//label[@for='carriers_glsgermany_general_logging_group_loglevel400']"/>
+                 selector="//label[@for='carriers_glsgroup_general_logging_group_loglevel400']"/>
         <element name="glsCarrierLoggingSettingInfo" type="radio"
-                 selector="//label[@for='carriers_glsgermany_general_logging_group_loglevel200']"/>
+                 selector="//label[@for='carriers_glsgroup_general_logging_group_loglevel200']"/>
 
         <!-- Account Settings fields -->
         <element name="glsCarrierSandboxEnabledSetting" type="checkbox"
-                 selector="#carriers_glsgermany_account_sandboxmode"/>
+                 selector="#carriers_glsgroup_account_sandboxmode"/>
         <element name="glsCarrierApiUserNameSetting" type="input"
-                 selector="#carriers_glsgermany_account_api_username"/>
+                 selector="#carriers_glsgroup_account_api_username"/>
         <element name="glsCarrierApiPasswordSetting" type="input"
-                 selector="#carriers_glsgermany_account_api_password"/>
+                 selector="#carriers_glsgroup_account_api_password"/>
 
         <!-- Checkout Presentation fields -->
         <element name="glsCarrierCheckoutTitle" type="input"
-                 selector="#carriers_glsgermany_checkout_title"/>
+                 selector="#carriers_glsgroup_checkout_title"/>
         <element name="glsCarrierCheckoutSortOrder" type="input"
-                 selector="#carriers_glsgermany_checkout_sort_order"/>
+                 selector="#carriers_glsgroup_checkout_sort_order"/>
         <element name="glsCarrierEmulatedCarrier" type="select"
-                 selector="#carriers_glsgermany_checkout_emulated_carrier"/>
+                 selector="#carriers_glsgroup_checkout_emulated_carrier"/>
         <element name="glsCarrierUnavailabilitySettingHide" type="radio"
-                 selector="//label[@for='carriers_glsgermany_checkout_showmethod0']"/>
+                 selector="//label[@for='carriers_glsgroup_checkout_showmethod0']"/>
         <element name="glsCarrierUnavailabilitySettingShow" type="radio"
-                 selector="//label[@for='carriers_glsgermany_checkout_showmethod1']"/>
+                 selector="//label[@for='carriers_glsgroup_checkout_showmethod1']"/>
         <element name="glsCarrierUnavailabilityMessage" type="textarea"
-                 selector="#carriers_glsgermany_checkout_specificerrmsg"/>
+                 selector="#carriers_glsgroup_checkout_specificerrmsg"/>
 
         <!-- Shipment Defaults fields -->
         <element name="glsCarrierLabelSizeSettingA6" type="radio"
-                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA6']"/>
+                 selector="//label[@for='carriers_glsgroup_shipment_defaults_label_sizeA6']"/>
         <element name="glsCarrierLabelSizeSettingA5" type="radio"
-                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA5']"/>
+                 selector="//label[@for='carriers_glsgroup_shipment_defaults_label_sizeA5']"/>
         <element name="glsCarrierLabelSizeSettingA4" type="radio"
-                 selector="//label[@for='carriers_glsgermany_shipment_defaults_label_sizeA4']"/>
+                 selector="//label[@for='carriers_glsgroup_shipment_defaults_label_sizeA4']"/>
         <element name="glsCarrierTermsOfTradeSetting" type="select"
-                 selector="#carriers_glsgermany_shipment_defaults_terms_of_trade"/>
+                 selector="#carriers_glsgroup_shipment_defaults_terms_of_trade"/>
         <element name="glsCarrierSendShipperSetting" type="checkbox"
-                 selector="#carriers_glsgermany_shipment_defaults_send_shipper"/>
+                 selector="#carriers_glsgroup_shipment_defaults_send_shipper"/>
 
         <!-- Checkout Services fields -->
         <element name="glsCarrierFlexDeliveryServiceSetting" type="checkbox"
-                 selector="#carriers_glsgermany_additional_services_flexdelivery"/>
+                 selector="#carriers_glsgroup_additional_services_flexdelivery"/>
     </section>
 </sections>

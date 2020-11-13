@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace GlsGermany\Shipping\Model\Rate;
+namespace GlsGroup\Shipping\Model\Rate;
 
-use GlsGermany\Shipping\Model\Config\ModuleConfig;
+use GlsGroup\Shipping\Model\Config\ModuleConfig;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Rate\Result;
 use Netresearch\ShippingCore\Api\Rate\RateRequestEmulationInterface;
