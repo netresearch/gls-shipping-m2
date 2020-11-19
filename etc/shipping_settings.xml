@@ -41,7 +41,6 @@
                     <input code="enabled">
                         <inputType>checkbox</inputType>
                         <label translate="true">Select FlexDeliveryService</label>
-                        <tooltip translate="true">Please agree that your email address may be transmitted to and used by GLS or select another shipping method.</tooltip>
                         <comment>
                             <content translate="true">I agree that my email address may be transmitted to and used by GLS Germany GmbH &amp; Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.</content>
                         </comment>
@@ -70,7 +69,6 @@
                         <label translate="true">Place of Deposit</label>
                         <labelVisible>false</labelVisible>
                         <inputType>text</inputType>
-                        <tooltip translate="true">Name a secure location on your premise where GLS can place the parcel.</tooltip>
                         <placeholder translate="true">e.g. shed, garage, or patio</placeholder>
                         <validationRules>
                             <rule name="required"/>
