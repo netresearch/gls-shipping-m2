@@ -49,6 +49,9 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
 
     // 600_additional_services.xml
     private const CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL = 'carriers/glsgroup/additional_services/flexdelivery_identity';
+    private const CONFIG_PATH_FLEXDELIVERY_ADJUSTMENT = 'carriers/glsgroup/additional_services/flexdelivery_adjustment';
+    private const CONFIG_PATH_DEPOSIT_ADJUSTMENT = 'carriers/glsgroup/additional_services/deposit_adjustment';
+    private const CONFIG_PATH_GUARANTEED24_ADJUSTMENT = 'carriers/glsgroup/additional_services/guaranteed24_adjustment';
 
     /**
      * @var ScopeConfigInterface
@@ -74,6 +77,60 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     public function getModuleVersion(): string
     {
         return (string) $this->scopeConfig->getValue(self::CONFIG_PATH_VERSION);
+    }
+
+    /**
+     * Obtain the list of cut-off times, applied to the upcoming days (max. seven entries).
+     *
+     * @param mixed $store
+     * @return \DateTime[]
+     */
+    public function getCutOffTimes($store = null): array
+    {
+        $cutOffTimes = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_CUT_OFF_TIMES,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        $cutOffTimes = array_column($cutOffTimes, 'time', 'day');
+
+        $days = [];
+        for ($i = 0; $i <= 6; $i++) {
+            $day = $this->timezone->scopeDate($store)->modify("+$i day");
+            $weekDay = $day->format('N');
+            if (!isset($cutOffTimes[$weekDay])) {
+                // no cut-off configured for the given day, next.
+                continue;
+            }
+
+            $cutOffTime =  explode(':', $cutOffTimes[$weekDay]);
+            list($hours, $minutes) = array_map('intval', $cutOffTime);
+            $day->setTime($hours, $minutes);
+            $days[$weekDay] = $day;
+        }
+
+        return $days;
+    }
+
+    /**
+     * Get the logging status.
+     *
+     * @return bool
+     */
+    public function isLoggingEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::CONFIG_PATH_ENABLE_LOGGING);
+    }
+
+    /**
+     * Get the log level.
+     *
+     * @return int
+     */
+    public function getLogLevel(): int
+    {
+        return (int) $this->scopeConfig->getValue(self::CONFIG_PATH_LOGLEVEL);
     }
 
     /**
@@ -145,33 +202,13 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     }
 
     /**
-     * Get the shipper id.
+     * Get the broker reference.
      *
      * @return string
      */
     public function getBrokerReference(): string
     {
         return (string) $this->scopeConfig->getValue(self::CONFIG_PATH_BROKER_REFERENCE);
-    }
-
-    /**
-     * Get the logging status.
-     *
-     * @return bool
-     */
-    public function isLoggingEnabled(): bool
-    {
-        return $this->scopeConfig->isSetFlag(self::CONFIG_PATH_ENABLE_LOGGING);
-    }
-
-    /**
-     * Get the log level.
-     *
-     * @return int
-     */
-    public function getLogLevel(): int
-    {
-        return (int) $this->scopeConfig->getValue(self::CONFIG_PATH_LOGLEVEL);
     }
 
     /**
@@ -184,6 +221,21 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     {
         return (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_PROXY_CARRIER,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * Obtain the carrier method title for checkout presentation.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getMethodTitle($store = null): string
+    {
+        return (string) $this->scopeConfig->getValue(
+            self::CONFIG_PATH_SHIPPING_METHOD_TITLE,
             ScopeInterface::SCOPE_STORE,
             $store
         );
@@ -216,76 +268,6 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
     }
 
     /**
-     * Obtain email address used for revoking consent of transmitting the consumer email.
-     *
-     * @param mixed $store
-     * @return string
-     */
-    public function getFlexDeliveryRevocationEmail($store = null): string
-    {
-        $ident = $this->scopeConfig->getValue(
-            self::CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-
-        return $this->scopeConfig->getValue(
-            'trans_email/ident_' . $ident . '/email',
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
-     * Obtain the list of cut-off times, applied to the upcoming days (max. seven entries).
-     *
-     * @param mixed $store
-     * @return \DateTime[]
-     */
-    public function getCutOffTimes($store = null): array
-    {
-        $cutOffTimes = $this->scopeConfig->getValue(
-            self::CONFIG_PATH_CUT_OFF_TIMES,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-
-        $cutOffTimes = array_column($cutOffTimes, 'time', 'day');
-
-        $days = [];
-        for ($i = 0; $i <= 6; $i++) {
-            $day = $this->timezone->scopeDate($store)->modify("+$i day");
-            $weekDay = $day->format('N');
-            if (!isset($cutOffTimes[$weekDay])) {
-                // no cut-off configured for the given day, next.
-                continue;
-            }
-
-            $cutOffTime =  explode(':', $cutOffTimes[$weekDay]);
-            list($hours, $minutes) = array_map('intval', $cutOffTime);
-            $day->setTime($hours, $minutes);
-            $days[$weekDay] = $day;
-        }
-
-        return $days;
-    }
-
-    /**
-     * Obtain the carrier method title for checkout presentation.
-     *
-     * @param mixed $store
-     * @return string
-     */
-    public function getMethodTitle($store = null): string
-    {
-        return (string) $this->scopeConfig->getValue(
-            self::CONFIG_PATH_SHIPPING_METHOD_TITLE,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
      * Obtain configured alternative return address.
      *
      * - company
@@ -314,5 +296,74 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
             ScopeInterface::SCOPE_STORE,
             $store
         );
+    }
+
+    /**
+     * Obtain email address used for revoking consent of transmitting the consumer email.
+     *
+     * @param mixed $store
+     * @return string
+     */
+    public function getFlexDeliveryRevocationEmail($store = null): string
+    {
+        $ident = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_FLEXDELIVERY_REVOCATION_EMAIL,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        return $this->scopeConfig->getValue(
+            'trans_email/ident_' . $ident . '/email',
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * Obtain the amount to be added to / reduced from the shipping cost if flex delivery service was chosen.
+     *
+     * @param mixed $store
+     * @return float
+     */
+    public function getFlexDeliveryAdjustment($store = null): float
+    {
+        $amount = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_FLEXDELIVERY_ADJUSTMENT,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+        return (float) str_replace(',', '.', $amount);
+    }
+
+    /**
+     * Obtain the amount to be added to / reduced from the shipping cost if deposit service was chosen.
+     *
+     * @param mixed $store
+     * @return float
+     */
+    public function getDepositAdjustment($store = null): float
+    {
+        $amount = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_DEPOSIT_ADJUSTMENT,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+        return (float) str_replace(',', '.', $amount);
+    }
+
+    /**
+     * Obtain the amount to be added to / reduced from the shipping cost if next day service was chosen.
+     *
+     * @param mixed $store
+     * @return float
+     */
+    public function getG24Adjustment($store = null): float
+    {
+        $amount = $this->scopeConfig->getValue(
+            self::CONFIG_PATH_GUARANTEED24_ADJUSTMENT,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+        return (float) str_replace(',', '.', $amount);
     }
 }
