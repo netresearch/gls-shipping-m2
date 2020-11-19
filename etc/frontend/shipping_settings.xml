@@ -48,5 +48,8 @@
                 <action>disable</action>
             </rule>
         </compatibilityData>
+        <metadata>
+            <logoWidth>100</logoWidth>
+        </metadata>
     </carrier>
 </carriers>
