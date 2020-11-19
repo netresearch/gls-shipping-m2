@@ -53,7 +53,6 @@ Letterbox,Letterbox
 Logging,Logging
 "Method Title","Method Title"
 "Module version:","Module version:"
-"Name a secure location on your premise where GLS can place the parcel.","Name a secure location on your premise where GLS can place the parcel."
 "Observe upper and lower case when entering the API password.","Observe upper and lower case when entering the API password."
 "Offer DepositService","Offer DepositService"
 "Offer FlexDeliveryService","Offer FlexDeliveryService"
@@ -63,7 +62,6 @@ Logging,Logging
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"
-"Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Please agree that your email address may be transmitted to and used by GLS or select another shipping method."
 "Please choose only one of %1.","Please choose only one of %1."
 "Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService."
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService."

@@ -53,7 +53,6 @@ Letterbox,Briefkasten
 Logging,Protokollierung
 "Method Title","Anzeigetext Versandart"
 "Module version:",Modulversion:
-"Name a secure location on your premise where GLS can place the parcel.","Geben Sie einen sicheren Ort auf ihrem Grundstück an, an dem GLS das Paket hinterlegen kann."
 "Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
 "Offer DepositService","Bieten Sie DepositService an"
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
@@ -63,7 +62,6 @@ Logging,Protokollierung
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort
-"Please agree that your email address may be transmitted to and used by GLS or select another shipping method.","Bitte bestätigen Sie, dass Ihre E-Mail-Adresse zum angegebenen Zweck an GLS übermittelt und durch GLS genutzt werden darf oder wählen Sie eine andere Versandart."
 "Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
 "Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Aktivieren Sie LetterboxService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit ShopReturnService kombiniert werden kann."
 "Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
