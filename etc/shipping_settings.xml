@@ -98,7 +98,7 @@
             </shippingOption>
         </serviceOptions>
         <metadata>
-            <imageUrl>GlsGroup_Shipping::images/logo.jpg</imageUrl>
+            <logoUrl>GlsGroup_Shipping::images/logo.png</logoUrl>
         </metadata>
     </carrier>
 </carriers>
