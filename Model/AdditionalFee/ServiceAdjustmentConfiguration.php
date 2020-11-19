@@ -26,46 +26,42 @@ class ServiceAdjustmentConfiguration implements AdditionalFeeConfigurationInterf
     private $quoteSelectionManager;
 
     /**
-     * @var ModuleConfig
+     * @var ServiceAdjustmentProvider
      */
-    private $config;
+    private $feeProvider;
 
     /**
      * @var float
      */
     private $serviceAdjustment;
 
-    public function __construct(QuoteSelectionManager $quoteSelectionManager, ModuleConfig $config)
+    public function __construct(QuoteSelectionManager $quoteSelectionManager, ServiceAdjustmentProvider $feeProvider)
     {
         $this->quoteSelectionManager = $quoteSelectionManager;
-        $this->config = $config;
+        $this->feeProvider = $feeProvider;
     }
 
     private function calculateAdjustmentAmount(Quote $quote): float
     {
-        if (is_float($this->serviceAdjustment)) {
-            return $this->serviceAdjustment;
-        }
+        if (!is_float($this->serviceAdjustment)) {
+            $fees = $this->feeProvider->getAmounts($quote->getStoreId());
 
-        $this->serviceAdjustment = 0;
-        $fees = [
-            Codes::CHECKOUT_SERVICE_FLEX_DELIVERY => $this->config->getFlexDeliveryAdjustment($quote->getStoreId()),
-            Codes::CHECKOUT_SERVICE_DEPOSIT => $this->config->getDepositAdjustment($quote->getStoreId()),
-            Codes::CHECKOUT_SERVICE_GUARANTEED24 => $this->config->getG24Adjustment($quote->getStoreId()),
-        ];
+            $selections = $this->quoteSelectionManager->load((int) $quote->getShippingAddress()->getId());
+            $serviceCodes = array_unique(
+                array_map(
+                    function (SelectionInterface $selection) {
+                        return $selection->getShippingOptionCode();
+                    },
+                    $selections
+                )
+            );
 
-        $selections = $this->quoteSelectionManager->load((int) $quote->getShippingAddress()->getId());
-        $serviceCodes = array_unique(
-            array_map(
-                function (SelectionInterface $selection) {
-                    return $selection->getShippingOptionCode();
-                },
-                $selections
-            )
-        );
+            $serviceAdjustment = 0;
+            foreach ($serviceCodes as $serviceCode) {
+                $serviceAdjustment += $fees[$serviceCode] ?? 0;
+            }
 
-        foreach ($serviceCodes as $serviceCode) {
-            $this->serviceAdjustment += $fees[$serviceCode] ?? 0;
+            $this->serviceAdjustment = round($serviceAdjustment, 2);
         }
 
         return $this->serviceAdjustment;
