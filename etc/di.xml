@@ -109,6 +109,7 @@
             <argument name="shippingOptionsProcessors" xsi:type="array">
                 <item name="glsFlexDeliveryProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
                 <item name="glsGuaranteed24Processor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
+                <item name="glsAdditionalFeeProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\AdditionalFeeProcessor</item>
             </argument>
         </arguments>
     </virtualType>
