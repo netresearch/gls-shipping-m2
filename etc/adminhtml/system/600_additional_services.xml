@@ -8,14 +8,13 @@
     <group id="additional_services" translate="label" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="0">
         <label>Shipping Services in Checkout</label>
 
-        <field id="flexdelivery" translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox"
-               sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="flexdelivery" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
+               translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Offer FlexDeliveryService</label>
             <comment>Let consignees know about their delivery and provide them with a large variety of delivery options.</comment>
         </field>
-
-        <field id="flexdelivery_identity" translate="label comment" type="select"
-               sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+        <field id="flexdelivery_identity" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="11"
+               translate="label comment" type="select" canRestore="1">
             <label>Consent Revocation Email</label>
             <comment>Consumers can revoke their email address transmission consent by sending a message to this address.</comment>
             <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
@@ -23,16 +22,43 @@
                 <field id="flexdelivery">1</field>
             </depends>
         </field>
+        <field id="flexdelivery_adjustment" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="12"
+               translate="label comment" type="text">
+            <depends>
+                <field id="flexdelivery">1</field>
+            </depends>
+            <label>FlexDeliveryService Price Adjustment</label>
+            <comment>The shipping cost will be adjusted by the given amount.</comment>
+            <validate>validate-number</validate>
+        </field>
 
-        <field id="deposit" translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox"
-               sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="deposit" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
+               translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Offer DepositService</label>
             <comment>Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.</comment>
         </field>
+        <field id="deposit_adjustment" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="21"
+               translate="label comment" type="text">
+            <depends>
+                <field id="deposit">1</field>
+            </depends>
+            <label>DepositService Price Adjustment</label>
+            <comment>The shipping cost will be adjusted by the given amount.</comment>
+            <validate>validate-number</validate>
+        </field>
 
-        <field id="guaranteed24" translate="label" type="Netresearch\ConfigFields\Model\Type\Checkbox"
-               sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+        <field id="guaranteed24" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"
+               translate="label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Offer Guaranteed24Service</label>
+        </field>
+        <field id="guaranteed24_adjustment" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="31"
+               translate="label comment" type="text">
+            <depends>
+                <field id="guaranteed24">1</field>
+            </depends>
+            <label>Guaranteed24Service Price Adjustment</label>
+            <comment>The shipping cost will be adjusted by the given amount.</comment>
+            <validate>validate-number</validate>
         </field>
     </group>
 </include>

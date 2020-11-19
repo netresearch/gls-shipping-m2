@@ -23,12 +23,14 @@ Country,Country
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
 Day,Day
 DepositService,DepositService
+"DepositService Price Adjustment","DepositService Price Adjustment"
 "Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your API user name.","Enter your API user name."
 "Error Logging Level","Error Logging Level"
 "Field %1 is required.","Field %1 is required."
 FlexDeliveryService,FlexDeliveryService
+"FlexDeliveryService Price Adjustment","FlexDeliveryService Price Adjustment"
 "Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite."
 "GLS & Magento","GLS & Magento"
 "GLS Shipping","GLS Shipping"
@@ -36,6 +38,7 @@ FlexDeliveryService,FlexDeliveryService
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS provides test endpoints for web service operations. Select this option to use the test environment."
 "General Settings","General Settings"
 Guaranteed24Service,Guaranteed24Service
+"Guaranteed24Service Price Adjustment","Guaranteed24Service Price Adjustment"
 "Having issues configuring the extension? Contact our support desk: ","Having issues configuring the extension? Contact our support desk: "
 "I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used."
@@ -76,12 +79,14 @@ Returns,Returns
 "Shipment %1 could not be cancelled.","Shipment %1 could not be cancelled."
 "Shipment %1 could not be cancelled: %2","Shipment %1 could not be cancelled: %2"
 "Shipment Defaults","Shipment Defaults"
+"Shipping Service Adjustment","Shipping Service Adjustment"
 "Shipping Services in Checkout","Shipping Services in Checkout"
 "Sort Order","Sort Order"
 "Street Address","Street Address"
 "Terms of Trade","Terms of Trade"
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method."
+"The shipping cost will be adjusted by the given amount.","The shipping cost will be adjusted by the given amount."
 "The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured."
 "These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders."
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods."

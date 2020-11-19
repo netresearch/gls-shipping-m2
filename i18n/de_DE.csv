@@ -23,12 +23,14 @@ Country,Land
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
 Day,Tag
 DepositService,DepositService
+"DepositService Price Adjustment","Preisanpassung für DepositService"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
 "Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
 "Error Logging Level","Stufe der Fehlerprotokollierung"
 "Field %1 is required.","Feld %1 is erforderlich."
 FlexDeliveryService,FlexDeliveryService
+"FlexDeliveryService Price Adjustment","Preisanpassung für FlexDeliveryService"
 "Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Mit der GLS-Versandmethode können Sie Versandscheine für eingehende Bestellungen direkt in Ihrer Magento-Instanz anlegen."
 "GLS & Magento","GLS & Magento"
 "GLS Shipping","GLS Shipping"
@@ -36,6 +38,7 @@ FlexDeliveryService,FlexDeliveryService
 "GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS bietet Testendpunkte für Webservice-Operationen an. Wählen Sie diese Option aus, um die Testumgebung zu verwenden."
 "General Settings","Allgemeine Einstellungen"
 Guaranteed24Service,Guaranteed24Service
+"Guaranteed24Service Price Adjustment","Preisanpassung für Guaranteed24Service"
 "Having issues configuring the extension? Contact our support desk: ","Haben Sie Probleme beim Konfigurieren der Extension? Wenden Sie sich an unser Support-Team: "
 "I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","Ich willige ein, dass meine E-Mail-Adresse zum Zweck der Zustellbenachrichtigung und ggf. Paket-Umverfügung an GLS Germany GmbH & Co. OHG übermittelt und genutzt werden darf. Diese Einwilligung kann ich jederzeit durch Nachricht an folgende Adresse widerrufen: %1. Bitte beachten Sie, dass die Nutzung dieses Services ohne Übermittlung der E-Mail-Adresse nicht möglich ist."
 "If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
@@ -56,7 +59,7 @@ Logging,Protokollierung
 "Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
 "Offer Guaranteed24Service","Bieten Sie Guaranteed24Service an"
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Es wird davon ausgegangen, dass Bestellungen, die nach der konfigurierten Zeit eingehen, am nachfolgend konfigurierten Tag an GLS übergeben werden. Diese Einstellung beeinflusst das bei der Label-Buchung übergebene Datum sowie die Verfügbarkeit von Services im Checkout."
-"Package Default Weight","Standard-Paketgewicht"
+"Package Default Weight",Standard-Paketgewicht
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort
@@ -76,12 +79,14 @@ Returns,Retouren
 "Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
 "Shipment %1 could not be cancelled: %2","Der Versandauftrag %1 konnte nicht storniert werden: %2"
 "Shipment Defaults","Standardeinstellungen für Versandetiketten"
+"Shipping Service Adjustment","Anpassung Versand-Services"
 "Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
 "Street Address",Straße
 "Terms of Trade",Handelsklauseln
 "The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
 "The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
+"The shipping cost will be adjusted by the given amount.","Die Versandkosten werden um den gegebenen Betrag angepasst"
 "The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","Der Wert muss in Kilogramm angegeben werden und wird während der Label-Erstellung verwendet falls weder Artikelgewicht noch Verpackungsgewicht definiert sind."
 "These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Sendungserstellung genutzt. Falls ein Label mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
 "This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."

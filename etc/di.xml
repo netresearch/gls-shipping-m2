@@ -153,6 +153,13 @@
             <argument name="rateRequestService" xsi:type="object">GlsGroup\Shipping\Model\Rate\Emulation\RateRequestService\Virtual</argument>
         </arguments>
     </type>
+    <type name="Netresearch\ShippingCore\Model\AdditionalFee\AdditionalFeeManagement">
+        <arguments>
+            <argument name="configurations" xsi:type="array">
+                <item name="glsgroup" xsi:type="object">GlsGroup\Shipping\Model\AdditionalFee\ServiceAdjustmentConfiguration</item>
+            </argument>
+        </arguments>
+    </type>
     <type name="Netresearch\ShippingCore\Model\BulkShipment\BulkShipmentConfiguration">
         <arguments>
             <argument name="configurations" xsi:type="array">
