@@ -98,7 +98,6 @@
             </shippingOption>
         </serviceOptions>
         <metadata>
-            <color>#172154</color>
             <imageUrl>GlsGroup_Shipping::images/logo.jpg</imageUrl>
         </metadata>
     </carrier>
