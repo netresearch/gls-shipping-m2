@@ -74,6 +74,9 @@
                             <rule name="required"/>
                             <rule name="validate-no-html-tags"/>
                             <rule name="nrshipping-validate-no-special-chars"/>
+                            <rule name="max_text_length">
+                                <param>100</param>
+                            </rule>
                         </validationRules>
                     </input>
                 </inputs>
