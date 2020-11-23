@@ -292,8 +292,6 @@ class RequestExtractor implements RequestExtractorInterface
      * There are some services though that require an email address.
      *
      * @return bool
-     * @todo(nr): apply proper rules
-     *
      */
     public function isRecipientEmailRequired(): bool
     {

@@ -63,7 +63,7 @@ class CreateCrossBorderLabelTest extends SaveShipmentTest
      */
     public function saveShipment(callable $getPostData)
     {
-        $addressBuilder = AddressBuilder::anAddress('en_US')->asDefaultBilling()->asDefaultShipping();
+        $addressBuilder = AddressBuilder::anAddress('en_GI')->asDefaultBilling()->asDefaultShipping();
 
         /** @var \Magento\Sales\Model\Order $order */
         $order = OrderBuilder::anOrder()
