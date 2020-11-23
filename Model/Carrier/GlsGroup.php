@@ -81,6 +81,11 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
      */
     private $proxyCarrier;
 
+    /**
+     * @var ShippingRouteValidator
+     */
+    private $shippingRouteValidator;
+
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         RateErrorFactory $rateErrorFactory,
@@ -102,6 +107,7 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
         ShipmentManagement $shipmentManagement,
         TrackRequestInterfaceFactory $trackRequestFactory,
         ProxyCarrierFactory $proxyCarrierFactory,
+        ShippingRouteValidator $shippingRouteValidator,
         array $data = []
     ) {
         $this->moduleConfig = $moduleConfig;
@@ -109,6 +115,7 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
         $this->shipmentManagement = $shipmentManagement;
         $this->trackRequestFactory = $trackRequestFactory;
         $this->proxyCarrierFactory = $proxyCarrierFactory;
+        $this->shippingRouteValidator = $shippingRouteValidator;
 
         parent::__construct(
             $scopeConfig,
@@ -151,16 +158,14 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
     /**
      * Check if the carrier can handle the given rate request.
      *
-     * GLS Shipping carrier ships only from DE.
-     *
-     * @todo(nr): check destination country
      * @param DataObject $request
      * @return bool|DataObject|AbstractCarrierOnline
      */
     public function processAdditionalValidation(DataObject $request)
     {
-        $shippingOrigin = (string) $request->getData('country_id');
-        if ($shippingOrigin !== 'DE') {
+        $origin = (string) $request->getData('country_id');
+        $destination = (string) $request->getData('dest_country_id');
+        if (!$this->shippingRouteValidator->isValid($origin, $destination)) {
             return false;
         }
 

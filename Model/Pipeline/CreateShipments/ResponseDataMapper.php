@@ -62,7 +62,6 @@ class ResponseDataMapper
         $labels = $shipment->getLabels();
         $label = array_shift($labels);
 
-        // todo(nr): check if we need the package's trackId property
         $responseData = [
             LabelResponseInterface::REQUEST_INDEX => $package->getParcelNumber(),
             LabelResponseInterface::SALES_SHIPMENT => $salesShipment,
