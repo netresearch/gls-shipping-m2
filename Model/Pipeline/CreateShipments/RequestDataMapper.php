@@ -15,8 +15,10 @@ use GlsGroup\Shipping\Model\Config\Source\LabelSize;
 use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
 use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterface;
+use Netresearch\ShippingCore\Api\ShipmentDate\ShipmentDateCalculatorInterface;
 use Netresearch\ShippingCore\Api\Util\UnitConverterInterface;
 
 class RequestDataMapper
@@ -37,6 +39,16 @@ class RequestDataMapper
     private $moduleConfig;
 
     /**
+     * @var ShipmentDateCalculatorInterface
+     */
+    private $shipmentDateCalculator;
+
+    /**
+     * @var TimezoneInterface
+     */
+    private $timezone;
+
+    /**
      * @var UnitConverterInterface
      */
     private $unitConverter;
@@ -45,11 +57,15 @@ class RequestDataMapper
         ShipmentRequestBuilderInterface $requestBuilder,
         RequestExtractorFactory $requestExtractorFactory,
         ModuleConfig $moduleConfig,
+        ShipmentDateCalculatorInterface $shipmentDateCalculator,
+        TimezoneInterface $timezone,
         UnitConverterInterface $unitConverter
     ) {
         $this->requestBuilder = $requestBuilder;
         $this->requestExtractorFactory = $requestExtractorFactory;
         $this->moduleConfig = $moduleConfig;
+        $this->shipmentDateCalculator = $shipmentDateCalculator;
+        $this->timezone = $timezone;
         $this->unitConverter = $unitConverter;
     }
 
@@ -165,7 +181,16 @@ class RequestDataMapper
             }
         }
 
-        $this->requestBuilder->setShipmentDate($requestExtractor->getShipmentDate());
+        try {
+            $shipmentDate = $this->shipmentDateCalculator->getDate(
+                $this->moduleConfig->getCutOffTimes($requestExtractor->getStoreId()),
+                $requestExtractor->getStoreId()
+            );
+        } catch (\RuntimeException $exception) {
+            $shipmentDate = $this->timezone->scopeDate($requestExtractor->getStoreId());
+        }
+
+        $this->requestBuilder->setShipmentDate($shipmentDate);
         $this->requestBuilder->setLabelFormat(ShipmentRequestBuilderInterface::LABEL_FORMAT_PDF);
 
         $labelSize = $this->moduleConfig->getLabelSize($requestExtractor->getStoreId());
