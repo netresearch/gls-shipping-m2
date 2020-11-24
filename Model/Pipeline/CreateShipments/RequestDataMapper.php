@@ -180,7 +180,7 @@ class RequestDataMapper
         try {
             return $this->requestBuilder->create();
         } catch (RequestValidatorException $exception) {
-            $message = __('Web service request could not be created: %1', $exception->getMessage());
+            $message = __('GLS WebAPI request could not be created: %1', $exception->getMessage());
             throw new LocalizedException($message);
         }
     }

@@ -76,7 +76,7 @@ class CutOffTimes extends AbstractFieldArray
         ]);
 
         $this->addColumn('time', [
-            'label' => __('Cut-off Time'),
+            'label' => __('Order Time'),
             'style' => 'width: 80px',
             'class' => 'validate-no-empty time'
         ]);

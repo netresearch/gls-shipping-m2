@@ -1,103 +1,102 @@
+"+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
 "Account Settings",Kontoeinstellungen
-"Allow customers to check out with <em>GLS Shipping</em> shipping method.","<em>GLS</em> als Versandart im Checkout anbieten."
-"Allow for Specific Countries","Zulassen nur für bestimmte Länder"
-"An error occurred while preparing package data.","Während des Aufbereitens der Paketdaten ist ein Fehler aufgetreten."
-"Applicable Countries","Anwendbare Länder"
+"Allowed Countries","Aktivierte Länder"
+"An error occurred while preparing parcel data.","Während der Paketscheinerstellung ist ein Fehler aufgetreten."
+"Automatically print out return parcel label together with the outbound parcel label.","Automatischer Ausdruck des Retouren-Paketscheins zusammen mit dem Hin-Paketschein."
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
-"Carrier Title","Anzeigetext Versanddienstleister"
 "Checkout Presentation",Checkout-Darstellung
 City,Stadt
 Company,Firma
-"Consent Revocation Email","E-Mail-Kontakt zum Widerruf der Einverständniserklärung"
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
 "Contact ID",Kontaktnummer
 Country,Land
 "Custom Message","Benutzerdefinierte Nachricht"
-"Customer ID",Kundennummer
-"Cut-off Time",Auftragsabschlusszeit
-"Cut-off Times",Auftragsabschlusszeiten
+Customer-ID,Kundennummer
+"Customized Country List",Länder
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DDP (Frei Haus, verzollt, versteuert)"
 "DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP (Frei Haus, unverzollt, unversteuert)"
 "DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
 "DDP (Freight costs, customs costs & taxes paid)","DAP, cleared (Frei Haus, ohne Zoll, ohne Steuer)"
 "DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP (Frei Haus, verzollt, Freischreibung)"
 Day,Tag
-DepositService,DepositService
+"Defaults for Label Creation","Standardeinstellungen für die Paketscheinerstellung"
+"Define the carrier title of the delivery method. This will be displayed next to the method title in checkout.","Hierüber können Sie eine weitere Bezeichnung für die Versandmethode im Checkout ergänzen. Diese wird mit etwas Abstand rechts neben dem Versandmethoden-Titel 1 dargestellt."
+"Define the method title of the delivery method in checkout.","Hierüber definieren Sie, wie die Versandmethode im Checkout bezeichnet wird."
+"Delivery announcement with desired options","Lieferankündigung mit Wunschoptionen"
+"Deposit permission","Lieferung abstellen lassen"
 "DepositService Price Adjustment","Preisanpassung für DepositService"
+"Describe the desired deposit place","Wo darf die Lieferung abgestellt werden?"
+"Email Contact for Revocation","E-Mail-Kontakt für Widerruf"
 "Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
-"Enter your API user name.","Geben Sie Ihren API-Benutzernamen an."
-"Error Logging Level","Stufe der Fehlerprotokollierung"
-"Field %1 is required.","Feld %1 is erforderlich."
-FlexDeliveryService,FlexDeliveryService
+"Enter your GLS WebAPI user name.","Geben Sie Ihren GLS WebAPI-User an."
+"FAQ & Support","FAQ & Support"
+"Field %1 is required.","Feld %1 ist erforderlich."
 "FlexDeliveryService Price Adjustment","Preisanpassung für FlexDeliveryService"
-"Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.","Mit der GLS-Versandmethode können Sie Versandscheine für eingehende Bestellungen direkt in Ihrer Magento-Instanz anlegen."
-"GLS & Magento","GLS & Magento"
 "GLS Shipping","GLS Shipping"
-"GLS provides parcel shipping across Germany.","GLS bietet Paketversand in ganz Deutschland und nach über 220 Länder."
-"GLS provides test endpoints for web service operations. Select this option to use the test environment.","GLS bietet Testendpunkte für Webservice-Operationen an. Wählen Sie diese Option aus, um die Testumgebung zu verwenden."
+"GLS WebAPI User","GLS WebAPI User"
+"GLS WebAPI request could not be created: %1","GLS WebAPI-Anfrage konnte nicht erstellt werden: %1"
+"GLS notifies your receiver about the planned delivery and offers a variety of delivery options.","GLS informiert Ihre Empfänger über die voraussichtliche Zustellung und stellt eine Vielzahl an Zustelloptionen zur Verfügung."
+"GLS will deposit the parcel to the location requested by the receiver.","GLS stellt das Paket am vom Empfänger gewünschten Ort ab."
 "General Settings","Allgemeine Einstellungen"
-Guaranteed24Service,Guaranteed24Service
 "Guaranteed24Service Price Adjustment","Preisanpassung für Guaranteed24Service"
-"Having issues configuring the extension? Contact our support desk: ","Haben Sie Probleme beim Konfigurieren der Extension? Wenden Sie sich an unser Support-Team: "
-"I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.","Ich willige ein, dass meine E-Mail-Adresse zum Zweck der Zustellbenachrichtigung und ggf. Paket-Umverfügung an GLS Germany GmbH & Co. OHG übermittelt und genutzt werden darf. Diese Einwilligung kann ich jederzeit durch Nachricht an folgende Adresse widerrufen: %1. Bitte beachten Sie, dass die Nutzung dieses Services ohne Übermittlung der E-Mail-Adresse nicht möglich ist."
-"If enabled, the <em>Shipping Origin</em> setting will be included with label requests. Otherwise the shipper address from the GLS account settings will be used.","Wenn diese Option aktiviert ist, wird die in den <em>Versandeinstellungen</em> konfigurierte Adresse beim Abrufen von Versandetiketten übertragen. Andernfalls wird die Absenderadresse aus den GLS-Kontoeinstellungen verwendet."
+"I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. It is not possible to use this service without transmitting the email address.","Ich willige ein, dass meine E-Mail-Adresse zum Zweck der Lieferbenachrichtigung und ggf. Nutzung von Zustelloptionen an GLS Germany GmbH & Co. OHG übermittelt und genutzt werden darf. Diese Einwilligung kann ich jederzeit durch Nachricht an folgende Adresse widerrufen: %1. Die Nutzung dieses Services ist ohne Übermittlung der E-Mail-Adresse nicht möglich."
 "If enabled, the configured address will be used for returns. Otherwise the <em>Shipping Origin</em> setting will be used.","Wenn diese Option aktiviert ist, wird die konfigurierte Adresse beim Abrufen von Retouretiketten übertragen. Andernfalls wird die Absenderadresse aus den <em>Versandeinstellungen</em> verwendet."
-"If you do not have a GLS account, <a href=""https://www.gls.de/"" target=""_blank"">please contact GLS</a> to establish or expand your relationship","Wenn Sie kein Konto haben, <a href=""https://www.gls.de/"" target=""_blank"">wenden Sie sich bitte an GLS</a>, um Ihren Vertrag zu erweitern"
-"Label Size","Label Größe"
-"Label could not be created: %1","Paketaufkleber konnte nicht erzeugt werden: %1"
-"Let consignees know about their delivery and provide them with a large variety of delivery options.","Lassen Sie GLS den Empfänger über die Lieferung informieren und ihm eine Vielzahl an Zustelloptionen zur Verfügung stellen."
-"Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.","Lassen Sie Empfänger einen Ablageort wählen, um eine unmittelbare Zustellung auch bei Abwesenheit zu ermöglichen."
+"If you do not know the ID, you can receive it from your GLS contact person.","Falls Ihnen die ID nicht bekannt ist, können Sie diese von Ihrem GLS-Ansprechpartner erhalten."
+"If you have issues configuring GLS Shipping, please visit the FAQ and Support Center.","Wenn Sie Probleme bei der Konfiguration haben, besuchen Sie gerne das FAQ- und Support-Center."
+Incoterm,Frankatur
+"Label Mode",Paketschein-Modus
+"Label could not be created: %1","Paketschein konnte nicht erzeugt werden: %1"
+"Latest Order Time for Same-Day Dispatch","Späteste Bestellzeit für taggleichen Versand"
 Letterbox,Briefkasten
-"Log Level",Protokollierungsstufe
-Logging,Protokollierung
-"Method Title","Anzeigetext Versandart"
+"Log Level",Log-Level
+Logging,Logging
+"Make it easy for your customers and offer them different shipping methods within checkout. The subsequent order processing with GLS parcel label printing can take place directly within your Magento suite. Please note that GLS Shipping is a plugin for customers of GLS Germany GmbH & Co. OHG.","Mach es deinen Kunden besonders leicht und biete ihnen verschiedene Versandarten im Bestellprozess an. Die anschließende Bestellabwicklung mit GLS-Paketscheindruck kann direkt aus Magento heraus erfolgen. Bitte beachte, GLS Shipping ist ein Plugin für Kunden der GLS Germany GmbH & Co. OHG."
 "Module version:",Modulversion:
-"Observe upper and lower case when entering the API password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des API-Passworts."
-"Offer DepositService","Bieten Sie DepositService an"
-"Offer FlexDeliveryService","Bieten Sie FlexDeliveryService an"
-"Offer Guaranteed24Service","Bieten Sie Guaranteed24Service an"
+"NEXT DAY - Guaranteed to be delivered tomorrow","NEXT DAY - Garantiert morgen geliefert"
+"Observe upper and lower case when entering the WebAPI password.","Beachten Sie Groß- und Kleinschreibung beim Eingeben des WebAPI-Passworts."
+"Offer DepositService","DepositService anbieten"
+"Offer FlexDeliveryService","FlexDeliveryService anbieten"
+"Offer GLS Shipping as a shipping method in the checkout.","GLS als Versandart im Checkout anbieten."
+"Offer Guaranteed24Service","Guaranteed24Service anbieten"
+"Official GLS plugin for Magento - parcel label creation and checkout integration for several shipping methods.","Offizielles GLS-Plugin für Magento - Paketscheinerstellung und Bestellprozessintegration verschiedener Versandarten."
+"Online Form",Online-Formular
+"Order Time",Bestellzeit
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Es wird davon ausgegangen, dass Bestellungen, die nach der konfigurierten Zeit eingehen, am nachfolgend konfigurierten Tag an GLS übergeben werden. Diese Einstellung beeinflusst das bei der Label-Buchung übergebene Datum sowie die Verfügbarkeit von Services im Checkout."
 "Package Default Weight",Standard-Paketgewicht
+"Parcel %1 could not be cancelled.","Das Paket %1 konnte nicht storniert werden."
+"Parcel %1 could not be cancelled: %2","Das Paket %1 konnte nicht storniert werden: %2"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort
 "Please choose only one of %1.","Bitte wählen Sie nur eins von %1."
-"Preselect LetterboxService for shipping label creation. Note that this service cannot be combined with ShopReturnService.","Aktivieren Sie LetterboxService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit ShopReturnService kombiniert werden kann."
-"Preselect ShopReturnService for shipping label creation. Note that this service cannot be combined with LetterboxService.","Aktivieren Sie ShopReturnService als Standard für die Erzeugung von Versandetiketten. Beachten Sie, dass dieser Service nicht mit LetterboxService kombiniert werden kann."
-"Record communication with the GLS web services.","Kommunikation mit den GLS-Webservices aufzeichnen."
+"Preselect LetterboxService for label creation. Note that this service can be used within Germany only and is not combinable with other services.","Aktivieren Sie den LetterboxService als Standard für die Erzeugung von Paketscheinen. Beachten Sie, dass dieser Service nur innerhalb Deutschlands und nicht in Verbindung mit anderen Services genutzt werden kann."
+"Put the return label in the parcel","Retoureschein ins Paket legen"
+"Record communication with the GLS WebAPI.","Kommunikation mit der GLS WebAPI aufzeichnen."
 "Return Shipment Address","Adresse für Retouren"
 Returns,Retouren
-"Select DepositService","DepositService wählen"
-"Select FlexDeliveryService","FlexDeliveryService wählen"
-"Select Guaranteed24Service","Guaranteed24Service wählen"
 "Select LetterboxService","LetterboxService wählen"
 "Select ShopReturnService","ShopReturnService wählen"
-"Select the offline shipping method that gets used to provide rates in checkout.","Wählen Sie die Offline-Versandmethode aus, die für die Bereitstellung von Tarifen im Checkout verwendet werden soll."
-"Shipment %1 could not be cancelled.","Der Versandauftrag %1 konnte nicht storniert werden."
-"Shipment %1 could not be cancelled: %2","Der Versandauftrag %1 konnte nicht storniert werden: %2"
-"Shipment Defaults","Standardeinstellungen für Versandetiketten"
+"Select the basis for the shipping prices to be displayed in the checkout. The prices are used even if the shipping method selected here is inactive.","Wählen Sie die Datenbasis für die im Checkout anzuzeigenden Versandpreise. Die Preise werden auch dann genutzt, wenn die hier gewählte Versandmethode inaktiv ist."
+"Shipping Method Title 1","Versandmethoden-Titel 1"
+"Shipping Method Title 2","Versandmethoden-Titel 2"
+"Shipping Options for Buyers in Checkout","Versandoptionen für Käufer im Checkout"
 "Shipping Service Adjustment","Anpassung Versand-Services"
-"Shipping Services in Checkout","Zusätzliche Versandservices im Checkout"
 "Sort Order",Sortierreihenfolge
 "Street Address",Straße
-"Terms of Trade",Handelsklauseln
-"The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Die Protokollierungsstufe <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Protokolldateien führen kann."
-"The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist. Die verfügbaren Methodennamen sind auch die der ausgewählten Versandmethode."
+"The log level <em>Info</em> should only be set while resolving problems. It may result in very large log files.","Das Log-Level <em>Info</em> sollte nur beim Lösen von Problemen eingestellt werden, da dies zu sehr großen Log-Dateien führen kann."
+"The rates will get used even if the selected shipping method is disabled.","Die Tarife werden auch verwendet, wenn die ausgewählte Versandmethode deaktiviert ist."
 "The shipping cost will be adjusted by the given amount.","Die Versandkosten werden um den gegebenen Betrag angepasst"
+"The sort order of all active shipping methods determines the order in which the shipping methods are displayed in the checkout. For example, if the GLS shipping method shall be displayed before the others, the number must be set smaller than for the other shipping methods.","Die Sortierreihenfolge aller aktiven Versandmethoden bestimmt in welcher Reihenfolge die Versandmethoden im Checkout angezeigt werden. Wenn die GLS-Versandmethode z. B. vor den anderen dargestellt werden soll, muss die Zahl kleiner als bei den anderen Versandmethoden eingestellt sein."
 "The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","Der Wert muss in Kilogramm angegeben werden und wird während der Label-Erstellung verwendet falls weder Artikelgewicht noch Verpackungsgewicht definiert sind."
-"These settings will be used for automatic shipping label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Sendungserstellung genutzt. Falls ein Label mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
-"This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.","Dieses Feld legt fest, wo <em>GLS Shipping</em> auf der Checkout-Seite angezeigt wird. Um es z.B. nach <em>Flat Rate</em> oder <em>Gratisversand</em> anzuzeigen, geben Sie eine Zahl ein, die größer ist als die Sortierreihenfolge, die für diese Versandarten konfiguriert ist."
-"This information will be provided to you by your depot or can be found in your GLS account settings.","Diese Informationen werden Ihnen von Ihrem Depot zur Verfügung gestellt oder finden Sie in Ihren GLS-Kontoeinstellungen."
-"To get started:","Was Sie brauchen:"
+"These settings will be used for automatic label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Paketscheinerstellung genutzt. Falls ein Paketschein mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
+"This mode serves the development of the extension and is unfortunately not available for customers.","Dieser Modus dient der Entwicklung der Extension und ist leider nicht für Kunden nutzbar."
 "Use Alternative Returns Address","Verwende alternative Adresse für Retouren"
 "Use Alternative Shipper Address","Verwende alternative Adresse für Versender"
-"Use LetterboxService","LetterboxService aktivieren"
-"Use Rates From","Verwende Tarife von"
-"Use ShopReturnService","ShopReturnService aktivieren"
-"User Name",Benutzername
-"Web service request could not be created: %1","Die Webservice-Anfrage konnte nicht erstellt werden: %1"
-"You must also have Magento general logging enabled.","Die allgemeine Protokollierung muss in Magento aktiviert sein, damit die modulspezifische Protokollierung funktioniert."
+"Use LetterboxService","LetterboxService nutzen"
+"Use Shipping Prices from","Verwende Versandpreise von"
+"Use the <em>Origin</em> that is set in the Shipping Settings to print the sender address on the parcel label. (Otherwise, the sender address of your Contact-ID will be used.)","Die in den <em>Versandeinstellungen</em> hinterlegte Adresse wird als Versender auf dem Paketschein angedruckt. (Ansonsten würde die Adresse der Kontakt-ID angedruckt werden.)"
+"You are not yet a GLS business customer and would like to receive an individual offer? Simply use the option which is most convenient for you:","Sie sind noch kein GLS-Geschäftskunde und möchten ein individuelles Angebot erhalten? Nutzen Sie einfach die Option, welche für Sie am bequemsten ist:"
+"You must also have Magento general logging enabled.","Das allgemeine Logging muss in Magento aktiviert sein, damit das GLS-spezifische Logging funktioniert."
 "ZIP/Postal Code",Postleitzahl
-"e.g. shed, garage, or patio","z.B. Schuppen, Garage oder Terrasse"
-gls.support@netresearch.de,gls.support@netresearch.de
+https://www.gls-pakete.de/en/business-shipping/become-a-business-customer,https://www.gls-pakete.de/geschaeftlich-versenden/geschaeftskunde-werden

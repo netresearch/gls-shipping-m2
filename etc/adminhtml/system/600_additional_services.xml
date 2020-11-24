@@ -6,16 +6,16 @@
 -->
 <include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
     <group id="additional_services" translate="label" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="0">
-        <label>Shipping Services in Checkout</label>
+        <label>Shipping Options for Buyers in Checkout</label>
 
         <field id="flexdelivery" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
                translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Offer FlexDeliveryService</label>
-            <comment>Let consignees know about their delivery and provide them with a large variety of delivery options.</comment>
+            <comment>GLS notifies your receiver about the planned delivery and offers a variety of delivery options.</comment>
         </field>
         <field id="flexdelivery_identity" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="11"
                translate="label comment" type="select" canRestore="1">
-            <label>Consent Revocation Email</label>
+            <label>Email Contact for Revocation</label>
             <comment>Consumers can revoke their email address transmission consent by sending a message to this address.</comment>
             <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
             <depends>
@@ -35,7 +35,7 @@
         <field id="deposit" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Offer DepositService</label>
-            <comment>Let consignees name a secure location on their premise to have the parcel delivered at first attempt even if the recipient is not present.</comment>
+            <comment>GLS will deposit the parcel to the location requested by the receiver.</comment>
         </field>
         <field id="deposit_adjustment" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="21"
                translate="label comment" type="text">

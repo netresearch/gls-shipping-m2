@@ -4,7 +4,7 @@
     <carrier code="glsgroup">
         <serviceOptions>
             <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgroup/additional_services/flexdelivery">
-                <label translate="true">FlexDeliveryService</label>
+                <label translate="true">Delivery announcement with desired options</label>
                 <sortOrder>110</sortOrder>
                 <routes>
                     <route>
@@ -40,15 +40,15 @@
                 <inputs>
                     <input code="enabled">
                         <inputType>checkbox</inputType>
-                        <label translate="true">Select FlexDeliveryService</label>
+                        <label translate="true">Delivery announcement with desired options</label>
                         <comment>
-                            <content translate="true">I agree that my email address may be transmitted to and used by GLS Germany GmbH &amp; Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. Please note that it is not possible to use this service without transmitting the email address.</content>
+                            <content translate="true"><![CDATA[I agree that my email address may be transmitted to and used by GLS Germany GmbH & Co. OHG for the purpose of delivery notification and, if applicable, parcel redirection. I can revoke this consent at any time by sending a message to the following address: %1. It is not possible to use this service without transmitting the email address.]]></content>
                         </comment>
                     </input>
                 </inputs>
             </shippingOption>
             <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgroup/additional_services/deposit">
-                <label translate="true">DepositService</label>
+                <label translate="true">Deposit permission</label>
                 <sortOrder>120</sortOrder>
                 <routes>
                     <route>
@@ -62,14 +62,14 @@
                     <input code="enabled">
                         <sortOrder>10</sortOrder>
                         <inputType>checkbox</inputType>
-                        <label translate="true">Select DepositService</label>
+                        <label translate="true">Deposit permission</label>
                     </input>
                     <input code="details">
                         <sortOrder>20</sortOrder>
                         <label translate="true">Place of Deposit</label>
                         <labelVisible>false</labelVisible>
                         <inputType>text</inputType>
-                        <placeholder translate="true">e.g. shed, garage, or patio</placeholder>
+                        <placeholder translate="true">Describe the desired deposit place</placeholder>
                         <validationRules>
                             <rule name="required"/>
                             <rule name="validate-no-html-tags"/>
@@ -82,7 +82,7 @@
                 </inputs>
             </shippingOption>
             <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgroup/additional_services/guaranteed24">
-                <label translate="true">Guaranteed24Service</label>
+                <label translate="true">NEXT DAY - Guaranteed to be delivered tomorrow</label>
                 <sortOrder>130</sortOrder>
                 <routes>
                     <route>
@@ -95,7 +95,7 @@
                 <inputs>
                     <input code="enabled">
                         <inputType>checkbox</inputType>
-                        <label translate="true">Select Guaranteed24Service</label>
+                        <label translate="true">NEXT DAY - Guaranteed to be delivered tomorrow</label>
                     </input>
                 </inputs>
             </shippingOption>

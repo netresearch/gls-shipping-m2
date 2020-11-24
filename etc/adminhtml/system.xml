@@ -14,7 +14,7 @@
                     <attribute type="body_template">GlsGroup_Shipping::system/config/infoBoxBody.phtml</attribute>
                     <attribute type="header_template">GlsGroup_Shipping::system/config/infoBoxHeader.phtml</attribute>
                     <attribute type="view_model">GlsGroup\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual</attribute>
-                    <attribute type="logo">GlsGroup_Shipping::images/logo.jpg</attribute>
+                    <attribute type="logo">GlsGroup_Shipping::images/logo.png</attribute>
                     <attribute type="css_class">glsgroup</attribute>
                 </field>
                 <include path="GlsGroup_Shipping::system/100_general_settings.xml"/>

@@ -15,7 +15,7 @@
 
                 <!-- Default elements -->
                 <active>0</active>
-                <title>GLS Shipping</title>
+                <title>GLS</title>
                 <sort_order>0</sort_order>
                 <showmethod>1</showmethod>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>

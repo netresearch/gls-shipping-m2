@@ -10,32 +10,32 @@
         <field id="sandboxmode" translate="label comment" type="Netresearch\ConfigFields\Model\Type\Checkbox"
                sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
             <label>Enable Sandbox Mode</label>
-            <comment>GLS provides test endpoints for web service operations. Select this option to use the test environment.</comment>
+            <comment>This mode serves the development of the extension and is unfortunately not available for customers.</comment>
         </field>
 
         <field id="api_username" translate="label comment" type="text"
                sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
-            <label>User Name</label>
-            <comment>Enter your API user name.</comment>
+            <label>GLS WebAPI User</label>
+            <comment>Enter your GLS WebAPI user name.</comment>
         </field>
 
         <field id="api_password" translate="label comment" type="obscure"
                sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
             <label>Password</label>
-            <comment>Observe upper and lower case when entering the API password.</comment>
+            <comment>Observe upper and lower case when entering the WebAPI password.</comment>
             <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
         </field>
 
         <field id="customer_id" translate="label comment" type="text"
                sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
-            <label>Customer ID</label>
-            <comment>This information will be provided to you by your depot or can be found in your GLS account settings.</comment>
+            <label>Customer-ID</label>
+            <comment>If you do not know the ID, you can receive it from your GLS contact person.</comment>
         </field>
 
         <field id="contact_id" translate="label comment" type="text"
                sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
             <label>Contact ID</label>
-            <comment>This information will be provided to you by your depot or can be found in your GLS account settings.</comment>
+            <comment>If you do not know the ID, you can receive it from your GLS contact person.</comment>
         </field>
     </group>
 </include>

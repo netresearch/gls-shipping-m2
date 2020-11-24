@@ -35,7 +35,7 @@
             <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_CUSTOMS">
                 <inputs>
                     <input code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE" defaultConfigValue="GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_TERMS_OF_TRADE">
-                        <label translate="true">Terms of Trade</label>
+                        <label translate="true">Incoterm</label>
                         <inputType>select</inputType>
                         <sortOrder>15</sortOrder>
                     </input>
