@@ -11,20 +11,20 @@
         <field id="active" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10"
                translate="label button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Enabled</label>
-            <button_label><![CDATA[Allow customers to check out with <em>GLS Shipping</em> shipping method.]]></button_label>
+            <button_label>Offer GLS Shipping as a shipping method in the checkout.</button_label>
             <config_path>carriers/glsgroup/active</config_path>
         </field>
 
-        <!-- Applicable Countries -->
+        <!-- Allowed Countries -->
         <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
-            <label>Applicable Countries</label>
+            <label>Allowed Countries</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\CustomizeApplicableCountries</source_model>
             <config_path>carriers/glsgroup/sallowspecific</config_path>
             <!-- frontend_class "shipping-applicable-country" intentionally omitted. -->
         </field>
         <field id="specificcountry" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30" translate="label" type="multiselect">
-            <label>Allow for Specific Countries</label>
+            <label>Customized Country List</label>
             <can_be_empty>1</can_be_empty>
             <depends>
                 <field id="sallowspecific">1</field>
@@ -36,7 +36,7 @@
         <!-- Cut-off times -->
         <field id="cut_off_times" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
                translate="label comment" type="select">
-            <label>Cut-off Times</label>
+            <label>Latest Order Time for Same-Day Dispatch</label>
             <frontend_model>GlsGroup\Shipping\Block\Adminhtml\System\Config\Form\Field\CutOffTimes</frontend_model>
             <backend_model>Netresearch\ShippingCore\Model\Config\Backend\ArraySerialized</backend_model>
             <comment>Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.</comment>
@@ -46,7 +46,7 @@
         <field id="logging" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50"
                translate="label comment button_label" type="Netresearch\ConfigFields\Model\Type\Checkbox">
             <label>Logging</label>
-            <button_label>Record communication with the GLS web services.</button_label>
+            <button_label>Record communication with the GLS WebAPI.</button_label>
             <comment>You must also have Magento general logging enabled.</comment>
         </field>
         <group id="logging_group" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="60" translate="label">
@@ -55,7 +55,7 @@
             <depends>
                 <field id="logging">1</field>
             </depends>
-            <label>Error Logging Level</label>
+            <label>Log Level</label>
 
             <field id="loglevel" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10"
                    translate="label comment" type="Netresearch\ConfigFields\Model\Type\Radioset">

@@ -246,7 +246,7 @@ class RequestExtractor implements RequestExtractorInterface
                 // create new extended package instance with paket-specific export data
                 $glsPackages[$packageId] = $this->packageFactory->create($packageData);
             } catch (\Exception $exception) {
-                throw new LocalizedException(__('An error occurred while preparing package data.'), $exception);
+                throw new LocalizedException(__('An error occurred while preparing parcel data.'), $exception);
             }
         }
 

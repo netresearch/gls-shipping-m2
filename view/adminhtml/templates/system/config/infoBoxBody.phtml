@@ -6,31 +6,33 @@
 ?>
 <div class="col content">
     <p>
-        <?= $block->escapeHtml(__('GLS provides parcel shipping across Germany.')) ?>
+        <?= $block->escapeHtml(__('Official GLS plugin for Magento - parcel label creation and checkout integration for several shipping methods.')) ?>
     </p>
     <p>
-        <?= $block->escapeHtml(__('Furthermore, the GLS  module allows to request shipping labels for incoming orders directly within your Magento suite.')) ?>
+        <?= $block->escapeHtml(__('Make it easy for your customers and offer them different shipping methods within checkout. The subsequent order processing with GLS parcel label printing can take place directly within your Magento suite. Please note that GLS Shipping is a plugin for customers of GLS Germany GmbH & Co. OHG.')) ?>
     </p>
-    <p><?= $block->escapeHtml(__('To get started:')) ?></p>
-    <ol>
+    <p><?= $block->escapeHtml(__('You are not yet a GLS business customer and would like to receive an individual offer? Simply use the option which is most convenient for you:')) ?></p>
+    <ul>
         <li>
-            <em>
-                <small>
-                    <?= /* @noEscape */ __('If you do not have a GLS account, <a href="https://www.gls.de/" target="_blank">please contact GLS</a> to establish or expand your relationship') ?>
-                </small>
-            </em>
+            <a href="<?= $block->escapeUrl(__('https://www.gls-pakete.de/en/business-shipping/become-a-business-customer')) ?>" target="_blank">
+                <?= $block->escapeHtml(__('Online Form')) ?>
+            </a>
         </li>
-    </ol>
+        <li>
+            <a href="mailto:telesales@gls-germany.com">telesales@gls-germany.com</a>
+        </li>
+        <li>
+            <?= $block->escapeHtml(__('+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)')) ?>
+        </li>
+    </ul>
 </div>
 <div class="col side">
     <aside>
         <div class="section">
-            <h3><?= $block->escapeHtml(__('GLS & Magento')) ?></h3>
+            <h3><?= $block->escapeHtml(__('FAQ & Support')) ?></h3>
             <p>
-                <?= $block->escapeHtml(__('Having issues configuring the extension? Contact our support desk: ')) ?>
-                <a href="mailto:<?= $block->escapeHtml(__('gls.support@netresearch.de'))?>">
-                    <?= $block->escapeHtml(__('gls.support@netresearch.de'))?>
-                </a>
+                <?= $block->escapeHtml(__('If you have issues configuring GLS Shipping, please visit the FAQ and Support Center.')) ?>
+                <a href="mailto:gls.support@netresearch.de">gls.support@netresearch.de</a>
             </p>
         </div>
     </aside>

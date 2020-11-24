@@ -8,42 +8,44 @@
     <group id="checkout" translate="label" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
         <label>Checkout Presentation</label>
 
-        <field id="title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
-               translate="label" type="text" canRestore="1">
-            <label>Carrier Title</label>
-            <config_path>carriers/glsgroup/title</config_path>
-        </field>
-
         <field id="method_title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
-               translate="label" type="text" canRestore="1">
-            <label>Method Title</label>
+               translate="label comment" type="text" canRestore="1">
+            <label>Shipping Method Title 1</label>
+            <comment>Define the method title of the delivery method in checkout.</comment>
         </field>
 
-        <field id="sort_order" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
+        <field id="title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20"
+               translate="label comment" type="text" canRestore="1">
+            <label>Shipping Method Title 2</label>
+            <config_path>carriers/glsgroup/title</config_path>
+            <comment>Define the carrier title of the delivery method. This will be displayed next to the method title in checkout.</comment>
+        </field>
+
+        <field id="sort_order" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="30"
                translate="label comment" type="text">
             <label>Sort Order</label>
             <frontend_class>validate-number</frontend_class>
-            <comment><![CDATA[This field determines where <em>GLS Shipping</em> will be displayed on the Checkout page. To display after <em>Flat Rate</em> or <em>Free Shipping</em>, enter a number just higher than the sort order value configured for those shipping methods.]]></comment>
+            <comment><![CDATA[The sort order of all active shipping methods determines the order in which the shipping methods are displayed in the checkout. For example, if the GLS shipping method shall be displayed before the others, the number must be set smaller than for the other shipping methods.]]></comment>
             <config_path>carriers/glsgroup/sort_order</config_path>
         </field>
 
-        <field id="emulated_carrier" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="30"
+        <field id="emulated_carrier" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="40"
                translate="label comment tooltip" type="select">
-            <label>Use Rates From</label>
+            <label>Use Shipping Prices from</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\OfflineCarriers</source_model>
             <can_be_empty>0</can_be_empty>
-            <comment>Select the offline shipping method that gets used to provide rates in checkout.</comment>
-            <tooltip>The rates will get used even if the selected shipping method is disabled. The available method names will also be those of the selected shipping method.</tooltip>
+            <comment>Select the basis for the shipping prices to be displayed in the checkout. The prices are used even if the shipping method selected here is inactive.</comment>
+            <tooltip>The rates will get used even if the selected shipping method is disabled.</tooltip>
         </field>
 
         <!-- Not available message -->
-        <field id="showmethod" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40"
+        <field id="showmethod" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
             <label>Behavior in Cases of Unavailability</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\ShowIfNotApplicable</source_model>
             <config_path>carriers/glsgroup/showmethod</config_path>
         </field>
-        <field id="specificerrmsg" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50"
+        <field id="specificerrmsg" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="60"
                translate="label" type="textarea" canRestore="1">
             <label>Custom Message</label>
             <depends>
