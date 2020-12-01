@@ -15,6 +15,7 @@ use Magento\Quote\Model\Quote;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\AssignedSelectionInterface;
 use Netresearch\ShippingCore\Api\PaymentMethod\MethodAvailabilityInterface;
 use Netresearch\ShippingCore\Api\ShippingSettings\CodSelectorInterface;
+use Netresearch\ShippingCore\Api\Util\DeliveryAreaInterface;
 use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes;
 use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Selection\QuoteSelectionRepository;
 
@@ -35,14 +36,21 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
      */
     private $searchCriteriaBuilderFactory;
 
+    /**
+     * @var DeliveryAreaInterface
+     */
+    private $deliveryArea;
+
     public function __construct(
         QuoteSelectionRepository $quoteSelectionRepository,
         FilterBuilder $filterBuilder,
-        SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory
+        SearchCriteriaBuilderFactory $searchCriteriaBuilderFactory,
+        DeliveryAreaInterface $deliveryArea
     ) {
         $this->quoteSelectionRepository = $quoteSelectionRepository;
         $this->filterBuilder = $filterBuilder;
         $this->searchCriteriaBuilderFactory = $searchCriteriaBuilderFactory;
+        $this->deliveryArea = $deliveryArea;
     }
 
     /**
@@ -84,7 +92,12 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
 
     public function isAvailable(Quote $quote): bool
     {
-        if (!\in_array($quote->getShippingAddress()->getCountryId(), ['DE', 'AT'])) {
+        $countryId = $quote->getShippingAddress()->getCountryId();
+        if (!\in_array($countryId, ['DE', 'AT'])) {
+            return false;
+        }
+
+        if ($this->deliveryArea->isIsland($countryId, $quote->getShippingAddress()->getPostcode())) {
             return false;
         }
 
