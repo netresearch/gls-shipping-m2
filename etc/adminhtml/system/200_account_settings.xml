@@ -34,7 +34,7 @@
 
         <field id="contact_id" translate="label comment" type="text"
                sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
-            <label>Contact ID</label>
+            <label>Contact-ID</label>
             <comment>If you do not know the ID, you can receive it from your GLS contact person.</comment>
         </field>
     </group>

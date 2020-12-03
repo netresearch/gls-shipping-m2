@@ -1,6 +1,6 @@
 "+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
 "Account Settings","Account Settings"
-"Allowed Countries","Allowed Countries"
+"Activated Countries","Activated Countries"
 "An error occurred while preparing parcel data.","An error occurred while preparing parcel data."
 "Automatically print out return parcel label together with the outbound parcel label.","Automatically print out return parcel label together with the outbound parcel label."
 "Behavior in Cases of Unavailability","Behavior in Cases of Unavailability"
@@ -8,7 +8,7 @@
 City,City
 Company,Company
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Consumers can revoke their email address transmission consent by sending a message to this address."
-"Contact ID","Contact ID"
+Contact-ID,Contact-ID
 Country,Country
 "Custom Message","Custom Message"
 Customer-ID,Customer-ID
