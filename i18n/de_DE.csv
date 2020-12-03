@@ -1,6 +1,6 @@
 "+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
 "Account Settings",Kontoeinstellungen
-"Allowed Countries","Aktivierte Länder"
+"Activated Countries","Aktivierte Länder"
 "An error occurred while preparing parcel data.","Während der Paketscheinerstellung ist ein Fehler aufgetreten."
 "Automatically print out return parcel label together with the outbound parcel label.","Automatischer Ausdruck des Retouren-Paketscheins zusammen mit dem Hin-Paketschein."
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
@@ -8,10 +8,10 @@
 City,Stadt
 Company,Firma
 "Consumers can revoke their email address transmission consent by sending a message to this address.","Kunden können ihr Einverständnis zur Übertragung ihrer E-Mail-Adresse durch das Senden einer Nachricht an diesen Kontakt widerrufen."
-"Contact ID",Kontaktnummer
+Contact-ID,Kontakt-ID
 Country,Land
 "Custom Message","Benutzerdefinierte Nachricht"
-Customer-ID,Kundennummer
+Customer-ID,Kunden-ID
 "Customized Country List",Länder
 "DAP (Freight costs paid, customs costs & taxes unpaid)","DDP (Frei Haus, verzollt, versteuert)"
 "DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP (Frei Haus, unverzollt, unversteuert)"

@@ -18,7 +18,7 @@
         <!-- Allowed Countries -->
         <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label" type="Netresearch\ConfigFields\Model\Type\Radioset">
-            <label>Allowed Countries</label>
+            <label>Activated Countries</label>
             <source_model>Netresearch\ShippingCore\Model\Config\Source\CustomizeApplicableCountries</source_model>
             <config_path>carriers/glsgroup/sallowspecific</config_path>
             <!-- frontend_class "shipping-applicable-country" intentionally omitted. -->
