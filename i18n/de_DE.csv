@@ -1,6 +1,6 @@
 "+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
 "Account Settings",Kontoeinstellungen
-"Activated Countries","Aktivierte Länder"
+"Allowed Countries","Erlaubte Länder"
 "An error occurred while preparing parcel data.","Während der Paketscheinerstellung ist ein Fehler aufgetreten."
 "Automatically print out return parcel label together with the outbound parcel label.","Automatischer Ausdruck des Retouren-Paketscheins zusammen mit dem Hin-Paketschein."
 "Behavior in Cases of Unavailability","Verhalten bei Nichtverfügbarkeit"
@@ -63,7 +63,7 @@ Logging,Logging
 "Online Form",Online-Formular
 "Order Time",Bestellzeit
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Es wird davon ausgegangen, dass Bestellungen, die nach der konfigurierten Zeit eingehen, am nachfolgend konfigurierten Tag an GLS übergeben werden. Diese Einstellung beeinflusst das bei der Label-Buchung übergebene Datum sowie die Verfügbarkeit von Services im Checkout."
-"Package Default Weight",Standard-Paketgewicht
+"Parcel Weight",Paketgewicht
 "Parcel %1 could not be cancelled.","Das Paket %1 konnte nicht storniert werden."
 "Parcel %1 could not be cancelled: %2","Das Paket %1 konnte nicht storniert werden: %2"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
