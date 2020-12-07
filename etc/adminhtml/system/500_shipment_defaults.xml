@@ -17,7 +17,7 @@
 
         <field id="package_default_weight" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20"
                translate="label comment" type="text">
-            <label>Package Default Weight</label>
+            <label>Parcel Weight</label>
             <frontend_class>validate-number</frontend_class>
             <comment>The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.</comment>
         </field>
