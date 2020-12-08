@@ -10,7 +10,7 @@ namespace GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage;
 
 use GlsGroup\Sdk\ParcelProcessing\Exception\ServiceException;
 use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\ArtifactsContainer;
-use GlsGroup\Shipping\Model\Webservice\CancellationServiceFactory;
+use GlsGroup\Shipping\Model\Webservice\ParcelProcessingServiceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\TrackRequest\TrackRequestInterface;
 use Netresearch\ShippingCore\Api\Pipeline\RequestTracksStageInterface;
@@ -18,13 +18,13 @@ use Netresearch\ShippingCore\Api\Pipeline\RequestTracksStageInterface;
 class SendRequestStage implements RequestTracksStageInterface
 {
     /**
-     * @var CancellationServiceFactory
+     * @var ParcelProcessingServiceFactory
      */
-    private $cancellationServiceFactory;
+    private $serviceFactory;
 
-    public function __construct(CancellationServiceFactory $cancellationServiceFactory)
+    public function __construct(ParcelProcessingServiceFactory $serviceFactory)
     {
-        $this->cancellationServiceFactory = $cancellationServiceFactory;
+        $this->serviceFactory = $serviceFactory;
     }
 
     /**
@@ -37,34 +37,37 @@ class SendRequestStage implements RequestTracksStageInterface
     public function execute(array $requests, ArtifactsContainerInterface $artifactsContainer): array
     {
         $apiRequests = $artifactsContainer->getApiRequests();
-        if (!empty($apiRequests)) {
-            $cancellationService = $this->cancellationServiceFactory->create(
-                ['storeId' => $artifactsContainer->getStoreId()]
-            );
-
-            try {
-                $shipmentNumbers = array_values($apiRequests);
-                $cancelledShipments = $cancellationService->cancelParcels($shipmentNumbers);
-                // add shipment number as response index
-                foreach ($cancelledShipments as $parcelNumber) {
-                    $artifactsContainer->addApiResponse($parcelNumber, $parcelNumber);
-                }
-
-                return $requests;
-            } catch (ServiceException $exception) {
-                // mark all requests as failed
-                foreach ($requests as $cancelRequest) {
-                    $artifactsContainer->addError(
-                        $cancelRequest->getTrackNumber(),
-                        $cancelRequest->getSalesShipment(),
-                        $cancelRequest->getSalesTrack(),
-                        $exception->getMessage()
-                    );
-                }
-            }
+        if (empty($apiRequests)) {
+            return [];
         }
 
-        // no requests passed the stage
-        return [];
+        try {
+            $cancellationService = $this->serviceFactory->createCancellationService($artifactsContainer->getStoreId());
+        } catch (ServiceException $exception) {
+            // service discovery error, abort immediately.
+            throw new \RuntimeException($exception->getMessage(), $exception->getCode(), $exception);
+        }
+
+        try {
+            $shipmentNumbers = array_values($apiRequests);
+            $cancelledShipments = $cancellationService->cancelParcels($shipmentNumbers);
+            // add shipment number as response index
+            foreach ($cancelledShipments as $parcelNumber) {
+                $artifactsContainer->addApiResponse($parcelNumber, $parcelNumber);
+            }
+
+            return $requests;
+        } catch (ServiceException $exception) {
+            // mark all requests as failed
+            foreach ($requests as $cancelRequest) {
+                $artifactsContainer->addError(
+                    $cancelRequest->getTrackNumber(),
+                    $cancelRequest->getSalesShipment(),
+                    $cancelRequest->getSalesTrack(),
+                    $exception->getMessage()
+                );
+            }
+            return [];
+        }
     }
 }

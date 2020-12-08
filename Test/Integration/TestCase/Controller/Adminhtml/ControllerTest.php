@@ -8,10 +8,8 @@ declare(strict_types=1);
 
 namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml;
 
-use GlsGroup\Shipping\Model\Webservice\CancellationService;
-use GlsGroup\Shipping\Model\Webservice\ShipmentService;
-use GlsGroup\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
-use GlsGroup\Shipping\Test\Integration\TestDouble\ShipmentServiceStub;
+use GlsGroup\Shipping\Model\Webservice\ParcelProcessingServiceFactory;
+use GlsGroup\Shipping\Test\Integration\TestDouble\ServiceFactoryStub;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 
@@ -42,8 +40,7 @@ abstract class ControllerTest extends AbstractBackendController
         $this->_objectManager->configure(
             [
                 'preferences' => [
-                    ShipmentService::class => ShipmentServiceStub::class,
-                    CancellationService::class => CancellationServiceStub::class
+                    ParcelProcessingServiceFactory::class => ServiceFactoryStub::class,
                 ]
             ]
         );

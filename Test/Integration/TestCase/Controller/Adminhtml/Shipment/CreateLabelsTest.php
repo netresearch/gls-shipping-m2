@@ -14,7 +14,6 @@ use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\ShipmentTrackInterface;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\OrderRepository;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection;
 use Netresearch\ShippingCore\Api\LabelStatus\LabelStatusManagementInterface;
 use Netresearch\ShippingCore\Test\Integration\Fixture\OrderBuilder;
