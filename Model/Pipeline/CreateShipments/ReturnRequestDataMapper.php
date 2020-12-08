@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments;
 
+use GlsGroup\Sdk\ParcelProcessing\Api\ReturnShipmentRequestBuilderInterface;
 use GlsGroup\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
 use GlsGroup\Sdk\ParcelProcessing\Exception\RequestValidatorException;
 use GlsGroup\Shipping\Model\Config\ModuleConfig;
@@ -15,13 +16,11 @@ use GlsGroup\Shipping\Model\Config\Source\LabelSize;
 use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\Data\PackageAdditional;
 use GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest\RequestExtractorFactory;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentRequest\PackageInterface;
-use Netresearch\ShippingCore\Api\ShipmentDate\ShipmentDateCalculatorInterface;
 use Netresearch\ShippingCore\Api\Util\UnitConverterInterface;
 
-class RequestDataMapper
+class ReturnRequestDataMapper
 {
     /**
      * @var RequestExtractorFactory
@@ -29,7 +28,7 @@ class RequestDataMapper
     private $requestExtractorFactory;
 
     /**
-     * @var ShipmentRequestBuilderInterface
+     * @var ReturnShipmentRequestBuilderInterface
      */
     private $requestBuilder;
 
@@ -39,33 +38,19 @@ class RequestDataMapper
     private $moduleConfig;
 
     /**
-     * @var ShipmentDateCalculatorInterface
-     */
-    private $shipmentDateCalculator;
-
-    /**
-     * @var TimezoneInterface
-     */
-    private $timezone;
-
-    /**
      * @var UnitConverterInterface
      */
     private $unitConverter;
 
     public function __construct(
-        ShipmentRequestBuilderInterface $requestBuilder,
+        ReturnShipmentRequestBuilderInterface $requestBuilder,
         RequestExtractorFactory $requestExtractorFactory,
         ModuleConfig $moduleConfig,
-        ShipmentDateCalculatorInterface $shipmentDateCalculator,
-        TimezoneInterface $timezone,
         UnitConverterInterface $unitConverter
     ) {
         $this->requestBuilder = $requestBuilder;
         $this->requestExtractorFactory = $requestExtractorFactory;
         $this->moduleConfig = $moduleConfig;
-        $this->shipmentDateCalculator = $shipmentDateCalculator;
-        $this->timezone = $timezone;
         $this->unitConverter = $unitConverter;
     }
 
@@ -74,72 +59,52 @@ class RequestDataMapper
      *
      * @param Request $request The shipment request
      *
-     * @return \JsonSerializable
+     * @return \JsonSerializable|null
      * @throws LocalizedException
      */
-    public function mapRequest(Request $request): \JsonSerializable
+    public function mapRequest(Request $request): ?\JsonSerializable
     {
+        $requestExtractor = $this->requestExtractorFactory->create(['shipmentRequest' => $request]);
+        if (!$requestExtractor->isShopReturnBooked()) {
+            return null;
+        }
+
         $implode = function (array $parts) {
             $parts = array_filter($parts);
             return implode(' ', $parts);
         };
-
-        $requestExtractor = $this->requestExtractorFactory->create(['shipmentRequest' => $request]);
 
         $this->requestBuilder->setShipperAccount(
             $this->moduleConfig->getShipperId($requestExtractor->getStoreId()),
             $this->moduleConfig->getBrokerReference()
         );
 
-        if ($this->moduleConfig->isSendFromStoreShippingOrigin($requestExtractor->getStoreId())) {
-            // include shipping origin with label request.
-            $this->requestBuilder->setShipperAddress(
-                $requestExtractor->getShipper()->getCountryCode(),
-                $requestExtractor->getShipper()->getPostalCode(),
-                $requestExtractor->getShipper()->getCity(),
-                $implode($requestExtractor->getShipper()->getStreet()),
-                $requestExtractor->getShipper()->getContactCompanyName(),
-                null,
-                null,
-                null,
-                $requestExtractor->getShipper()->getState(),
-                $requestExtractor->getShipper()->getContactPersonName()
-            );
-        }
-
-        if ($requestExtractor->isRecipientEmailRequired()) {
-            $recipientEmail = $requestExtractor->getRecipient()->getContactEmail();
-        } else {
-            $recipientEmail = null;
-        }
-
-        $this->requestBuilder->setRecipientAddress(
+        $this->requestBuilder->setShipperAddress(
             $requestExtractor->getRecipient()->getCountryCode(),
             $requestExtractor->getRecipient()->getPostalCode(),
             $requestExtractor->getRecipient()->getCity(),
             $implode($requestExtractor->getRecipient()->getStreet()),
             $requestExtractor->getRecipient()->getContactPersonName(),
             $requestExtractor->getRecipient()->getContactCompanyName(),
-            $recipientEmail,
             null,
             null,
             null,
-            $requestExtractor->getRecipient()->getState(),
-            null
+            null,
+            $requestExtractor->getRecipient()->getState()
         );
 
-        if ($requestExtractor->isFlexDeliveryEnabled()) {
-            $this->requestBuilder->requestFlexDeliveryService();
-        }
-
-        if ($requestExtractor->isNextDayDeliveryEnabled()) {
-            $this->requestBuilder->requestNextDayDelivery();
-        }
-
-        $depositLocation = $requestExtractor->getPlaceOfDeposit();
-        if ($depositLocation) {
-            $this->requestBuilder->setPlaceOfDeposit($depositLocation);
-        }
+        $this->requestBuilder->setRecipientAddress(
+            $requestExtractor->getReturnRecipient()->getCountryCode(),
+            $requestExtractor->getReturnRecipient()->getPostalCode(),
+            $requestExtractor->getReturnRecipient()->getCity(),
+            $implode($requestExtractor->getReturnRecipient()->getStreet()),
+            $requestExtractor->getReturnRecipient()->getContactCompanyName(),
+            null,
+            null,
+            null,
+            $requestExtractor->getReturnRecipient()->getState(),
+            $requestExtractor->getReturnRecipient()->getContactPersonName()
+        );
 
         /** @var PackageInterface $package */
         foreach ($requestExtractor->getPackages() as $packageId => $package) {
@@ -147,19 +112,10 @@ class RequestDataMapper
             $weightUom = $package->getWeightUom();
             $weightInKg = $this->unitConverter->convertWeight($weight, $weightUom, \Zend_Measure_Weight::KILOGRAM);
 
-            $codAmount = null;
-            $reasonForPayment = null;
-            if ($requestExtractor->isCashOnDelivery()) {
-                $codAmount = ((float)($requestExtractor->getOrder()->getBaseGrandTotal()) * 100) / 100;
-                $reasonForPayment = $requestExtractor->getCodReasonForPayment();
-            }
-
             $this->requestBuilder->addParcel(
                 $weightInKg,
-                $requestExtractor->getOrder()->getIncrementId(),
-                null,
-                $codAmount,
-                $reasonForPayment
+                false,
+                $requestExtractor->getOrder()->getIncrementId()
             );
 
             $packageAdditional = $package->getPackageAdditional();
@@ -168,16 +124,6 @@ class RequestDataMapper
             }
         }
 
-        try {
-            $shipmentDate = $this->shipmentDateCalculator->getDate(
-                $this->moduleConfig->getCutOffTimes($requestExtractor->getStoreId()),
-                $requestExtractor->getStoreId()
-            );
-        } catch (\RuntimeException $exception) {
-            $shipmentDate = $this->timezone->scopeDate($requestExtractor->getStoreId());
-        }
-
-        $this->requestBuilder->setShipmentDate($shipmentDate);
         $this->requestBuilder->setLabelFormat(ShipmentRequestBuilderInterface::LABEL_FORMAT_PDF);
 
         $labelSize = $this->moduleConfig->getLabelSize($requestExtractor->getStoreId());

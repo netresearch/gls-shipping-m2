@@ -9,9 +9,9 @@ declare(strict_types=1);
 namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Shipment;
 
 use GlsGroup\Shipping\Model\Pipeline\DeleteShipments\Stage\SendRequestStage;
-use GlsGroup\Shipping\Model\Webservice\CancellationService;
-use GlsGroup\Shipping\Test\Integration\TestDouble\CancellationServiceStub;
+use GlsGroup\Shipping\Model\Webservice\ParcelProcessingServiceFactory;
 use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\DeleteShipments\Stage\SendRequestStageStub;
+use GlsGroup\Shipping\Test\Integration\TestDouble\ServiceFactoryStub;
 use Magento\Sales\Api\Data\TrackInterface;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
 use Magento\Sales\Model\Order;
@@ -66,7 +66,7 @@ class CancelTest extends AbstractBackendController
             [
                 'preferences' => [
                     SendRequestStage::class => SendRequestStageStub::class,
-                    CancellationService::class => CancellationServiceStub::class,
+                    ParcelProcessingServiceFactory::class => ServiceFactoryStub::class,
                 ]
             ]
         );

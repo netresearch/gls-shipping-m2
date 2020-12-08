@@ -113,65 +113,34 @@
             </shippingOption>
         </serviceOptions>
         <compatibilityData>
-            <rule id="depositServiceExcludeOthers">
+            <rule id="disableLetterboxIfDepositServiceIsSelected">
                 <masters>
                     <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
                     <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
                 </subjects>
             </rule>
-            <rule id="guaranteed24ServiceExcludeOthers">
+            <rule id="disableLetterboxIfG24ServiceIsSelected">
                 <masters>
                     <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
                     <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
                 </subjects>
             </rule>
-            <rule id="cashOnDeliveryServiceExcludeOthers">
+            <rule id="disableLetterboxIfCODIsSelected">
                 <masters>
                     <master>Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_CASH_ON_DELIVERY.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
                     <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
-                </subjects>
-            </rule>
-            <rule id="shopReturnServiceExcludeOthers">
-                <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</master>
-                </masters>
-                <triggerValue>*</triggerValue>
-                <action>disable</action>
-                <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
-                </subjects>
-            </rule>
-            <rule id="letterBoxExcludeOthers">
-                <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</master>
-                </masters>
-                <triggerValue>*</triggerValue>
-                <action>disable</action>
-                <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN.enabled</subject>
                 </subjects>
             </rule>
         </compatibilityData>

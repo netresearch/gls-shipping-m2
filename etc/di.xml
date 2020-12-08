@@ -6,6 +6,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <!-- # sdk preferences -->
+    <preference for="GlsGroup\Sdk\ParcelProcessing\Api\ReturnShipmentRequestBuilderInterface" type="GlsGroup\Sdk\ParcelProcessing\RequestBuilder\ReturnShipmentRequestBuilder"/>
     <preference for="GlsGroup\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface" type="GlsGroup\Sdk\ParcelProcessing\RequestBuilder\ShipmentRequestBuilder"/>
     <preference for="GlsGroup\Sdk\ParcelProcessing\Api\ServiceFactoryInterface" type="GlsGroup\Sdk\ParcelProcessing\Service\ServiceFactory"/>
 
@@ -47,6 +48,7 @@
                 <item name="mapRequest" sortOrder="200" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\MapRequestStage</item>
                 <item name="send" sortOrder="300" xsi:type="object"> GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\SendRequestStage</item>
                 <item name="mapResponse" sortOrder="400" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\MapResponseStage</item>
+                <item name="createShopReturnLabel" sortOrder="500" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\Stage\CreateShopReturnLabelStage</item>
             </argument>
             <argument name="artifactsContainerFactory" xsi:type="object">GlsGroup\Shipping\Model\Pipeline\CreateShipments\ArtifactsContainerFactory\Virtual</argument>
         </arguments>
@@ -210,12 +212,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="GlsGroup\Shipping\Model\Webservice\ShipmentService">
-        <arguments>
-            <argument name="logger" xsi:type="object">GlsGroup\Shipping\Model\Logger\Virtual</argument>
-        </arguments>
-    </type>
-    <type name="GlsGroup\Shipping\Model\Webservice\CancellationService">
+    <type name="GlsGroup\Shipping\Model\Webservice\ParcelProcessingServiceFactory">
         <arguments>
             <argument name="logger" xsi:type="object">GlsGroup\Shipping\Model\Logger\Virtual</argument>
         </arguments>
