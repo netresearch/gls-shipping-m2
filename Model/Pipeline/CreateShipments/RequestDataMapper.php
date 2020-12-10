@@ -150,7 +150,7 @@ class RequestDataMapper
             $codAmount = null;
             $reasonForPayment = null;
             if ($requestExtractor->isCashOnDelivery()) {
-                $codAmount = ((float)($requestExtractor->getOrder()->getBaseGrandTotal()) * 100) / 100;
+                $codAmount = round((float) $requestExtractor->getOrder()->getBaseGrandTotal(), 2);
                 $reasonForPayment = $requestExtractor->getCodReasonForPayment();
             }
 
