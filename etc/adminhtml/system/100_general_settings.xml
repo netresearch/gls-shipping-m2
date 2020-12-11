@@ -31,6 +31,7 @@
             </depends>
             <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
             <config_path>carriers/glsgroup/specificcountry</config_path>
+            <backend_model>Netresearch\ShippingCore\Model\Config\Backend\AllowedCountries</backend_model>
         </field>
 
         <!-- Cut-off times -->
