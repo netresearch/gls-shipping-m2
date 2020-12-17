@@ -4,6 +4,11 @@ services:
   - name: registry.netresearch.de/ci-helper/gitlab-worker-dind
     alias: docker
 
+variables:
+  MAGENTO_REPO_CREDENTIALS_PATH: "projects/GLS/CI"
+  GITHUB_CREDENTIALS_PATH: "projects/GLS/Github/shipping-m2"
+  VAULT_PATH: ${MAGENTO_REPO_CREDENTIALS_PATH}
+
 stages:
   - analyze
   - test
@@ -121,6 +126,22 @@ phpunit-additional-2.4:
         MAGENTO_TAG_VERSION: "2.4"
         MAGENTO_EDITION: ["ee", "ce"]
 
+wiki2pdf:
+  stage: docs
+  image: registry.netresearch.de/magento-ci/wiki2pdf
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+  script:
+    - ci-wiki2pdf Documentation-English.md GLS_Shipping_EndUserDocumentation.pdf
+    - ci-wiki2pdf Documentation-German.md GLS_Shipping_Endkundendokumentation.pdf
+    - mkdir ./doc && mv ./*.pdf ./doc
+  artifacts:
+    when: on_success
+    paths:
+      - ./*.pdf
+
 package-build:
   stage: build
   only:
@@ -153,7 +174,7 @@ github:
     - master
   variables:
     GIT_STRATEGY: "clone"
-    VAULT_PATH: "projects/GLS/Github/shipping-m2"
+    VAULT_PATH: ${GITHUB_CREDENTIALS_PATH}
   before_script:
     - ci-github-before
   script:
