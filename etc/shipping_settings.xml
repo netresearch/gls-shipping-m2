@@ -3,7 +3,7 @@
           xsi:noNamespaceSchemaLocation="urn:magento:module:Netresearch_ShippingCore/etc/shipping_settings.xsd">
     <carrier code="glsgroup">
         <serviceOptions>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY" available="carriers/glsgroup/additional_services/flexdelivery">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_FLEX_DELIVERY" available="carriers/glsgroup/additional_services/flexdelivery">
                 <label translate="true">Delivery announcement with desired options</label>
                 <sortOrder>110</sortOrder>
                 <routes>
@@ -47,7 +47,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT" available="carriers/glsgroup/additional_services/deposit">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT" available="carriers/glsgroup/additional_services/deposit">
                 <label translate="true">Deposit permission</label>
                 <sortOrder>120</sortOrder>
                 <routes>
@@ -81,7 +81,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24" available="carriers/glsgroup/additional_services/guaranteed24">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24" available="carriers/glsgroup/additional_services/guaranteed24">
                 <label translate="true">NEXT DAY - Guaranteed to be delivered tomorrow</label>
                 <sortOrder>130</sortOrder>
                 <routes>

@@ -12,7 +12,7 @@
                 <field id="infoBox" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <frontend_model>Netresearch\ConfigFields\Block\InfoBox</frontend_model>
                     <attribute type="body_template">GlsGroup_Shipping::system/config/infoBoxBody.phtml</attribute>
-                    <attribute type="header_template">GlsGroup_Shipping::system/config/infoBoxHeader.phtml</attribute>
+                    <attribute type="header_template">Netresearch_ShippingCore::system/config/infoBoxHeader.phtml</attribute>
                     <attribute type="view_model">GlsGroup\Shipping\ViewModel\Adminhtml\System\InfoBox\Virtual</attribute>
                     <attribute type="logo">GlsGroup_Shipping::images/logo.png</attribute>
                     <attribute type="css_class">glsgroup</attribute>

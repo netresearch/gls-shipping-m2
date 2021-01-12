@@ -168,7 +168,7 @@ class DisableCodPaymentMethodsTest extends TestCase
     {
         $serviceSelection = Bootstrap::getObjectManager()->create(QuoteSelection::class);
         $serviceSelection->setData([
-            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::CHECKOUT_SERVICE_FLEX_DELIVERY,
+            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_FLEX_DELIVERY,
             AssignedSelectionInterface::INPUT_CODE => 'date',
             AssignedSelectionInterface::INPUT_VALUE => '2019-07-11'
         ]);
@@ -183,7 +183,7 @@ class DisableCodPaymentMethodsTest extends TestCase
     {
         $serviceSelection = Bootstrap::getObjectManager()->create(QuoteSelection::class);
         $serviceSelection->setData([
-            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::CHECKOUT_SERVICE_GUARANTEED24,
+            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_GUARANTEED24,
             AssignedSelectionInterface::INPUT_CODE => 'enabled',
             AssignedSelectionInterface::INPUT_VALUE => 'true'
         ]);

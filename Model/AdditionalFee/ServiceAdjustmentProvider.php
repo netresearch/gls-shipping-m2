@@ -10,8 +10,9 @@ namespace GlsGroup\Shipping\Model\AdditionalFee;
 
 use GlsGroup\Shipping\Model\Config\ModuleConfig;
 use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
+use Netresearch\ShippingCore\Api\AdditionalFee\AdditionalFeeProviderInterface;
 
-class ServiceAdjustmentProvider
+class ServiceAdjustmentProvider implements AdditionalFeeProviderInterface
 {
     /**
      * @var ModuleConfig
@@ -23,18 +24,12 @@ class ServiceAdjustmentProvider
         $this->config = $config;
     }
 
-    /**
-     * Obtain all configured service adjustment amounts, indexed by shipping option code.
-     *
-     * @param mixed $store
-     * @return float[]
-     */
-    public function getAmounts($store = null): array
+    public function getAmounts(int $storeId): array
     {
         $amounts = [
-            Codes::CHECKOUT_SERVICE_FLEX_DELIVERY => $this->config->getFlexDeliveryAdjustment($store),
-            Codes::CHECKOUT_SERVICE_DEPOSIT => $this->config->getDepositAdjustment($store),
-            Codes::CHECKOUT_SERVICE_GUARANTEED24 => $this->config->getG24Adjustment($store),
+            Codes::SERVICE_OPTION_FLEX_DELIVERY => $this->config->getFlexDeliveryAdjustment($storeId),
+            Codes::SERVICE_OPTION_DEPOSIT => $this->config->getDepositAdjustment($storeId),
+            Codes::SERVICE_OPTION_GUARANTEED24 => $this->config->getG24Adjustment($storeId),
         ];
 
         return array_filter($amounts);

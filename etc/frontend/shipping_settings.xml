@@ -4,21 +4,21 @@
         <compatibilityData>
             <rule id="enableLocationInputIfDepositServiceIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>enable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.details</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT.details</subject>
                 </subjects>
             </rule>
             <rule id="disableOtherServicesIfFlexDeliveryIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_FLEX_DELIVERY</master>
                 </masters>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24</subject>
                 </subjects>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
@@ -26,11 +26,11 @@
             </rule>
             <rule id="disableOtherServicesIfDepositServiceIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT</master>
                 </masters>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_FLEX_DELIVERY</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24</subject>
                 </subjects>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
@@ -38,11 +38,11 @@
             </rule>
             <rule id="disableOtherServicesIfG24ServiceIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24.enabled</master>
                 </masters>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</subject>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_FLEX_DELIVERY</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT</subject>
                 </subjects>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>

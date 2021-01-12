@@ -12,44 +12,51 @@
                             <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::ITEM_INPUT_COUNTRY_OF_ORIGIN">
                                 <inputType>hidden</inputType>
                             </input>
+                            <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::ITEM_INPUT_EXPORT_DESCRIPTION">
+                                <inputType>hidden</inputType>
+                            </input>
                         </inputs>
                     </shippingOption>
                 </shippingOptions>
             </itemShippingOptions>
         </itemOptions>
         <packageOptions>
-            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_DETAILS">
+            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_OPTION_DETAILS">
                 <inputs>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_LENGTH">
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_LENGTH">
                         <inputType>hidden</inputType>
                     </input>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_WIDTH">
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_WIDTH">
                         <inputType>hidden</inputType>
                     </input>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_HEIGHT">
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_HEIGHT">
                         <inputType>hidden</inputType>
                     </input>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_WEIGHT" defaultConfigValue="GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_PACKAGE_DEFAULT_WEIGHT"/>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_WEIGHT" defaultConfigValue="GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_PACKAGE_DEFAULT_WEIGHT"/>
                 </inputs>
             </shippingOption>
-            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_OPTION_CUSTOMS">
+            <shippingOption code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_OPTION_CUSTOMS">
                 <inputs>
-                    <input code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE" defaultConfigValue="GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_TERMS_OF_TRADE">
+                    <input code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_TERMS_OF_TRADE"
+                           defaultConfigValue="GlsGroup\Shipping\Model\Config\ModuleConfig::CONFIG_PATH_TERMS_OF_TRADE">
                         <label translate="true">Incoterm</label>
                         <inputType>select</inputType>
                         <sortOrder>15</sortOrder>
                     </input>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_CONTENT_TYPE">
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_CONTENT_TYPE">
                         <inputType>hidden</inputType>
                     </input>
-                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_INPUT_EXPLANATION">
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_EXPLANATION">
+                        <inputType>hidden</inputType>
+                    </input>
+                    <input code="Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::PACKAGE_INPUT_EXPORT_DESCRIPTION">
                         <inputType>hidden</inputType>
                     </input>
                 </inputs>
             </shippingOption>
         </packageOptions>
         <serviceOptions>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT">
                 <label translate="true">Place of Deposit</label>
                 <inputs>
                     <input code="details">
@@ -57,7 +64,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_SHOP_RETURN">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_SHOP_RETURN">
                 <label translate="true">Returns</label>
                 <sortOrder>1010</sortOrder>
                 <routes>
@@ -92,7 +99,7 @@
                     </input>
                 </inputs>
             </shippingOption>
-            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX">
+            <shippingOption code="GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_LETTERBOX">
                 <label translate="true">Letterbox</label>
                 <sortOrder>1020</sortOrder>
                 <routes>
@@ -115,22 +122,22 @@
         <compatibilityData>
             <rule id="disableLetterboxIfDepositServiceIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT.enabled</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_LETTERBOX.enabled</subject>
                 </subjects>
             </rule>
             <rule id="disableLetterboxIfG24ServiceIsSelected">
                 <masters>
-                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24.enabled</master>
+                    <master>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24.enabled</master>
                 </masters>
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_LETTERBOX.enabled</subject>
                 </subjects>
             </rule>
             <rule id="disableLetterboxIfCODIsSelected">
@@ -140,7 +147,7 @@
                 <triggerValue>*</triggerValue>
                 <action>disable</action>
                 <subjects>
-                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::PACKAGING_SERVICE_LETTERBOX.enabled</subject>
+                    <subject>GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_LETTERBOX.enabled</subject>
                 </subjects>
             </rule>
         </compatibilityData>

@@ -71,11 +71,6 @@ class RequestExtractor implements RequestExtractorInterface
     private $shipmentDate;
 
     /**
-     * @var ShipperInterface
-     */
-    private $returnRecipient;
-
-    /**
      * @var ShipperInterfaceFactory
      */
     private $shipperFactory;
@@ -94,6 +89,11 @@ class RequestExtractor implements RequestExtractorInterface
      * @var ServiceOptionReaderInterface
      */
     private $serviceOptionReader;
+
+    /**
+     * @var ShipperInterface
+     */
+    private $returnRecipient;
 
     public function __construct(
         Request $shipmentRequest,
@@ -187,7 +187,7 @@ class RequestExtractor implements RequestExtractorInterface
 
         $alternativeAddress = $this->moduleConfig->getAlternativeReturnAddress($this->getStoreId());
         if (empty($alternativeAddress)) {
-            $this->returnRecipient = $this->getShipper();
+            $this->returnRecipient = $this->getCoreExtractor()->getReturnRecipient();
         } else {
             $this->returnRecipient = $this->shipperFactory->create(
                 [
@@ -273,6 +273,46 @@ class RequestExtractor implements RequestExtractorInterface
         return $this->coreExtractor->getCodReasonForPayment();
     }
 
+    public function isPickupLocationDelivery(): bool
+    {
+        return $this->coreExtractor->isPickupLocationDelivery();
+    }
+
+    public function getDeliveryLocationType(): string
+    {
+        return $this->coreExtractor->getCodReasonForPayment();
+    }
+
+    public function getDeliveryLocationId(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationId();
+    }
+
+    public function getDeliveryLocationNumber(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationNumber();
+    }
+
+    public function getDeliveryLocationCountryCode(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationCountryCode();
+    }
+
+    public function getDeliveryLocationPostalCode(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationPostalCode();
+    }
+
+    public function getDeliveryLocationCity(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationCity();
+    }
+
+    public function getDeliveryLocationStreet(): string
+    {
+        return $this->coreExtractor->getDeliveryLocationStreet();
+    }
+
     /**
      * Check if recipient email must be set.
      *
@@ -298,7 +338,7 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function isFlexDeliveryEnabled(): bool
     {
-        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_FLEX_DELIVERY);
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::SERVICE_OPTION_FLEX_DELIVERY);
     }
 
     /**
@@ -308,7 +348,7 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function isNextDayDeliveryEnabled(): bool
     {
-        return $this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_GUARANTEED24);
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::SERVICE_OPTION_GUARANTEED24);
     }
 
     /**
@@ -318,7 +358,7 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function isShopReturnBooked(): bool
     {
-        return $this->getServiceOptionReader()->isServiceEnabled(Codes::PACKAGING_SERVICE_SHOP_RETURN);
+        return $this->getServiceOptionReader()->isServiceEnabled(Codes::SERVICE_OPTION_SHOP_RETURN);
     }
 
     /**
@@ -333,14 +373,14 @@ class RequestExtractor implements RequestExtractorInterface
      */
     public function getPlaceOfDeposit(): string
     {
-        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::CHECKOUT_SERVICE_DEPOSIT)) {
+        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::SERVICE_OPTION_DEPOSIT)) {
             return $this->getServiceOptionReader()->getServiceOptionValue(
-                Codes::CHECKOUT_SERVICE_DEPOSIT,
+                Codes::SERVICE_OPTION_DEPOSIT,
                 'details'
             );
         }
 
-        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::PACKAGING_SERVICE_LETTERBOX)) {
+        if ($this->getServiceOptionReader()->isServiceEnabled(Codes::SERVICE_OPTION_LETTERBOX)) {
             return 'Briefkasten';
         }
 

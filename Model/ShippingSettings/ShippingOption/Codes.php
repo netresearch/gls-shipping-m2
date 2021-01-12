@@ -10,15 +10,15 @@ namespace GlsGroup\Shipping\Model\ShippingSettings\ShippingOption;
 
 class Codes
 {
-    // packaging services
-    public const PACKAGING_SERVICE_LETTERBOX = 'letterBox';
-    public const PACKAGING_SERVICE_SHOP_RETURN = 'shopReturn';
-
-    // packaging inputs
+    // package customs
     public const PACKAGING_INPUT_TERMS_OF_TRADE = 'termsOfTrade';
 
+    // packaging services
+    public const SERVICE_OPTION_LETTERBOX = 'letterBox';
+    public const SERVICE_OPTION_SHOP_RETURN = 'shopReturn';
+
     // checkout services
-    public const CHECKOUT_SERVICE_FLEX_DELIVERY = 'flexDelivery';
-    public const CHECKOUT_SERVICE_DEPOSIT = 'deposit';
-    public const CHECKOUT_SERVICE_GUARANTEED24 = 'guaranteed24';
+    public const SERVICE_OPTION_FLEX_DELIVERY = 'flexDelivery';
+    public const SERVICE_OPTION_DEPOSIT = 'deposit';
+    public const SERVICE_OPTION_GUARANTEED24 = 'guaranteed24';
 }

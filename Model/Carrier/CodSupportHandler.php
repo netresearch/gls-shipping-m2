@@ -73,8 +73,8 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
             ->setConditionType('in')
             ->setValue(
                 [
-                    CarrierCodes::CHECKOUT_SERVICE_DEPOSIT,
-                    CarrierCodes::CHECKOUT_SERVICE_GUARANTEED24
+                    CarrierCodes::SERVICE_OPTION_DEPOSIT,
+                    CarrierCodes::SERVICE_OPTION_GUARANTEED24
                 ]
             )
             ->create();
