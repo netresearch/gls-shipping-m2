@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
 
+use GlsGroup\Shipping\Model\Carrier\GlsGroup;
 use GlsGroup\Shipping\Model\Config\Source\TermsOfTrade;
 use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Sales\Api\Data\ShipmentInterface;
@@ -58,6 +59,7 @@ class InputDataProcessor implements ShippingOptionsProcessorInterface
     }
 
     /**
+     * @param string $carrierCode
      * @param ShippingOptionInterface[] $shippingOptions
      * @param int $storeId
      * @param string $countryCode
@@ -67,12 +69,18 @@ class InputDataProcessor implements ShippingOptionsProcessorInterface
      * @return ShippingOptionInterface[]
      */
     public function process(
+        string $carrierCode,
         array $shippingOptions,
         int $storeId,
         string $countryCode,
         string $postalCode,
         ShipmentInterface $shipment = null
     ): array {
+        if ($carrierCode !== GlsGroup::CARRIER_CODE) {
+            // different carrier, nothing to modify.
+            return $shippingOptions;
+        }
+
         if (!$shipment) {
             return $shippingOptions;
         }

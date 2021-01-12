@@ -109,18 +109,18 @@
     <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Checkout\ShippingDataProcessor\Virtual">
         <arguments>
             <argument name="shippingOptionsProcessors" xsi:type="array">
-                <item name="glsServiceAvailabilityProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\ServiceAvailabilityProcessor</item>
-                <item name="glsFlexDeliveryProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
-                <item name="glsGuaranteed24Processor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
-                <item name="glsAdditionalFeeProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\AdditionalFeeProcessor</item>
+                <item name="glsServiceAvailabilityProcessor" xsi:type="object" sortOrder="1010">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\ServiceAvailabilityProcessor</item>
+                <item name="glsFlexDeliveryProcessor" xsi:type="object" sortOrder="1020">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\FlexDeliveryServiceProcessor</item>
+                <item name="glsGuaranteed24Processor" xsi:type="object" sortOrder="1030">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\Guaranteed24ServiceProcessor</item>
+                <item name="glsAdditionalFeeProcessor" xsi:type="object" sortOrder="1040">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\AdditionalFeeProcessor</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Netresearch\ShippingCore\Model\ShippingSettings\Packaging\ShippingDataProcessor\Virtual">
         <arguments>
             <argument name="shippingOptionsProcessors" xsi:type="array">
-                <item name="processGlsInputs" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\InputDataProcessor</item>
-                <item name="glsServiceAvailabilityProcessor" xsi:type="object">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\ServiceAvailabilityProcessor</item>
+                <item name="processGlsInputs" xsi:type="object" sortOrder="1010">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\InputDataProcessor</item>
+                <item name="glsServiceAvailabilityProcessor" xsi:type="object" sortOrder="1020">GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions\ServiceAvailabilityProcessor</item>
             </argument>
         </arguments>
     </virtualType>
@@ -196,7 +196,7 @@
     <type name="Netresearch\ShippingCore\Observer\SplitAddress">
         <arguments>
             <argument name="carrierCodes" xsi:type="array">
-                <item name="glsgroup" xsi:type="const">GlsGroup\Shipping\Model\Carrier\GlsGroup::CARRIER_CODE</item>
+                <item name="glsgroup" xsi:type="object">Netresearch\ShippingCore\Model\SplitAddress\RecipientStreetLoader</item>
             </argument>
         </arguments>
     </type>
@@ -204,9 +204,9 @@
         <arguments>
             <argument name="carrierConsumerServices" xsi:type="array">
                 <item name="glsgroup" xsi:type="array">
-                    <item name="0" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_FLEX_DELIVERY</item>
-                    <item name="1" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_DEPOSIT</item>
-                    <item name="2" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::CHECKOUT_SERVICE_GUARANTEED24</item>
+                    <item name="0" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_FLEX_DELIVERY</item>
+                    <item name="1" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_DEPOSIT</item>
+                    <item name="2" xsi:type="const">GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_GUARANTEED24</item>
                     <item name="3" xsi:type="const">Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Codes::SERVICE_OPTION_CASH_ON_DELIVERY</item>
                 </item>
             </argument>

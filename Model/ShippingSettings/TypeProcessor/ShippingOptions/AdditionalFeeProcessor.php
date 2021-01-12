@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace GlsGroup\Shipping\Model\ShippingSettings\TypeProcessor\ShippingOptions;
 
 use GlsGroup\Shipping\Model\AdditionalFee\ServiceAdjustmentProvider;
+use GlsGroup\Shipping\Model\Carrier\GlsGroup;
 use Magento\Framework\Pricing\Helper\Data as CurrencyConverter;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\InputInterface;
@@ -46,6 +47,7 @@ class AdditionalFeeProcessor implements ShippingOptionsProcessorInterface
     }
 
     /**
+     * @param string $carrierCode
      * @param ShippingOptionInterface[] $shippingOptions
      * @param int $storeId
      * @param string $countryCode
@@ -55,12 +57,18 @@ class AdditionalFeeProcessor implements ShippingOptionsProcessorInterface
      * @return ShippingOptionInterface[]
      */
     public function process(
+        string $carrierCode,
         array $shippingOptions,
         int $storeId,
         string $countryCode,
         string $postalCode,
         ShipmentInterface $shipment = null
     ): array {
+        if ($carrierCode !== GlsGroup::CARRIER_CODE) {
+            // different carrier, nothing to modify.
+            return $shippingOptions;
+        }
+
         $fees = $this->feeProvider->getAmounts($storeId);
 
         foreach ($shippingOptions as $shippingOption) {
