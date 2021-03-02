@@ -57,7 +57,7 @@ phpunit-essential-2.3:
     - merge_requests
   variables:
     PHP_VERSION: "7.1"
-    MAGENTO_TAG_VERSION: "2.3"
+    MAGENTO_TAG_VERSION: "2.3.6"
     MAGENTO_EDITION: "ce"
 
 phpunit-essential-2.4:
@@ -72,7 +72,7 @@ phpunit-essential-2.4:
     matrix:
       - PHP_VERSION: "7.4"
         MAGENTO_TAG_VERSION: "2.4"
-        MAGENTO_EDITION: [ "ee", "ce" ]
+        MAGENTO_EDITION: ["ee", "ce"]
 
 # MFTF tests
 php74-mftf-2.4:
@@ -99,33 +99,34 @@ php74-mftf-2.4:
       - build/shared/log
 
 # Additional tests (in between versions of Magento or PHP)
-phpunit-additional-2.3:
+phpunit-additional-2.3-7.2:
   stage: test-additional
   extends: .phpunit
-  only:
-    - develop
-    - master
-    - /^(release|hotfix)-.*$/
   parallel:
     matrix:
-      - PHP_VERSION: ["7.2", "7.3"]
-        MAGENTO_TAG_VERSION: "2.3"
+      - PHP_VERSION: "7.2"
+        MAGENTO_TAG_VERSION: "2.3.6"
         MAGENTO_EDITION: ["ee", "ce"]
 
+phpunit-additional-2.3-7.3:
+  stage: test-additional
+  extends: .phpunit
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.3"
+        MAGENTO_TAG_VERSION: "2.3"
+        MAGENTO_EDITION: ["ee", "ce"]
 
 phpunit-additional-2.4:
   stage: test-additional
   extends: .phpunit
-  only:
-    - develop
-    - master
-    - /^(release|hotfix)-.*$/
   parallel:
     matrix:
       - PHP_VERSION: "7.3"
         MAGENTO_TAG_VERSION: "2.4"
         MAGENTO_EDITION: ["ee", "ce"]
 
+# Documentation generation
 wiki2pdf:
   stage: docs
   image: registry.netresearch.de/magento-ci/wiki2pdf
@@ -140,7 +141,7 @@ wiki2pdf:
   artifacts:
     when: on_success
     paths:
-      - ./*.pdf
+      - ./doc/*.pdf
 
 package-build:
   stage: build
@@ -194,6 +195,10 @@ github:
 # Template for PHPUnit jobs
 .phpunit:
   extends: .runtime
+  only:
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
   script:
     - ci-install
     - ci-phpunit-docker Test/Integration/phpunit.xml
