@@ -45,7 +45,6 @@
             <argument name="groupName" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierAccountSettingsSubGroup}}"/>
             <argument name="groupNameExpanded" value="{{AdminSystemConfigCarriersGlsSection.glsCarrierAccountSettingsSubGroupExpanded}}"/>
         </actionGroup>
-        <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierSandboxEnabledSetting}}" stepKey="assertSandboxCheckbox"/>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiUserNameSetting}}" stepKey="assertUserNameInput"/>
         <seeElement selector="{{AdminSystemConfigCarriersGlsSection.glsCarrierApiPasswordSetting}}" stepKey="assertPasswordInput"/>
 

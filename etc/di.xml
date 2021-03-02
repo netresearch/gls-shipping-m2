@@ -237,7 +237,6 @@
             <argument name="environment" xsi:type="array">
                 <item name="carriers/glsgroup/general/logging" xsi:type="string">1</item>
                 <item name="carriers/glsgroup/general/logging_group/loglevel" xsi:type="string">1</item>
-                <item name="carriers/glsgroup/account/sandboxmode" xsi:type="string">1</item>
             </argument>
         </arguments>
     </type>

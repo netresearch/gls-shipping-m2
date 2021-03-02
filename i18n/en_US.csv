@@ -27,7 +27,6 @@ Day,Day
 "DepositService Price Adjustment","DepositService Price Adjustment"
 "Describe the desired deposit place","Describe the desired deposit place"
 "Email Contact for Revocation","Email Contact for Revocation"
-"Enable Sandbox Mode","Enable Sandbox Mode"
 Enabled,Enabled
 "Enter your GLS WebAPI user name.","Enter your GLS WebAPI user name."
 "FAQ & Support","FAQ & Support"
@@ -63,9 +62,9 @@ Logging,Logging
 "Online Form","Online Form"
 "Order Time","Order Time"
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout."
-"Parcel Weight","Parcel Weight"
 "Parcel %1 could not be cancelled.","Parcel %1 could not be cancelled."
 "Parcel %1 could not be cancelled: %2","Parcel %1 could not be cancelled: %2"
+"Parcel Weight","Parcel Weight"
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service."
 Password,Password
 "Place of Deposit","Place of Deposit"
@@ -90,7 +89,6 @@ Returns,Returns
 "The sort order of all active shipping methods determines the order in which the shipping methods are displayed in the checkout. For example, if the GLS shipping method shall be displayed before the others, the number must be set smaller than for the other shipping methods.","The sort order of all active shipping methods determines the order in which the shipping methods are displayed in the checkout. For example, if the GLS shipping method shall be displayed before the others, the number must be set smaller than for the other shipping methods."
 "The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured."
 "These settings will be used for automatic label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","These settings will be used for automatic label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders."
-"This mode serves the development of the extension and is unfortunately not available for customers.","This mode serves the development of the extension and is unfortunately not available for customers."
 "Use Alternative Returns Address","Use Alternative Returns Address"
 "Use Alternative Shipper Address","Use Alternative Shipper Address"
 "Use LetterboxService","Use LetterboxService"
