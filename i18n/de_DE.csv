@@ -27,7 +27,6 @@ Day,Tag
 "DepositService Price Adjustment","Preisanpassung für DepositService"
 "Describe the desired deposit place","Wo darf die Lieferung abgestellt werden?"
 "Email Contact for Revocation","E-Mail-Kontakt für Widerruf"
-"Enable Sandbox Mode","Sandbox-Modus aktivieren"
 Enabled,Aktiviert
 "Enter your GLS WebAPI user name.","Geben Sie Ihren GLS WebAPI-User an."
 "FAQ & Support","FAQ & Support"
@@ -63,9 +62,9 @@ Logging,Logging
 "Online Form",Online-Formular
 "Order Time",Bestellzeit
 "Orders placed after the given time are assumed to be handed over to GLS on the next configured day. This setting affects label requests as well as consumer service availability in checkout.","Es wird davon ausgegangen, dass Bestellungen, die nach der konfigurierten Zeit eingehen, am nachfolgend konfigurierten Tag an GLS übergeben werden. Diese Einstellung beeinflusst das bei der Label-Buchung übergebene Datum sowie die Verfügbarkeit von Services im Checkout."
-"Parcel Weight",Paketgewicht
 "Parcel %1 could not be cancelled.","Das Paket %1 konnte nicht storniert werden."
 "Parcel %1 could not be cancelled: %2","Das Paket %1 konnte nicht storniert werden: %2"
+"Parcel Weight",Paketgewicht
 "Partial shipments with Cash on Delivery or Insurance service are not supported. Please ship the entire order in one package or deselect the service.","Teillieferungen mit Nachnahmezahlung oder Transportversicherung werden nicht unterstützt."
 Password,Passwort
 "Place of Deposit",Abstellort
@@ -90,7 +89,6 @@ Returns,Retouren
 "The sort order of all active shipping methods determines the order in which the shipping methods are displayed in the checkout. For example, if the GLS shipping method shall be displayed before the others, the number must be set smaller than for the other shipping methods.","Die Sortierreihenfolge aller aktiven Versandmethoden bestimmt in welcher Reihenfolge die Versandmethoden im Checkout angezeigt werden. Wenn die GLS-Versandmethode z. B. vor den anderen dargestellt werden soll, muss die Zahl kleiner als bei den anderen Versandmethoden eingestellt sein."
 "The value must be given in kg and will be applied during shipment creation if no order item weight and package tare weight are configured.","Der Wert muss in Kilogramm angegeben werden und wird während der Label-Erstellung verwendet falls weder Artikelgewicht noch Verpackungsgewicht definiert sind."
 "These settings will be used for automatic label creation. If a label cannot be created with your configured defaults, the order must be processed manually. Use the <em>Label Status</em> column in the orders listing to identify those orders.","Folgende Einstellungen werden für die automatische Paketscheinerstellung genutzt. Falls ein Paketschein mit Ihren Einstellungen nicht erstellt werden kann, müssen Sie die Bestellung manuell verarbeiten. Benutzen Sie die <em>Label Status</em>-Spalte in der Bestellübersicht, um solche Bestellungen zu identifizieren."
-"This mode serves the development of the extension and is unfortunately not available for customers.","Dieser Modus dient der Entwicklung der Extension und ist leider nicht für Kunden nutzbar."
 "Use Alternative Returns Address","Verwende alternative Adresse für Retouren"
 "Use Alternative Shipper Address","Verwende alternative Adresse für Versender"
 "Use LetterboxService","LetterboxService nutzen"

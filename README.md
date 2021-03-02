@@ -38,6 +38,19 @@ Flush cache and compile:
     ./bin/magento cache:flush
     ./bin/magento setup:di:compile
 
+Sandbox Mode
+------------
+
+For development purposes, web service requests can be sent to the
+testing endpoint by enabling sandbox mode via database query:
+
+```sql
+INSERT INTO core_config_data (path, value) VALUES ('carriers/glsgroup/account/sandboxmode', '1');
+```
+
+Note that the API credentials of a regular GLS account are valid for
+the production endpoint only and will not work in sandbox mode.
+
 Uninstallation
 --------------
 
