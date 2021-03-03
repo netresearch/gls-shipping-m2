@@ -195,7 +195,7 @@
     </type>
     <type name="Netresearch\ShippingCore\Observer\SplitAddress">
         <arguments>
-            <argument name="carrierCodes" xsi:type="array">
+            <argument name="streetLoaders" xsi:type="array">
                 <item name="glsgroup" xsi:type="object">Netresearch\ShippingCore\Model\SplitAddress\RecipientStreetLoader</item>
             </argument>
         </arguments>
