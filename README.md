@@ -76,4 +76,4 @@ License
 
 Copyright
 ---------
-(c) 2020 General Logistics Systems Germany GmbH & Co. OHG
+(c) 2021 General Logistics Systems Germany GmbH & Co. OHG
