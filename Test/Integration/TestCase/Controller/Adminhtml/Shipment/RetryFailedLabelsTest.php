@@ -46,7 +46,7 @@ class RetryFailedLabelsTest extends AutoCreateTest
      *
      * @magentoConfigFixture default_store catalog/price/scope 0
      * @magentoConfigFixture default_store currency/options/base EUR
-     * @magentoConfigFixture default/shipping/batch_processing/retry_failed_shipments 1
+     * @magentoConfigFixture default/shipping/batch_processing/shipping_label/retry_failed_shipments 1
      *
      * @magentoConfigFixture current_store carriers/glsgroup/active 1
      * @magentoConfigFixture current_store carriers/glsgroup/checkout/emulated_carrier flatrate

@@ -94,7 +94,7 @@ abstract class AutoCreateTest extends ControllerTest
      *
      * @magentoConfigFixture default_store catalog/price/scope 0
      * @magentoConfigFixture default_store currency/options/base EUR
-     * @magentoConfigFixture default_store shipping/batch_processing/retry_failed_shipments_shipments 0
+     * @magentoConfigFixture default_store shipping/batch_processing/shipping_label/retry_failed_shipments 0
      *
      * @magentoConfigFixture current_store carriers/glsgroup/active 1
      * @magentoConfigFixture current_store  carriers/glsgroup/checkout/emulated_carrier flatrate
