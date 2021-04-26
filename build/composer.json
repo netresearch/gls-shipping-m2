@@ -4,8 +4,7 @@
     "version": "1.0.1",
     "type": "metapackage",
     "require": {
-        "netresearch/module-shipping-core": "^2.0.0",
-        "netresearch/module-shipping-ui": "^2.0.0",
+        "netresearch/module-shipping-core": "^2.2.0",
         "tddwizard/magento2-fixtures": "^0.12.0"
     },
     "repositories": [
