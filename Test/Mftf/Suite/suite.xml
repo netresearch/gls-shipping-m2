@@ -11,7 +11,7 @@
         </include>
         <before>
             <actionGroup ref="AdminSetShippingOriginConfigurationActionGroup" stepKey="setShippingOrigin">
-                <argument name="address" value="ShippingOrigin_DE"/>
+                <argument name="address" value="DE_Address_Berlin_Not_Default_Address"/>
             </actionGroup>
         </before>
         <after>
