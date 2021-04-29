@@ -1,7 +1,7 @@
 {
     "name": "gls/shipping-m2-meta",
     "description": "Metapackage for testing the GLS carrier extension with dependencies",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "metapackage",
     "require": {
         "netresearch/module-shipping-core": "^2.2.0",
