@@ -72,7 +72,7 @@ phpunit-essential-2.4:
     matrix:
       - PHP_VERSION: "7.4"
         MAGENTO_TAG_VERSION: "2.4"
-        MAGENTO_EDITION: ["ee", "ce"]
+        MAGENTO_EDITION: "ce"
 
 # MFTF tests
 php74-mftf-2.4:
@@ -86,7 +86,7 @@ php74-mftf-2.4:
   variables:
     PHP_VERSION: "7.4"
     MAGENTO_TAG_VERSION: "2.4"
-    MAGENTO_EDITION: "ee"
+    MAGENTO_EDITION: "ce"
     MAGE_MODE: "production"
   allow_failure: true
   script:
@@ -99,32 +99,32 @@ php74-mftf-2.4:
       - build/shared/log
 
 # Additional tests (in between versions of Magento or PHP)
-phpunit-additional-2.3-7.2:
+phpunit-additional-7.4:
+  stage: test-additional
+  extends: .phpunit
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.4"
+        MAGENTO_TAG_VERSION: "2.3"
+        MAGENTO_EDITION: "ce"
+
+phpunit-additional-7.3:
+  stage: test-additional
+  extends: .phpunit
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.3"
+        MAGENTO_TAG_VERSION: [ "2.4", "2.3" ]
+        MAGENTO_EDITION: "ce"
+
+phpunit-additional-7.2:
   stage: test-additional
   extends: .phpunit
   parallel:
     matrix:
       - PHP_VERSION: "7.2"
         MAGENTO_TAG_VERSION: "2.3.6"
-        MAGENTO_EDITION: ["ee", "ce"]
-
-phpunit-additional-2.3-7.3:
-  stage: test-additional
-  extends: .phpunit
-  parallel:
-    matrix:
-      - PHP_VERSION: "7.3"
-        MAGENTO_TAG_VERSION: "2.3"
-        MAGENTO_EDITION: ["ee", "ce"]
-
-phpunit-additional-2.4:
-  stage: test-additional
-  extends: .phpunit
-  parallel:
-    matrix:
-      - PHP_VERSION: "7.3"
-        MAGENTO_TAG_VERSION: "2.4"
-        MAGENTO_EDITION: ["ee", "ce"]
+        MAGENTO_EDITION: "ce"
 
 # Documentation generation
 wiki2pdf:
