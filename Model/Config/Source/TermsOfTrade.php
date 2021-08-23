@@ -27,11 +27,12 @@ class TermsOfTrade implements OptionSourceInterface
     public function toArray(): array
     {
         return [
-            '10' => __('DDP (Freight costs, customs costs & taxes paid)'),
-            '20' => __('DAP (Freight costs paid, customs costs & taxes unpaid)'),
-            '30' => __('DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)'),
-            '40' => __('DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)'),
-            '50' => __('DDP (Freight costs and customs clearance costs paid, lowvalue clearance)'),
+            '10' => __('10 - DDP (Freight costs, customs costs & taxes paid)'),
+            '18' => __('18 - DDP (Freight costs, customs costs & taxes paid)'),
+            '20' => __('20 - DAP (Freight costs paid, customs costs & taxes unpaid)'),
+            '30' => __('30 - DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)'),
+            '40' => __('40 - DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)'),
+            '50' => __('50 - DDP (Freight costs and customs clearance costs paid, lowvalue clearance)'),
         ];
     }
 }

@@ -1,4 +1,10 @@
 "+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
+"10 - DDP (Freight costs, customs costs & taxes paid)","10 - DDP (Freight costs, customs costs & taxes paid)"
+"18 - DDP (Freight costs, customs costs & taxes paid)","18 - DDP (Freight costs, customs costs & taxes paid)"
+"20 - DAP (Freight costs paid, customs costs & taxes unpaid)","20 - DAP (Freight costs paid, customs costs & taxes unpaid)"
+"30 - DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","30 - DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
+"40 - DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","40 - DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)"
+"50 - DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","50 - DDP (Freight costs and customs clearance costs paid, lowvalue clearance)"
 "Account Settings","Account Settings"
 "Allowed Countries","Allowed Countries"
 "An error occurred while preparing parcel data.","An error occurred while preparing parcel data."
@@ -13,11 +19,6 @@ Country,Country
 "Custom Message","Custom Message"
 Customer-ID,Customer-ID
 "Customized Country List","Customized Country List"
-"DAP (Freight costs paid, customs costs & taxes unpaid)","DAP (Freight costs paid, customs costs & taxes unpaid)"
-"DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)"
-"DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP (Freight costs and customs clearance costs paid, lowvalue clearance)"
-"DDP (Freight costs, customs costs & taxes paid)","DDP (Freight costs, customs costs & taxes paid)"
-"DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)"
 Day,Day
 "Defaults for Label Creation","Defaults for Label Creation"
 "Define the carrier title of the delivery method. This will be displayed next to the method title in checkout.","Define the carrier title of the delivery method. This will be displayed next to the method title in checkout."
