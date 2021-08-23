@@ -1,4 +1,10 @@
 "+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)","+49 (0) 6677 / 646 38 6000 (Mo.–Fr. 8:00 – 17:00 Uhr)"
+"10 - DDP (Freight costs, customs costs & taxes paid)","10 - DDP (Frei Haus, verzollt, versteuert)"
+"18 - DDP (Freight costs, customs costs & taxes paid)","18 - DDP (Frei Haus, verzollt, versteuert)"
+"20 - DAP (Freight costs paid, customs costs & taxes unpaid)","20 - DAP (Frei Haus, unverzollt, unversteuert)"
+"30 - DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","30 - DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
+"40 - DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","40 - DAP, cleared (Frei Haus, ohne Zoll, ohne Steuer)"
+"50 - DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","50 - DDP (Frei Haus, verzollt, Freischreibung)"
 "Account Settings",Kontoeinstellungen
 "Allowed Countries","Erlaubte Länder"
 "An error occurred while preparing parcel data.","Während der Paketscheinerstellung ist ein Fehler aufgetreten."
@@ -13,11 +19,6 @@ Country,Land
 "Custom Message","Benutzerdefinierte Nachricht"
 Customer-ID,Kunden-ID
 "Customized Country List",Länder
-"DAP (Freight costs paid, customs costs & taxes unpaid)","DAP (Frei Haus, unverzollt, unversteuert)"
-"DAP, cleared (Freight costs & customs clearance costs paid, customs duties and taxes unpaid)","DAP, cleared (Frei Haus, ohne Zoll, ohne Steuer)"
-"DDP (Freight costs and customs clearance costs paid, lowvalue clearance)","DDP (Frei Haus, verzollt, Freischreibung)"
-"DDP (Freight costs, customs costs & taxes paid)","DDP (Frei Haus, verzollt, versteuert)"
-"DDP, VAT unpaid (Freight costs & customs costs paid, taxes unpaid)","DDP, VAT unpaid (Frei Haus, verzollt, unversteuert)"
 Day,Tag
 "Defaults for Label Creation","Standardeinstellungen für die Paketscheinerstellung"
 "Define the carrier title of the delivery method. This will be displayed next to the method title in checkout.","Hierüber können Sie eine weitere Bezeichnung für die Versandmethode im Checkout ergänzen. Diese wird mit etwas Abstand rechts neben dem Versandmethoden-Titel 1 dargestellt."
