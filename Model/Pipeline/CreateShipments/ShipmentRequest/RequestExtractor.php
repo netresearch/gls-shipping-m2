@@ -24,7 +24,6 @@ use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\Servi
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterfaceFactory;
 use Netresearch\ShippingCore\Api\ShipmentDate\ShipmentDateCalculatorInterface;
-use Zend\Hydrator\Reflection;
 
 /**
  * Class RequestExtractor
@@ -76,11 +75,6 @@ class RequestExtractor implements RequestExtractorInterface
     private $shipperFactory;
 
     /**
-     * @var Reflection
-     */
-    private $hydrator;
-
-    /**
      * @var RequestExtractorInterface
      */
     private $coreExtractor;
@@ -103,8 +97,7 @@ class RequestExtractor implements RequestExtractorInterface
         PackageInterfaceFactory $packageFactory,
         ModuleConfig $moduleConfig,
         ShipmentDateCalculatorInterface $shipmentDate,
-        ShipperInterfaceFactory $shipperFactory,
-        Reflection $hydrator
+        ShipperInterfaceFactory $shipperFactory
     ) {
         $this->shipmentRequest = $shipmentRequest;
         $this->requestExtractorFactory = $requestExtractorFactory;
@@ -114,7 +107,6 @@ class RequestExtractor implements RequestExtractorInterface
         $this->moduleConfig = $moduleConfig;
         $this->shipmentDate = $shipmentDate;
         $this->shipperFactory = $shipperFactory;
-        $this->hydrator = $hydrator;
     }
 
     /**
@@ -238,13 +230,25 @@ class RequestExtractor implements RequestExtractorInterface
             }
 
             try {
-                $packageData = $this->hydrator->extract($package);
-                $packageData['packageAdditional'] = $this->packageAdditionalFactory->create(
-                    ['termsOfTrade' => $customsParams['termsOfTrade']]
-                );
+                $additionalData['termsOfTrade'] = $customsParams['termsOfTrade'];
 
                 // create new extended package instance with paket-specific export data
-                $glsPackages[$packageId] = $this->packageFactory->create($packageData);
+                $glsPackages[$packageId] = $this->packageFactory->create(
+                    [
+                        'productCode' => $package->getProductCode(),
+                        'containerType' => $package->getContainerType(),
+                        'weightUom' => $package->getWeightUom(),
+                        'dimensionsUom' => $package->getDimensionsUom(),
+                        'weight' => $package->getWeight(),
+                        'length' => $package->getLength(),
+                        'width' => $package->getWidth(),
+                        'height' => $package->getHeight(),
+                        'customsValue' => $package->getCustomsValue(),
+                        'contentType' => $package->getContentType(),
+                        'contentExplanation' => $package->getContentExplanation(),
+                        'packageAdditional' => $this->packageAdditionalFactory->create($additionalData),
+                    ]
+                );
             } catch (\Exception $exception) {
                 throw new LocalizedException(__('An error occurred while preparing parcel data.'), $exception);
             }

@@ -56,8 +56,8 @@ phpunit-essential-2.3:
     - /^(release|hotfix)-.*$/
     - merge_requests
   variables:
-    PHP_VERSION: "7.1"
-    MAGENTO_TAG_VERSION: "2.3.6"
+    PHP_VERSION: "7.3"
+    MAGENTO_TAG_VERSION: "2.3"
     MAGENTO_EDITION: "ce"
 
 phpunit-essential-2.4:
@@ -71,7 +71,7 @@ phpunit-essential-2.4:
   parallel:
     matrix:
       - PHP_VERSION: "7.4"
-        MAGENTO_TAG_VERSION: "2.4"
+        MAGENTO_TAG_VERSION: "2.4.2"
         MAGENTO_EDITION: "ce"
 
 # MFTF tests
@@ -97,6 +97,7 @@ php74-mftf-2.4:
     paths:
       - build/shared/_output
       - build/shared/log
+      - build/shared/mftf.log
 
 # Additional tests (in between versions of Magento or PHP)
 phpunit-additional-7.4:
@@ -114,16 +115,7 @@ phpunit-additional-7.3:
   parallel:
     matrix:
       - PHP_VERSION: "7.3"
-        MAGENTO_TAG_VERSION: [ "2.4", "2.3" ]
-        MAGENTO_EDITION: "ce"
-
-phpunit-additional-7.2:
-  stage: test-additional
-  extends: .phpunit
-  parallel:
-    matrix:
-      - PHP_VERSION: "7.2"
-        MAGENTO_TAG_VERSION: "2.3.6"
+        MAGENTO_TAG_VERSION: "2.4.2"
         MAGENTO_EDITION: "ce"
 
 # Documentation generation
