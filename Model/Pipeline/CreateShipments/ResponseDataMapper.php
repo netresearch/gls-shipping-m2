@@ -13,8 +13,11 @@ use Magento\Framework\Phrase;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\LabelResponseInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\LabelResponseInterfaceFactory;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentDocumentInterface;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentDocumentInterfaceFactory;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentErrorResponseInterface;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentErrorResponseInterfaceFactory;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentResponseInterface;
 
 /**
  * Convert API response into the carrier response format that the shipping module understands.
@@ -23,6 +26,11 @@ use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentErrorRes
  */
 class ResponseDataMapper
 {
+    /**
+     * @var ShipmentDocumentInterfaceFactory
+     */
+    private $shipmentDocumentFactory;
+
     /**
      * @var LabelResponseInterfaceFactory
      */
@@ -34,9 +42,11 @@ class ResponseDataMapper
     private $errorResponseFactory;
 
     public function __construct(
+        ShipmentDocumentInterfaceFactory $shipmentDocumentFactory,
         LabelResponseInterfaceFactory $shipmentResponseFactory,
         ShipmentErrorResponseInterfaceFactory $errorResponseFactory
     ) {
+        $this->shipmentDocumentFactory = $shipmentDocumentFactory;
         $this->shipmentResponseFactory = $shipmentResponseFactory;
         $this->errorResponseFactory = $errorResponseFactory;
     }
@@ -62,11 +72,20 @@ class ResponseDataMapper
         $labels = $shipment->getLabels();
         $label = array_shift($labels);
 
+        $labelDoc = $this->shipmentDocumentFactory->create([
+            'data' => [
+                ShipmentDocumentInterface::TITLE => 'PDF Label',
+                ShipmentDocumentInterface::MIME_TYPE => 'application/pdf',
+                ShipmentDocumentInterface::LABEL_DATA => $label,
+            ]
+        ]);
+
         $responseData = [
-            LabelResponseInterface::REQUEST_INDEX => $package->getParcelNumber(),
-            LabelResponseInterface::SALES_SHIPMENT => $salesShipment,
+            ShipmentResponseInterface::REQUEST_INDEX => $package->getParcelNumber(),
+            ShipmentResponseInterface::SALES_SHIPMENT => $salesShipment,
             LabelResponseInterface::TRACKING_NUMBER => $package->getParcelNumber(),
             LabelResponseInterface::SHIPPING_LABEL_CONTENT => $label,
+            LabelResponseInterface::DOCUMENTS => [$labelDoc],
         ];
 
         return $this->shipmentResponseFactory->create(['data' => $responseData]);
@@ -86,9 +105,9 @@ class ResponseDataMapper
         ShipmentInterface $salesShipment
     ): ShipmentErrorResponseInterface {
         $responseData = [
-            ShipmentErrorResponseInterface::REQUEST_INDEX => $requestIndex,
+            ShipmentResponseInterface::REQUEST_INDEX => $requestIndex,
+            ShipmentResponseInterface::SALES_SHIPMENT => $salesShipment,
             ShipmentErrorResponseInterface::ERRORS => $message,
-            ShipmentErrorResponseInterface::SALES_SHIPMENT => $salesShipment,
         ];
 
         return $this->errorResponseFactory->create(['data' => $responseData]);

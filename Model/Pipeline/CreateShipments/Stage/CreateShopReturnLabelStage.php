@@ -16,6 +16,9 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Shipping\Model\Shipment\Request;
 use Magento\Shipping\Model\Shipping\LabelGenerator;
 use Netresearch\ShippingCore\Api\Data\Pipeline\ArtifactsContainerInterface;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ReturnShipmentDocumentInterface;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ReturnShipmentDocumentInterfaceFactory;
+use Netresearch\ShippingCore\Api\Data\Pipeline\ShipmentResponse\ShipmentDocumentInterface;
 use Netresearch\ShippingCore\Api\Pipeline\CreateShipmentsStageInterface;
 use Psr\Log\LoggerInterface;
 
@@ -32,6 +35,11 @@ class CreateShopReturnLabelStage implements CreateShipmentsStageInterface
     private $serviceFactory;
 
     /**
+     * @var ReturnShipmentDocumentInterfaceFactory
+     */
+    private $returnDocumentFactory;
+
+    /**
      * @var LabelGenerator
      */
     private $labelGenerator;
@@ -44,11 +52,13 @@ class CreateShopReturnLabelStage implements CreateShipmentsStageInterface
     public function __construct(
         ReturnRequestDataMapper $requestDataMapper,
         ParcelProcessingServiceFactory $shipmentServiceFactory,
+        ReturnShipmentDocumentInterfaceFactory $returnDocumentFactory,
         LabelGenerator $labelGenerator,
         LoggerInterface $logger
     ) {
         $this->requestDataMapper = $requestDataMapper;
         $this->serviceFactory = $shipmentServiceFactory;
+        $this->returnDocumentFactory = $returnDocumentFactory;
         $this->labelGenerator = $labelGenerator;
         $this->logger = $logger;
     }
@@ -79,9 +89,28 @@ class CreateShopReturnLabelStage implements CreateShipmentsStageInterface
                 $shipmentService = $this->serviceFactory->createShipmentService($artifactsContainer->getStoreId());
                 $shipment = $shipmentService->createShipment($shipmentRequest);
 
-                $labels = $shipment->getLabels();
-                array_unshift($labels, $labelResponse->getShippingLabelContent());
+                $packages = $shipment->getParcels();
+                $package = array_shift($packages);
+                $trackingNumber = $package->getParcelNumber();
 
+                $labels = $shipment->getLabels();
+                $returnDocuments = array_map(
+                    function (string $labelData) use ($trackingNumber) {
+                        return $this->returnDocumentFactory->create([
+                            'data' => [
+                                ShipmentDocumentInterface::TITLE => 'Retoure-Paketschein',
+                                ShipmentDocumentInterface::MIME_TYPE => 'application/pdf',
+                                ShipmentDocumentInterface::LABEL_DATA => base64_encode($labelData),
+                                ReturnShipmentDocumentInterface::TRACKING_NUMBER => $trackingNumber,
+                            ]
+                        ]);
+                    },
+                    $labels
+                );
+
+                $labelResponse->setData('documents', array_merge($labelResponse->getDocuments(), $returnDocuments));
+
+                array_unshift($labels, $labelResponse->getShippingLabelContent());
                 $labelContent = $this->labelGenerator->combineLabelsPdf($labels)->render();
                 $labelResponse->setData('shipping_label_content', $labelContent);
             } catch (ServiceException | \Zend_Pdf_Exception $exception) {
