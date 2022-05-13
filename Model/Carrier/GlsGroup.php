@@ -143,7 +143,7 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
      * @return AbstractCarrierInterface
      * @throws NotFoundException
      */
-    private function getProxyCarrier()
+    private function getProxyCarrier(): AbstractCarrierInterface
     {
         if (!$this->proxyCarrier) {
             $storeId = $this->getData('store');
@@ -266,7 +266,7 @@ class GlsGroup extends AbstractCarrierOnline implements CarrierInterface
         $result = $this->shipmentManagement->cancelLabels($cancelRequests);
         $errors = array_filter(
             $result,
-            function (TrackResponseInterface $trackResponse) {
+            static function (TrackResponseInterface $trackResponse) {
                 return ($trackResponse instanceof TrackErrorResponseInterface);
             }
         );

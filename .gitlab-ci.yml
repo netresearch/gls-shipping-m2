@@ -1,4 +1,4 @@
-image: registry.netresearch.de/magento-ci/ci-toolchain:7.2
+image: registry.netresearch.de/magento-ci/ci-toolchain:latest
 
 services:
   - name: registry.netresearch.de/ci-helper/gitlab-worker-dind
@@ -39,7 +39,7 @@ runtime-analysis:
     - /^(release|hotfix)-.*$/
     - merge_requests
   variables:
-    PHP_VERSION: "7.4"
+    PHP_VERSION: "8.1"
     MAGENTO_TAG_VERSION: "2.4"
     MAGENTO_EDITION: "ce"
   script:
@@ -50,6 +50,7 @@ runtime-analysis:
 # Crucial tests (lowest Mage+PHP + highest Mage+PHP)
 phpunit-essential-2.3:
   stage: test
+  image: registry.netresearch.de/magento-ci/ci-toolchain:7.2
   extends: .phpunit
   only:
     - develop
@@ -70,13 +71,14 @@ phpunit-essential-2.4:
     - /^(release|hotfix)-.*$/
     - merge_requests
   variables:
-    PHP_VERSION: "7.4"
-    MAGENTO_TAG_VERSION: "2.4.2"
+    PHP_VERSION: "8.1"
+    MAGENTO_TAG_VERSION: "2.4"
     MAGENTO_EDITION: "ce"
 
 # MFTF tests
 php74-mftf-2.4:
   stage: mftf
+  image: registry.netresearch.de/magento-ci/ci-toolchain:7.2
   extends: .runtime
   only:
     - develop
@@ -102,27 +104,17 @@ php74-mftf-2.4:
 # Additional tests (in between versions of Magento or PHP)
 phpunit-additional-7.4:
   stage: test-additional
+  image: registry.netresearch.de/magento-ci/ci-toolchain:7.2
   extends: .phpunit
   only:
-      - develop
-      - master
-      - /^(release|hotfix)-.*$/
-  variables:
-    PHP_VERSION: "7.4"
-    MAGENTO_TAG_VERSION: "2.3"
-    MAGENTO_EDITION: "ce"
-
-phpunit-additional-7.3:
-  stage: test-additional
-  extends: .phpunit
-  only:
-      - develop
-      - master
-      - /^(release|hotfix)-.*$/
-  variables:
-    PHP_VERSION: "7.3"
-    MAGENTO_TAG_VERSION: "2.4.2"
-    MAGENTO_EDITION: "ce"
+    - develop
+    - master
+    - /^(release|hotfix)-.*$/
+  parallel:
+    matrix:
+      - PHP_VERSION: "7.4"
+        MAGENTO_TAG_VERSION: ["2.3", "2.4"]
+        MAGENTO_EDITION: "ce"
 
 # Documentation generation
 wiki2pdf:

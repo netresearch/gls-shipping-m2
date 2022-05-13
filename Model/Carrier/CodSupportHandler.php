@@ -13,6 +13,7 @@ use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\Search\SearchCriteriaBuilderFactory;
 use Magento\Quote\Model\Quote;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\AssignedSelectionInterface;
+use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\SelectionInterface;
 use Netresearch\ShippingCore\Api\PaymentMethod\MethodAvailabilityInterface;
 use Netresearch\ShippingCore\Api\ShippingSettings\CodSelectorInterface;
 use Netresearch\ShippingCore\Api\Util\DeliveryAreaInterface;
@@ -69,7 +70,7 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
             ->create();
 
         $optionCodeFilter = $this->filterBuilder
-            ->setField(AssignedSelectionInterface::SHIPPING_OPTION_CODE)
+            ->setField(SelectionInterface::SHIPPING_OPTION_CODE)
             ->setConditionType('in')
             ->setValue(
                 [
@@ -112,10 +113,10 @@ class CodSupportHandler implements MethodAvailabilityInterface, CodSelectorInter
         return true;
     }
 
-    public function assignCodSelection(AssignedSelectionInterface $selection)
+    public function assignCodSelection(AssignedSelectionInterface $selection): void
     {
         $selection->setShippingOptionCode(Codes::SERVICE_OPTION_CASH_ON_DELIVERY);
         $selection->setInputCode('enabled');
-        $selection->setInputValue((string) true);
+        $selection->setInputValue('1');
     }
 }

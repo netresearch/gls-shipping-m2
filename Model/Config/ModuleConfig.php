@@ -291,7 +291,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
             return [];
         }
 
-        return (array)$this->scopeConfig->getValue(
+        return (array) $this->scopeConfig->getValue(
             self::CONFIG_PATH_ALT_RETURN_ADDRESS,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -312,7 +312,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
             $store
         );
 
-        return $this->scopeConfig->getValue(
+        return (string) $this->scopeConfig->getValue(
             'trans_email/ident_' . $ident . '/email',
             ScopeInterface::SCOPE_STORE,
             $store
@@ -327,7 +327,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     public function getFlexDeliveryAdjustment($store = null): float
     {
-        $amount = $this->scopeConfig->getValue(
+        $amount = (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_FLEXDELIVERY_ADJUSTMENT,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -343,7 +343,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     public function getDepositAdjustment($store = null): float
     {
-        $amount = $this->scopeConfig->getValue(
+        $amount = (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_DEPOSIT_ADJUSTMENT,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -359,7 +359,7 @@ class ModuleConfig implements VersionInterface, ProxyCarrierConfigInterface
      */
     public function getG24Adjustment($store = null): float
     {
-        $amount = $this->scopeConfig->getValue(
+        $amount = (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_GUARANTEED24_ADJUSTMENT,
             ScopeInterface::SCOPE_STORE,
             $store

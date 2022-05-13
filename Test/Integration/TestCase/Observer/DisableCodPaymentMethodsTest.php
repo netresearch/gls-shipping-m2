@@ -16,11 +16,14 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\InvokerInterface;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\OfflinePayments\Model\Cashondelivery;
 use Magento\OfflinePayments\Model\Checkmo;
 use Magento\Quote\Model\Quote;
 use Magento\TestFramework\Helper\Bootstrap;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\AssignedSelectionInterface;
+use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\SelectionInterface;
 use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Selection\QuoteSelection;
 use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Selection\QuoteSelectionRepository;
 use Netresearch\ShippingCore\Observer\DisableCodPaymentMethods;
@@ -94,7 +97,7 @@ class DisableCodPaymentMethodsTest extends TestCase
      *
      * @return string[][]|bool[][]
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         return [
             'cod_gets_disabled' => [Cashondelivery::class, true, false],
@@ -108,10 +111,11 @@ class DisableCodPaymentMethodsTest extends TestCase
      * Set up data fixture.
      *
      * @param string $locale
-     * @param QuoteSelection $serviceSelection
-     * @throws \Exception
+     * @param QuoteSelection|null $serviceSelection
+     * @throws CouldNotSaveException
+     * @throws LocalizedException
      */
-    private static function quoteFixture($locale = 'de_DE', QuoteSelection $serviceSelection = null)
+    private static function quoteFixture(string $locale = 'de_DE', QuoteSelection $serviceSelection = null)
     {
         /** @var AddressRepositoryInterface $customerAddressRepository */
         $customerAddressRepository = Bootstrap::getObjectManager()->get(AddressRepositoryInterface::class);
@@ -140,7 +144,7 @@ class DisableCodPaymentMethodsTest extends TestCase
         if ($serviceSelection !== null) {
             /** @var QuoteSelectionRepository $repository */
             $repository = Bootstrap::getObjectManager()->get(QuoteSelectionRepository::class);
-            $serviceSelection->setData(QuoteSelection::PARENT_ID, (int) $shippingAddress->getId());
+            $serviceSelection->setData(AssignedSelectionInterface::PARENT_ID, (int) $shippingAddress->getId());
             self::$serviceSelection = $repository->save($serviceSelection);
         }
     }
@@ -150,7 +154,7 @@ class DisableCodPaymentMethodsTest extends TestCase
      */
     public static function deQuoteFixture()
     {
-        self::quoteFixture('de_DE');
+        self::quoteFixture();
     }
 
     /**
@@ -168,9 +172,9 @@ class DisableCodPaymentMethodsTest extends TestCase
     {
         $serviceSelection = Bootstrap::getObjectManager()->create(QuoteSelection::class);
         $serviceSelection->setData([
-            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_FLEX_DELIVERY,
-            AssignedSelectionInterface::INPUT_CODE => 'date',
-            AssignedSelectionInterface::INPUT_VALUE => '2019-07-11'
+            SelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_FLEX_DELIVERY,
+            SelectionInterface::INPUT_CODE => 'date',
+            SelectionInterface::INPUT_VALUE => '2019-07-11'
         ]);
 
         self::quoteFixture('de_DE', $serviceSelection);
@@ -183,9 +187,9 @@ class DisableCodPaymentMethodsTest extends TestCase
     {
         $serviceSelection = Bootstrap::getObjectManager()->create(QuoteSelection::class);
         $serviceSelection->setData([
-            AssignedSelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_GUARANTEED24,
-            AssignedSelectionInterface::INPUT_CODE => 'enabled',
-            AssignedSelectionInterface::INPUT_VALUE => 'true'
+            SelectionInterface::SHIPPING_OPTION_CODE => Codes::SERVICE_OPTION_GUARANTEED24,
+            SelectionInterface::INPUT_CODE => 'enabled',
+            SelectionInterface::INPUT_VALUE => 'true'
         ]);
 
         self::quoteFixture('de_DE', $serviceSelection);

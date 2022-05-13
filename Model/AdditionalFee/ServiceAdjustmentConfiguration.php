@@ -9,12 +9,9 @@ declare(strict_types=1);
 namespace GlsGroup\Shipping\Model\AdditionalFee;
 
 use GlsGroup\Shipping\Model\Carrier\GlsGroup;
-use GlsGroup\Shipping\Model\Config\ModuleConfig;
-use GlsGroup\Shipping\Model\ShippingSettings\ShippingOption\Codes;
 use Magento\Framework\Phrase;
 use Magento\Quote\Model\Quote;
 use Netresearch\ShippingCore\Api\AdditionalFee\AdditionalFeeConfigurationInterface;
-use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\AssignedSelectionInterface;
 use Netresearch\ShippingCore\Api\Data\ShippingSettings\ShippingOption\Selection\SelectionInterface;
 use Netresearch\ShippingCore\Model\ShippingSettings\ShippingOption\Selection\QuoteSelectionManager;
 
@@ -49,7 +46,7 @@ class ServiceAdjustmentConfiguration implements AdditionalFeeConfigurationInterf
             $selections = $this->quoteSelectionManager->load((int) $quote->getShippingAddress()->getId());
             $serviceCodes = array_unique(
                 array_map(
-                    function (SelectionInterface $selection) {
+                    static function (SelectionInterface $selection) {
                         return $selection->getShippingOptionCode();
                     },
                     $selections

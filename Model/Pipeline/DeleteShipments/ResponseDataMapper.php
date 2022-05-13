@@ -77,10 +77,10 @@ class ResponseDataMapper
         ShipmentTrackInterface $salesTrack = null
     ): TrackErrorResponseInterface {
         $responseData = [
-            TrackErrorResponseInterface::TRACK_NUMBER => $trackNumber,
+            TrackResponseInterface::TRACK_NUMBER => $trackNumber,
+            TrackResponseInterface::SALES_SHIPMENT => $salesShipment,
+            TrackResponseInterface::SALES_TRACK => $salesTrack,
             TrackErrorResponseInterface::ERRORS => $message,
-            TrackErrorResponseInterface::SALES_SHIPMENT => $salesShipment,
-            TrackErrorResponseInterface::SALES_TRACK => $salesTrack,
         ];
 
         return $this->errorResponseFactory->create(['data' => $responseData]);

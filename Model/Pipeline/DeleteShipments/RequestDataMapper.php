@@ -18,7 +18,7 @@ class RequestDataMapper
      * @param TrackRequestInterface $request The cancellation request
      * @return string
      */
-    public function mapRequest(TrackRequestInterface $request)
+    public function mapRequest(TrackRequestInterface $request): string
     {
         return $request->getTrackNumber();
     }

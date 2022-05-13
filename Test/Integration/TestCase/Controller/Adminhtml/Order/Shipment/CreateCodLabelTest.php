@@ -60,9 +60,8 @@ class CreateCodLabelTest extends SaveShipmentTest
      */
     public function saveShipment(callable $getPostData)
     {
-        $addressBuilder = AddressBuilder::anAddress('de_DE')->asDefaultBilling()->asDefaultShipping();
+        $addressBuilder = AddressBuilder::anAddress()->asDefaultBilling()->asDefaultShipping();
 
-        /** @var \Magento\Sales\Model\Order $order */
         $order = OrderBuilder::anOrder()
             ->withShippingMethod(GlsGroup::CARRIER_CODE . '_flatrate')
             ->withProducts(

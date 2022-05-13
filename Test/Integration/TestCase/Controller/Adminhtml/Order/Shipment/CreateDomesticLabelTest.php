@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order\Shipment;
 
 use GlsGroup\Shipping\Model\Carrier\GlsGroup;
+use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection;
 use Netresearch\ShippingCore\Api\LabelStatus\LabelStatusManagementInterface;
 use Netresearch\ShippingCore\Model\LabelStatus\LabelStatusProvider;
@@ -63,9 +64,8 @@ class CreateDomesticLabelTest extends SaveShipmentTest
      */
     public function saveShipment(callable $getPostData)
     {
-        $addressBuilder = AddressBuilder::anAddress('de_DE')->asDefaultBilling()->asDefaultShipping();
+        $addressBuilder = AddressBuilder::anAddress()->asDefaultBilling()->asDefaultShipping();
 
-        /** @var \Magento\Sales\Model\Order $order */
         $order = OrderBuilder::anOrder()
             ->withShippingMethod(GlsGroup::CARRIER_CODE . '_flatrate')
             ->withProducts(
@@ -87,6 +87,7 @@ class CreateDomesticLabelTest extends SaveShipmentTest
 
         /** @var Collection $shipmentCollection */
         $shipmentCollection = $this->_objectManager->create(Collection::class);
+        /** @var Shipment[] $shipments */
         $shipments = $shipmentCollection->setOrderFilter($order)->getItems();
         $shipments = array_values($shipments);
 

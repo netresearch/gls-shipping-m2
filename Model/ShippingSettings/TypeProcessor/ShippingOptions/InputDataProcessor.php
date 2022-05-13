@@ -38,22 +38,19 @@ class InputDataProcessor implements ShippingOptionsProcessorInterface
      * Set options and values to inputs on package level.
      *
      * @param ShippingOptionInterface $shippingOption
-     * @param ShipmentInterface $shipment
      */
-    private function processInputs(ShippingOptionInterface $shippingOption, ShipmentInterface $shipment)
+    private function processInputs(ShippingOptionInterface $shippingOption)
     {
         foreach ($shippingOption->getInputs() as $input) {
-            switch ($input->getCode()) {
-                case Codes::PACKAGING_INPUT_TERMS_OF_TRADE:
-                    $fnCreateOptions = function (array $optionArray) {
-                        $option = $this->optionFactory->create();
-                        $option->setValue((string) $optionArray['value']);
-                        $option->setLabel((string) $optionArray['label']);
-                        return $option;
-                    };
+            if ($input->getCode() === Codes::PACKAGING_INPUT_TERMS_OF_TRADE) {
+                $fnCreateOptions = function (array $optionArray) {
+                    $option = $this->optionFactory->create();
+                    $option->setValue((string) $optionArray['value']);
+                    $option->setLabel((string) $optionArray['label']);
+                    return $option;
+                };
 
-                    $input->setOptions(array_map($fnCreateOptions, $this->termsOfTrade->toOptionArray()));
-                    break;
+                $input->setOptions(array_map($fnCreateOptions, $this->termsOfTrade->toOptionArray()));
             }
         }
     }
@@ -86,7 +83,7 @@ class InputDataProcessor implements ShippingOptionsProcessorInterface
         }
 
         foreach ($shippingOptions as $shippingOption) {
-            $this->processInputs($shippingOption, $shipment);
+            $this->processInputs($shippingOption);
         }
 
         return $shippingOptions;
