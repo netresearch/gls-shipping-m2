@@ -24,7 +24,7 @@ class PostDataProviderCrossBorder
      * @param OrderInterface $order
      * @return mixed[]
      */
-    public static function singlePackageCrossBorder(OrderInterface $order)
+    public static function singlePackageCrossBorder(OrderInterface $order): array
     {
         $package = [
             'packageId' => '1',
@@ -72,7 +72,7 @@ class PostDataProviderCrossBorder
      * @param OrderInterface $order
      * @return mixed[]
      */
-    public static function multiPackageCrossBorder(OrderInterface $order)
+    public static function multiPackageCrossBorder(OrderInterface $order): array
     {
         $packages = [];
         $packageId = 1;

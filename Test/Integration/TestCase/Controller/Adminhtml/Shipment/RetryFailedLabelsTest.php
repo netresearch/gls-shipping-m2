@@ -125,7 +125,6 @@ class RetryFailedLabelsTest extends AutoCreateTest
 
         /** @var ShipmentInterface $shipment */
         foreach ($shipmentCollection as $shipment) {
-            /** @var ShipmentTrackInterface[] $tracks */
             $tracks = array_values($shipment->getTracks());
             if (in_array($shipment->getOrderId(), $selectedOrderIds)) {
                 // requested orders should now have exactly one label and one track assigned

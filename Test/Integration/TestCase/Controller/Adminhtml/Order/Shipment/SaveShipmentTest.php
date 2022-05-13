@@ -83,7 +83,7 @@ abstract class SaveShipmentTest extends ControllerTest
         parent::tearDown();
     }
 
-    public function postDataProviderDomestic()
+    public function postDataProviderDomestic(): array
     {
         return [
             'single_package' => [
@@ -99,7 +99,7 @@ abstract class SaveShipmentTest extends ControllerTest
         ];
     }
 
-    public function postDataProviderCod()
+    public function postDataProviderCod(): array
     {
         return [
             'single_package' => [
@@ -115,7 +115,7 @@ abstract class SaveShipmentTest extends ControllerTest
         ];
     }
 
-    public function postDataProviderCrossBorder()
+    public function postDataProviderCrossBorder(): array
     {
         return [
             'single_package_xb' => [

@@ -10,6 +10,7 @@ namespace GlsGroup\Shipping\Test\Integration\TestCase\Controller\Adminhtml\Order
 
 use GlsGroup\Shipping\Model\Carrier\GlsGroup;
 use GlsGroup\Shipping\Test\Integration\TestDouble\Pipeline\CreateShipments\Stage\SendRequestStageStub;
+use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection;
 use Netresearch\ShippingCore\Api\LabelStatus\LabelStatusManagementInterface;
 use Netresearch\ShippingCore\Model\LabelStatus\LabelStatusProvider;
@@ -65,7 +66,6 @@ class CreateCrossBorderLabelTest extends SaveShipmentTest
     {
         $addressBuilder = AddressBuilder::anAddress('en_GI')->asDefaultBilling()->asDefaultShipping();
 
-        /** @var \Magento\Sales\Model\Order $order */
         $order = OrderBuilder::anOrder()
             ->withShippingMethod(GlsGroup::CARRIER_CODE . '_flatrate')
             ->withProducts(
@@ -87,6 +87,7 @@ class CreateCrossBorderLabelTest extends SaveShipmentTest
 
         /** @var Collection $shipmentCollection */
         $shipmentCollection = $this->_objectManager->create(Collection::class);
+        /** @var Shipment[] $shipments */
         $shipments = $shipmentCollection->setOrderFilter($order)->getItems();
         $shipments = array_values($shipments);
 

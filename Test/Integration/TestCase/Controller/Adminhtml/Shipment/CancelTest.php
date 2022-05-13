@@ -113,7 +113,6 @@ class CancelTest extends AbstractBackendController
     {
         $trackingNumbers = ['GLS123', 'GLS456'];
 
-        /** @var Order $order */
         $order = OrderBuilder::anOrder()->withShippingMethod('glsgroup_flatrate')->build();
         $this->orderFixtures->add($order);
 
@@ -130,7 +129,6 @@ class CancelTest extends AbstractBackendController
         /** @var LabelStatusProvider $labelStatusProvider */
         $labelStatusProvider = Bootstrap::getObjectManager()->create(LabelStatusProvider::class);
         $labelStatus = $labelStatusProvider->getLabelStatus([$fixtureShipment->getOrderId()]);
-        $labelStatusBefore = $labelStatus[$fixtureShipment->getOrderId()];
 
         // dispatch
         $this->getRequest()->setMethod($this->httpMethod);
@@ -141,7 +139,7 @@ class CancelTest extends AbstractBackendController
         $labelStatus = $labelStatusProvider->getLabelStatus([$shipment->getOrderId()]);
         $labelStatusAfter = $labelStatus[$fixtureShipment->getOrderId()];
         $trackingNumbersAfter = array_map(
-            function (TrackInterface $track) {
+            static function (TrackInterface $track) {
                 return $track->getTrackNumber();
             },
             array_values($shipment->getTracks())
@@ -187,7 +185,6 @@ class CancelTest extends AbstractBackendController
     {
         $trackingNumbers = ['GLS123', 'GLS456'];
 
-        /** @var Order $order */
         $order = OrderBuilder::anOrder()->withShippingMethod('glsgroup_flatrate')->build();
         $this->orderFixtures->add($order);
 
@@ -222,7 +219,7 @@ class CancelTest extends AbstractBackendController
         $labelStatus = $labelStatusProvider->getLabelStatus([$shipment->getOrderId()]);
         $labelStatusAfter = $labelStatus[$fixtureShipment->getOrderId()];
         $trackingNumbersAfter = array_map(
-            function (TrackInterface $track) {
+            static function (TrackInterface $track) {
                 return $track->getTrackNumber();
             },
             array_values($shipment->getTracks())

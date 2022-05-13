@@ -23,7 +23,6 @@ use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\Servi
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractor\ServiceOptionReaderInterfaceFactory;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterface;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestExtractorInterfaceFactory;
-use Netresearch\ShippingCore\Api\ShipmentDate\ShipmentDateCalculatorInterface;
 
 /**
  * Class RequestExtractor
@@ -65,11 +64,6 @@ class RequestExtractor implements RequestExtractorInterface
     private $moduleConfig;
 
     /**
-     * @var ShipmentDateCalculatorInterface
-     */
-    private $shipmentDate;
-
-    /**
      * @var ShipperInterfaceFactory
      */
     private $shipperFactory;
@@ -96,7 +90,6 @@ class RequestExtractor implements RequestExtractorInterface
         PackageAdditionalFactory $packageAdditionalFactory,
         PackageInterfaceFactory $packageFactory,
         ModuleConfig $moduleConfig,
-        ShipmentDateCalculatorInterface $shipmentDate,
         ShipperInterfaceFactory $shipperFactory
     ) {
         $this->shipmentRequest = $shipmentRequest;
@@ -105,7 +98,6 @@ class RequestExtractor implements RequestExtractorInterface
         $this->packageAdditionalFactory = $packageAdditionalFactory;
         $this->packageFactory = $packageFactory;
         $this->moduleConfig = $moduleConfig;
-        $this->shipmentDate = $shipmentDate;
         $this->shipperFactory = $shipperFactory;
     }
 

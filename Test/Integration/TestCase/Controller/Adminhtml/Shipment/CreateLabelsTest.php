@@ -111,9 +111,12 @@ class CreateLabelsTest extends AutoCreateTest
         self::assertCount(count($selectedPendingOrderIds), $pipelineStage->apiRequests);
 
         // load shipments for all orders placed during test setup
-        $fixtureOrderIds = array_map(function (Order $order) {
-            return $order->getId();
-        }, array_merge($orders, $shippedOrders));
+        $fixtureOrderIds = array_map(
+            static function (Order $order) {
+                return $order->getId();
+            },
+            array_merge($orders, $shippedOrders)
+        );
 
         /** @var Collection $shipmentCollection */
         $shipmentCollection = $this->_objectManager->create(Collection::class);
@@ -125,7 +128,6 @@ class CreateLabelsTest extends AutoCreateTest
 
         /** @var ShipmentInterface $shipment */
         foreach ($shipmentCollection as $shipment) {
-            /** @var ShipmentTrackInterface[] $tracks */
             $tracks = array_values($shipment->getTracks());
             if (in_array($shipment->getOrderId(), $selectedPendingOrderIds)) {
                 // requested orders should now have exactly one label and one track assigned

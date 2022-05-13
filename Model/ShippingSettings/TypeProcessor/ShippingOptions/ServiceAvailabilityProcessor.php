@@ -70,7 +70,7 @@ class ServiceAvailabilityProcessor implements ShippingOptionsProcessorInterface
 
         return array_filter(
             $shippingOptions,
-            function (ShippingOptionInterface $shippingOption) use ($services) {
+            static function (ShippingOptionInterface $shippingOption) use ($services) {
                 return !in_array($shippingOption->getCode(), $services, true);
             }
         );

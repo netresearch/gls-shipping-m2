@@ -33,36 +33,39 @@ class NoPartialValidator implements RequestValidatorInterface
      */
     private function isPartialShipment(Request $request): bool
     {
-        $itemQtyOrdered = array_map(function (OrderItemInterface $item) {
-            if ($item->getIsVirtual()) {
-                // virtual items are not shipped, ignore.
-                return 0;
-            }
-
-            if ($item->getParentItem() && $item->getParentItem()->getProductType() === Configurable::TYPE_CODE) {
-                // children of a configurable are not shipped, ignore.
-                return 0;
-            }
-
-            if ($item->getParentItem() && $item->getParentItem()->getProductType() === Type::TYPE_CODE) {
-                $parentOrderItem = $item->getParentItem();
-                $shipmentType = (int) $parentOrderItem->getProductOptionByCode('shipment_type');
-                if ($shipmentType === AbstractType::SHIPMENT_TOGETHER) {
-                    // children of a bundle (shipped together) are not shipped, ignore.
+        $itemQtyOrdered = array_map(
+            static function (OrderItemInterface $item) {
+                if ($item->getIsVirtual()) {
+                    // virtual items are not shipped, ignore.
                     return 0;
                 }
-            }
 
-            if ($item->getProductType() === Type::TYPE_CODE) {
-                $shipmentType = (int) $item->getProductOptionByCode('shipment_type');
-                if ($shipmentType === AbstractType::SHIPMENT_SEPARATELY) {
-                    // a bundle with children (shipped separately) is not shipped, ignore.
+                if ($item->getParentItem() && $item->getParentItem()->getProductType() === Configurable::TYPE_CODE) {
+                    // children of a configurable are not shipped, ignore.
                     return 0;
                 }
-            }
 
-            return $item->getQtyOrdered();
-        }, $request->getOrderShipment()->getOrder()->getAllItems());
+                if ($item->getParentItem() && $item->getParentItem()->getProductType() === Type::TYPE_CODE) {
+                    $parentOrderItem = $item->getParentItem();
+                    $shipmentType = (int) $parentOrderItem->getProductOptionByCode('shipment_type');
+                    if ($shipmentType === AbstractType::SHIPMENT_TOGETHER) {
+                        // children of a bundle (shipped together) are not shipped, ignore.
+                        return 0;
+                    }
+                }
+
+                if ($item->getProductType() === Type::TYPE_CODE) {
+                    $shipmentType = (int) $item->getProductOptionByCode('shipment_type');
+                    if ($shipmentType === AbstractType::SHIPMENT_SEPARATELY) {
+                        // a bundle with children (shipped separately) is not shipped, ignore.
+                        return 0;
+                    }
+                }
+
+                return $item->getQtyOrdered();
+            },
+            $request->getOrderShipment()->getOrder()->getAllItems()
+        );
 
         $qtyOrdered = array_sum($itemQtyOrdered);
         $qtyShipped = (float)$request->getOrderShipment()->getTotalQty();

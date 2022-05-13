@@ -27,7 +27,7 @@ class CutOffTimes extends AbstractFieldArray
      *
      * @throws LocalizedException
      */
-    private function getTemplateRenderer()
+    private function getTemplateRenderer(): DayOptions
     {
         if (!$this->templateRenderer) {
             $this->templateRenderer = $this->getLayout()->createBlock(

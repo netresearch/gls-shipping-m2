@@ -28,7 +28,7 @@ class PostDataProviderDomestic
      * @param OrderInterface $order
      * @return mixed[]
      */
-    public static function singlePackageDomestic(OrderInterface $order)
+    public static function singlePackageDomestic(OrderInterface $order): array
     {
         $package = [
             'packageId' => '1',
@@ -64,7 +64,7 @@ class PostDataProviderDomestic
         return ['packages' => [$package]];
     }
 
-    public static function singlePackageDomesticWithCod(OrderInterface $order)
+    public static function singlePackageDomesticWithCod(OrderInterface $order): array
     {
         $codAmount = $order->getBaseShippingAmount();
         $package = [
@@ -112,7 +112,7 @@ class PostDataProviderDomestic
      * @param OrderInterface $order
      * @return mixed[]
      */
-    public static function multiPackageDomestic(OrderInterface $order)
+    public static function multiPackageDomestic(OrderInterface $order): array
     {
         $packages = [];
 
@@ -157,7 +157,7 @@ class PostDataProviderDomestic
      * @param OrderInterface $order
      * @return mixed[]
      */
-    public static function multiPackageDomesticWithCod(OrderInterface $order)
+    public static function multiPackageDomesticWithCod(OrderInterface $order): array
     {
         $packages = [];
 

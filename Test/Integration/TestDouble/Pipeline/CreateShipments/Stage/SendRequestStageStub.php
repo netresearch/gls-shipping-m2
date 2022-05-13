@@ -88,7 +88,7 @@ B64;
         foreach ($requests as $index => $shipmentRequest) {
             $parcels = [];
             $orderId = (string) $shipmentRequest->getOrderShipment()->getOrderId();
-            foreach ($shipmentRequest->getData('packages') as $package) {
+            foreach ($shipmentRequest->getData('packages') as $ignored) {
                 $parcels[] = new Parcel(
                     "https://qs.gls-group.eu/track/YY99XXX0",
                     $orderId,

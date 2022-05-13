@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments;
 
+use GlsGroup\Sdk\ParcelProcessing\Api\LabelRequestBuilderInterface;
 use GlsGroup\Sdk\ParcelProcessing\Api\ShipmentRequestBuilderInterface;
 use GlsGroup\Sdk\ParcelProcessing\Exception\RequestValidatorException;
 use GlsGroup\Shipping\Model\Config\ModuleConfig;
@@ -124,8 +125,7 @@ class RequestDataMapper
             null,
             null,
             null,
-            $requestExtractor->getRecipient()->getState(),
-            null
+            $requestExtractor->getRecipient()->getState()
         );
 
         if ($requestExtractor->isFlexDeliveryEnabled()) {
@@ -142,7 +142,7 @@ class RequestDataMapper
         }
 
         /** @var PackageInterface $package */
-        foreach ($requestExtractor->getPackages() as $packageId => $package) {
+        foreach ($requestExtractor->getPackages() as $package) {
             $weight = $package->getWeight();
             $weightUom = $package->getWeightUom();
             $weightInKg = $this->unitConverter->convertWeight($weight, $weightUom, \Zend_Measure_Weight::KILOGRAM);
@@ -178,15 +178,15 @@ class RequestDataMapper
         }
 
         $this->requestBuilder->setShipmentDate($shipmentDate);
-        $this->requestBuilder->setLabelFormat(ShipmentRequestBuilderInterface::LABEL_FORMAT_PDF);
+        $this->requestBuilder->setLabelFormat(LabelRequestBuilderInterface::LABEL_FORMAT_PDF);
 
         $labelSize = $this->moduleConfig->getLabelSize($requestExtractor->getStoreId());
         if ($labelSize === LabelSize::LABEL_SIZE_A6) {
-            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A6);
+            $this->requestBuilder->setLabelSize(LabelRequestBuilderInterface::LABEL_SIZE_A6);
         } elseif ($labelSize === LabelSize::LABEL_SIZE_A5) {
-            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A5);
+            $this->requestBuilder->setLabelSize(LabelRequestBuilderInterface::LABEL_SIZE_A5);
         } elseif ($labelSize === LabelSize::LABEL_SIZE_A4) {
-            $this->requestBuilder->setLabelSize(ShipmentRequestBuilderInterface::LABEL_SIZE_A4);
+            $this->requestBuilder->setLabelSize(LabelRequestBuilderInterface::LABEL_SIZE_A4);
         }
 
         try {

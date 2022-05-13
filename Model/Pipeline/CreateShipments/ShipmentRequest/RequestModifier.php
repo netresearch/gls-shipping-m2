@@ -8,8 +8,6 @@ declare(strict_types=1);
 
 namespace GlsGroup\Shipping\Model\Pipeline\CreateShipments\ShipmentRequest;
 
-use Magento\Framework\DataObjectFactory;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Shipping\Model\Shipment\Request;
 use Netresearch\ShippingCore\Api\Pipeline\ShipmentRequest\RequestModifierInterface;
 
@@ -20,17 +18,9 @@ class RequestModifier implements RequestModifierInterface
      */
     private $coreModifier;
 
-    /**
-     * @var DataObjectFactory
-     */
-    private $dataObjectFactory;
-
-    public function __construct(
-        RequestModifierInterface $coreModifier,
-        DataObjectFactory $dataObjectFactory
-    ) {
+    public function __construct(RequestModifierInterface $coreModifier)
+    {
         $this->coreModifier = $coreModifier;
-        $this->dataObjectFactory = $dataObjectFactory;
     }
 
     /**
