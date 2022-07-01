@@ -64,11 +64,11 @@ This will automatically remove source files, clean up the database, update packa
 Support
 -------
 In case of questions or problems, please have a look at the
-[Support Portal (FAQ)](http://gls.support.netresearch.de/) first.
+[Support Portal (FAQ)](<"support portal url goes here">) first.
 
 If the issue cannot be resolved, you can contact the support team via the
-[Support Portal](http://gls.support.netresearch.de/) or by sending an email
-to <gls.support@netresearch.de>.
+[Support Portal](<Support Portal Url goes here) or by sending an email
+to <gls.m2.extension@gmail.com>.
 
 License
 -------

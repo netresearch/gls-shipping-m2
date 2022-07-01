@@ -4,14 +4,7 @@
     "type": "magento2-module",
     "description": "GLS carrier integration",
     "license": "OSL-3.0",
-    "authors": [
-        {
-            "email": "plugins@netresearch.de",
-            "name": "Netresearch DTT GmbH",
-            "role": "Manufacturer",
-            "homepage": "https://www.netresearch.de/"
-        }
-    ],
+    "authors": [],
     "autoload": {
         "psr-4": {
             "GlsGroup\\Shipping\\": ""
